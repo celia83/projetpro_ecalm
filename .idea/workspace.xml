@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9f06283a-08ab-4111-b796-b44b206d44d8" name="Default Changelist" comment="" />
+    <list default="true" id="9f06283a-08ab-4111-b796-b44b206d44d8" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/img/Ecalm_logo_transparent.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/img/logo_LIDILEM_CMJN.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/script.js" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -49,6 +56,8 @@
       <option name="presentableId" value="Default" />
       <updated>1609765898250</updated>
       <workItem from="1609765900690" duration="2964000" />
+      <workItem from="1609860970544" duration="6273000" />
+      <workItem from="1609927938435" duration="2479000" />
     </task>
     <servers />
   </component>

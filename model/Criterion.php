@@ -1,14 +1,15 @@
 <?php
-class Criterion
-{
-    private $corpus;
-    private $level;
-    private $pos;
-    private $errStatus;
-    private $segmStatus;
-    private $lemma;
+class Criterion{
+    protected $corpus;
+    protected $level;
+    protected $pos;
+    protected $errStatus;
+    protected $segmStatus;
+    protected $lemma;
 
-    public function Criterion($corpus, $level, $pos, $errStatus, $segmStatus, $lemma){
+
+
+    public function __construct($corpus, $level, $pos, $errStatus, $segmStatus, $lemma){
         $this->$corpus=$corpus;
         $this->$level=$level;
         $this->$pos=$pos;

@@ -4,9 +4,7 @@
     <list default="true" id="9f06283a-08ab-4111-b796-b44b206d44d8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/Criterion.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/Criterion.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/CriterionAdjective.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/CriterionAdjective.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/CriterionVerb.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/CriterionVerb.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/view/home.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/test.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/test.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +54,7 @@
       <updated>1609765898250</updated>
       <workItem from="1609765900690" duration="2964000" />
       <workItem from="1609860970544" duration="6273000" />
-      <workItem from="1609927938435" duration="8570000" />
+      <workItem from="1609927938435" duration="13207000" />
     </task>
     <servers />
   </component>

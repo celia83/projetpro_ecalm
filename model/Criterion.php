@@ -32,7 +32,7 @@ class Criterion{
         $this->normalizeCriterions();
 
         #Rédiger la requête
-        $request = 'SELECT * FROM `CM2_Scoledit` WHERE IdTok LIKE "'.$this->corpus.'" AND Niv LIKE "'.$this->level.'" AND Categorie LIKE "'.$this->pos.'" AND StatutErreur LIKE "'.$this->errStatus.'" AND StatutSegm LIKE "'.$this->segmStatus.'" AND Lemme LIKE "'.$this->lemma.'"';
+        $request = 'SELECT * FROM `cm2_scoledit` WHERE IdTok LIKE "'.$this->corpus.'" AND Niv LIKE "'.$this->level.'" AND Categorie LIKE "'.$this->pos.'" AND StatutErreur LIKE "'.$this->errStatus.'" AND StatutSegm LIKE "'.$this->segmStatus.'" AND Lemme LIKE "'.$this->lemma.'"';
 
         #Connexion à la base de données
         $db = self::connexion();
@@ -41,9 +41,12 @@ class Criterion{
         $response = $db->query($request);
 
         #Récupérer les informations de la requête
-        $tab = $response->fetch();
-
-        return $tab;
+        while($enr=$response->fetch()) {
+            var_dump($enr);
+        }
+        #$tab = $response->fetch();
+        #var_dump($tab);
+        #return $tab;
     }
 
     protected function normalizeCriterions(){
@@ -98,7 +101,7 @@ class Criterion{
     #Connexion à la base de données
     protected static function connexion(){
         try { /* tentative de connexion à la BD*/
-            $db = new PDO('mysql:host=localhost;dbname=scoledit', 'scoledit', 'projetpro');
+            $db = new PDO('mysql:host=localhost;dbname=scoledit', 'root', '');
             return $db;
         } catch (Exception $e) {
             die('Erreur : '.$e->getMessage());

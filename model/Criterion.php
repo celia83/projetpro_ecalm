@@ -83,13 +83,13 @@ class Criterion{
             $this->pos = "%";
         }
 
-        #Normalisation des Statuts d'erreur
+        #Normalisation des Statuts d'erreur (la terminologie reste la même si ce n'est les numéros qui précèdent le mot par ex "01-Normé" donc on peut simplement ajouter % devant)
         $this->errStatus = "%".$this->errStatus;
 
-        #Normalisation des Status de segments
+        #Normalisation des Status de segments (la situation est la même que pour le statut des erreurs)
         $this->segmStatus = "%".$this->segmStatus;
 
-        #Normalisation du lemme
+        #Normalisation du lemme (si on n'a pas de lemme précisé on les sélectionne tous avec %)
         if($this->lemma == ""){
             $this->lemma = "%";
         }
@@ -101,7 +101,7 @@ class Criterion{
             $db = new PDO('mysql:host=localhost;dbname=scoledit', 'scoledit', 'projetpro');
             return $db;
         } catch (Exception $e) {
-            die('Erreur : ' . $e->getMessage());
+            die('Erreur : '.$e->getMessage());
         }
     }
 }

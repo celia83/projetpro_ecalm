@@ -4,13 +4,13 @@
         <!-- Entête de la page-->
         <title>E-Calm</title>
         <meta charset="UTF-8"/> <!-- dit en quel encodage je suis-->
-        <link rel="stylesheet" href = "css/style.css"/> <!-- donne la feuille de style en css utilisée-->
+        <link rel="stylesheet" href = "../public/css/style.css"/> <!-- donne la feuille de style en css utilisée-->
         <script type="text/javascript" src="jquery-3.4.1.js"></script> <!--appel de JQuery-->
     </head>
     <body>
         <header>
-            <img id = "logo_lidilem" src="assets/img/logo_LIDILEM_CMJN.jpg"/>
-            <img id = "logo_ecalm" src="assets/img/Ecalm_logo_transparent.png"/>
+            <img id = "logo_lidilem" src="../public/assets/img/logo_LIDILEM_CMJN.jpg"/>
+            <img id = "logo_ecalm" src="../public/assets/img/Ecalm_logo_transparent.png"/>
             <section id="connexion">Connexion</section>
         </header>
     </body>

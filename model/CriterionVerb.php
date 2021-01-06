@@ -11,14 +11,14 @@ class CriterionVerb extends Criterion{
 
     public function __construct($corpus, $level, $pos, $errStatus, $segmStatus, $lemma,$tense, $person, $typeErr, $desinence, $base){
         parent::__construct($corpus, $level, $pos, $errStatus, $segmStatus, $lemma);
-        $this->$tense=$tense;
-        $this->$person=$person;
-        $this->$typeErr=$typeErr;
-        $this->$desinence=$desinence;
-        $this->$base=$base;
+        $this->tense=$tense;
+        $this->person=$person;
+        $this->typeErr=$typeErr;
+        $this->desinence=$desinence;
+        $this->base=$base;
     }
 
-    public function getResultsAdjective(){
+    public function getResultsVerb(){
         self::connexion();
     }
 

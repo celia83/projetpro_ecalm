@@ -32,7 +32,13 @@ class Criterion{
         $this->normalizeCriterions();
 
         #Rédiger la requête
-        $request = 'SELECT * FROM `cm2_scoledit` WHERE IdTok LIKE "'.$this->corpus.'" AND Niv LIKE "'.$this->level.'" AND Categorie LIKE "'.$this->pos.'" AND StatutErreur LIKE "'.$this->errStatus.'" AND StatutSegm LIKE "'.$this->segmStatus.'" AND Lemme LIKE "'.$this->lemma.'"';
+        $request = 'SELECT * FROM `cm2_scoledit` 
+WHERE IdTok LIKE "'.$this->corpus.'" 
+AND Niv LIKE "'.$this->level.'" 
+AND Categorie LIKE "'.$this->pos.'" 
+AND StatutErreur LIKE "'.$this->errStatus.'" 
+AND StatutSegm LIKE "'.$this->segmStatus.'" 
+AND Lemme LIKE "'.$this->lemma.'"';
 
         #Connexion à la base de données
         $db = self::connexion();
@@ -40,13 +46,14 @@ class Criterion{
         #Requêter la base
         $response = $db->query($request);
 
-        #Récupérer les informations de la requête
-        while($enr=$response->fetch()) {
-            var_dump($enr);
+        #Récupérer les informations de la requête (le mode PDO::FETCH_ASSOC permet d'éviter que le résultats de dédouble les colonnes)
+        $tab = array();
+        while($enr=$response->fetch(PDO::FETCH_ASSOC)) {
+            array_push($tab, $enr);
         }
         #$tab = $response->fetch();
         #var_dump($tab);
-        #return $tab;
+        return $tab;
     }
 
     protected function normalizeCriterions(){
@@ -64,6 +71,10 @@ class Criterion{
         #Normalisation des catégories grammaticales
         if ($this->pos == "Adverbe"){
             $this->pos = "ADV";
+        } elseif ($this->pos == "Adjectif"){
+            $this->pos = "ADJ";
+        } elseif ($this->pos == "Verbe"){
+            $this->pos = "VER%";
         } elseif ($this->pos == "Nom"){
             $this->pos = "NOM";
         } elseif ($this->pos == "Nom Propre"){

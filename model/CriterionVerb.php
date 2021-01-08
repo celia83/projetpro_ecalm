@@ -1,5 +1,5 @@
 <?php
-
+include_once "connection.php";
 
 class CriterionVerb extends Criterion{
 
@@ -10,14 +10,20 @@ class CriterionVerb extends Criterion{
     private $base;
 
     public function __construct($corpus, $level, $pos, $errStatus, $segmStatus, $lemma,$tense, $person, $typeErr, $desinence, $base){
+
         parent::__construct($corpus, $level, $pos, $errStatus, $segmStatus, $lemma);
         $this->tense=$tense;
         $this->person=$person;
         $this->typeErr=$typeErr;
         $this->desinence=$desinence;
         $this->base=$base;
+
     }
 
+    /*
+     * Cette fonction permet de retourner un tableau en fonction des critères sélectionnés par l'utilisateur
+     * @return array $tab contenant les lignes retournées par la requête
+     */
     public function getResultsVerb(){
         /* Exemple de requete qui fonctionne avec les critères principaux (pour le corpus on recherche S dans idTok pour le corpus Scoledit:
          SELECT * FROM `CM2_Scoledit`
@@ -43,23 +49,18 @@ AND Lemme LIKE "'.$this->lemma.'"
 AND VerPers LIKE "'.$this->person.'" 
 AND BaseVerForme LIKE "'.$this->base.'" 
 AND DesiVerForme LIKE "'.$this->desinence.'"'.$this->typeErr;
-        var_dump($request);
-        #Connexion à la base de données
-        $db = self::connexion();
 
-        #Requêter la base
-        $response = $db->query($request);
+        $database = new DataBase();
+        $tab= $database->getData($request);
 
-        #Récupérer les informations de la requête (le mode PDO::FETCH_ASSOC permet d'éviter que le résultats de dédouble les colonnes)
-        $tab = array();
-        while($enr=$response->fetch(PDO::FETCH_ASSOC)) {
-            array_push($tab, $enr);
-        }
-        #$tab = $response->fetch();
-        #var_dump($tab);
         return $tab;
     }
 
+    /*
+     * Les données provenant de la page HTML sont dans un format agréable à lire pour l'utilisateur, cette fonction permet de transcrire ces données
+     * pour qu'elles correspondent à ce qu'on a dans la base de données
+     * @return void
+     */
     protected function normalizeCriterions(){
         parent::normalizeCriterions();
 
@@ -126,5 +127,4 @@ AND DesiVerForme LIKE "'.$this->desinence.'"'.$this->typeErr;
             $this->desinence = "%";
         }
     }
-
 }

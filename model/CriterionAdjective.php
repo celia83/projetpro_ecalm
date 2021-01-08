@@ -1,5 +1,9 @@
 <?php
+
+include_once "connection.php";
+
 class CriterionAdjective extends Criterion{
+
     private $genre;
     private $numbre;
     private $errGenre;
@@ -7,6 +11,7 @@ class CriterionAdjective extends Criterion{
     private $base;
 
     public function __construct($corpus, $level, $pos, $errStatus, $segmStatus, $lemma, $genre, $numbre, $errGenre, $errNumber, $base){
+
         Parent::__construct($corpus, $level, $pos, $errStatus, $segmStatus, $lemma);
         $this->genre=$genre;
         $this->numbre=$numbre;
@@ -15,6 +20,10 @@ class CriterionAdjective extends Criterion{
         $this->base=$base;
     }
 
+    /*
+     * Cette fonction permet de retourner un tableau en fonction des critères sélectionnés par l'utilisateur
+     * @return array $tab contenant les lignes retournées par la requête
+     */
     public function getResultsAdjective(){
         /* Exemple de requete qui fonctionne avec les critères principaux (pour le corpus on recherche S dans idTok pour le corpus Scoledit:
          SELECT * FROM `CM2_Scoledit`
@@ -42,23 +51,18 @@ AND Nombre LIKE "'.$this->numbre.'"
 AND ErreurAdjGenre LIKE "'.$this->errGenre.'" 
 AND ErreurAdjNombre LIKE "'.$this->errNumber.'" 
 AND BaseAdjNorm LIKE "'.$this->base.'"';
-        var_dump($request);
-        #Connexion à la base de données
-        $db = self::connexion();
 
-        #Requêter la base
-        $response = $db->query($request);
+        $database = new DataBase();
+        $tab= $database->getData($request);
 
-        #Récupérer les informations de la requête (le mode PDO::FETCH_ASSOC permet d'éviter que le résultats de dédouble les colonnes)
-        $tab = array();
-        while($enr=$response->fetch(PDO::FETCH_ASSOC)) {
-            array_push($tab, $enr);
-        }
-        #$tab = $response->fetch();
-        #var_dump($tab);
         return $tab;
     }
 
+    /*
+    * Les données provenant de la page HTML sont dans un format agréable à lire pour l'utilisateur, cette fonction permet de transcrire ces données
+    * pour qu'elles correspondent à ce qu'on a dans la base de données
+    * @return void
+    */
     protected function normalizeCriterions(){
         parent::normalizeCriterions();
 

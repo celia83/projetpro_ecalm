@@ -1,5 +1,9 @@
 <?php
+
+include_once "connection.php";
+
 class Criterion{
+
     protected $corpus;
     protected $level;
     protected $pos;
@@ -8,6 +12,7 @@ class Criterion{
     protected $lemma;
 
     public function __construct($corpus, $level, $pos, $errStatus, $segmStatus, $lemma){
+
         $this->corpus=$corpus;
         $this->level=$level;
         $this->pos=$pos;
@@ -16,7 +21,10 @@ class Criterion{
         $this->lemma=$lemma;
     }
 
-    #Interrogation de la base de données
+    /*
+     * Cette fonction permet de retourner un tableau en fonction des critères sélectionnés par l'utilisateur
+     * @return array $tab contenant les lignes retournées par la requête
+     */
     public function getResults(){
         /* Exemple de requete qui fonctionne avec les critères principaux (pour le corpus on recherche S dans idTok pour le corpus Scoledit:
         SELECT * FROM `CM2_Scoledit`
@@ -31,7 +39,6 @@ class Criterion{
         #Normaliser les critères pour que la requête soit adaptées au données de la bdd
         $this->normalizeCriterions();
 
-        #Rédiger la requête
         $request = 'SELECT * FROM `cm2_scoledit` 
 WHERE IdTok LIKE "'.$this->corpus.'" 
 AND Niv LIKE "'.$this->level.'" 
@@ -40,22 +47,17 @@ AND StatutErreur LIKE "'.$this->errStatus.'"
 AND StatutSegm LIKE "'.$this->segmStatus.'" 
 AND Lemme LIKE "'.$this->lemma.'"';
 
-        #Connexion à la base de données
-        $db = self::connexion();
+        $database = new DataBase();
+        $tab= $database->getData($request);
 
-        #Requêter la base
-        $response = $db->query($request);
-
-        #Récupérer les informations de la requête (le mode PDO::FETCH_ASSOC permet d'éviter que le résultats de dédouble les colonnes)
-        $tab = array();
-        while($enr=$response->fetch(PDO::FETCH_ASSOC)) {
-            array_push($tab, $enr);
-        }
-        #$tab = $response->fetch();
-        #var_dump($tab);
         return $tab;
     }
 
+    /*
+     * Les données provenant de la page HTML sont dans un format agréable à lire pour l'utilisateur, cette fonction permet de transcrire ces données
+     * pour qu'elles correspondent à ce qu'on a dans la base de données
+     * @return void
+     */
     protected function normalizeCriterions(){
         #Normalisation du corpus : E : Ecriscol, S : Scoledit, R : Resolco, sinon on sélectionne tous les corpus avec %
         if ($this->corpus == "Scoledit"){
@@ -106,16 +108,6 @@ AND Lemme LIKE "'.$this->lemma.'"';
         #Normalisation du lemme (si on n'a pas de lemme précisé on les sélectionne tous avec %)
         if($this->lemma == ""){
             $this->lemma = "%";
-        }
-    }
-
-    #Connexion à la base de données
-    protected static function connexion(){
-        try { /* tentative de connexion à la BD*/
-            $db = new PDO('mysql:host=localhost;dbname=scoledit', 'root', '');
-            return $db;
-        } catch (Exception $e) {
-            die('Erreur : '.$e->getMessage());
         }
     }
 }

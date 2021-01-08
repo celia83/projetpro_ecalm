@@ -1,7 +1,7 @@
 <?php
-include"Criterion.php";
-include"CriterionAdjective.php";
-include"CriterionVerb.php";
+include "Criterion.php";
+include "CriterionAdjective.php";
+include "CriterionVerb.php";
 
 #$criterion = new Criterion("Scoledit", "CM2", "Nom","Norm%","Norm%","");
 #var_dump($criterion->getResults());

@@ -59,7 +59,7 @@ AND BaseAdjNorm LIKE "'.$this->base.'"';
         return $tab;
     }
 
-    public function normalizeCriterions(){
+    protected function normalizeCriterions(){
         parent::normalizeCriterions();
 
         #Normaliser le genre

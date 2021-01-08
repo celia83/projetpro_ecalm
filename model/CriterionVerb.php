@@ -60,7 +60,7 @@ AND DesiVerForme LIKE "'.$this->desinence.'"'.$this->typeErr;
         return $tab;
     }
 
-    public function normalizeCriterions(){
+    protected function normalizeCriterions(){
         parent::normalizeCriterions();
 
         #Normaliser les tiroirs verbaux

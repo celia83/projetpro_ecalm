@@ -2,13 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9f06283a-08ab-4111-b796-b44b206d44d8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/model/connection.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/Criterion.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/Criterion.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/CriterionAdjective.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/CriterionAdjective.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/CriterionVerb.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/CriterionVerb.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/Criterion.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/SearchByCriteria/Criterion.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/CriterionAdjective.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/SearchByCriteria/CriterionAdjective.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/CriterionVerb.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/SearchByCriteria/CriterionVerb.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/Statistics/NbWordProd.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/Statistics/NbWordProd.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/test.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/test.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/connection.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/DataBase.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/test.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/SearchByCriteria/test.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,6 +49,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Documents\Applications\Wamp\www\projetpro_ecalm\model\SearchByCriteria" />
       <recent name="D:\Documents\Applications\Wamp\www\projetpro_ecalm\model" />
     </key>
   </component>
@@ -67,7 +67,7 @@
       <workItem from="1609954933839" duration="708000" />
       <workItem from="1610007047930" duration="10397000" />
       <workItem from="1610029453541" duration="1287000" />
-      <workItem from="1610094625618" duration="5732000" />
+      <workItem from="1610094625618" duration="12111000" />
     </task>
     <servers />
   </component>

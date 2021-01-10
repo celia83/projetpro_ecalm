@@ -8,7 +8,8 @@ class DataBase {
      */
     private static function connection(){
         try { /* tentative de connexion à la BD*/
-            $db = new PDO('mysql:host=localhost;dbname=scoledit', 'root', '');
+            //$db = new PDO('mysql:host=localhost;dbname=scoledit', 'root', '');
+            $db = new PDO('mysql:host=localhost;dbname=scoledit', 'scoledit', 'projetpro');
             return $db;
         } catch (Exception $e) {
             die('Erreur : '.$e->getMessage());

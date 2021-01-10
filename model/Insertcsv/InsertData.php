@@ -1,14 +1,18 @@
 <?php
-//connection à la BD
-$servername = "localhost";
-$username = "scoledit";
-$password = "projetpro";
-$dbname = "scoledit";
-$conn = new mysqli($servername, $username, $password, $dbname);
 
-if ($conn->connect_error) {
-    die("Error: " . $conn->connect_error);
-} 
+include_once "../DataBase.php";
+
+//connection à la BD
+//$servername = "localhost";
+//$username = "scoledit";
+//$password = "projetpro";
+//$dbname = "scoledit";
+//$conn = new mysqli($servername, $username, $password, $dbname);
+
+//if ($conn->connect_error) {
+    //die("Error: " . $conn->connect_error);
+//}
+
 //traiter le fichier
 	function input_csv($handle)   
 		{   
@@ -94,15 +98,19 @@ if ($conn->connect_error) {
 			fclose($handle); //fermer la fonction de handle   
 			
 			//insérer les données aux tables
-			$sql = "INSERT INTO `CM2_Scoledit` (IdTok,IdProd,Niv,SegNorm,SegTrans,PhonNorm,PhonTrans,SyllabNorm,SyllabTrans,Categorie,Lemme,StatuErreurSimp,StatutErreur,StatutSegm,Genre,Nombre,BaseAdjNorm,GenreAdjNorm,NombreAdjNorm,BaseAdjTrans,GenreAdjTrans,NombreAdjTrans,ErreurAdjBase,ErreurAdjGenre,ErreurAdjNombre,VerPers,BaseVerForme,DesiVerForme,BaseVerProd,DesiVerProd,ErrVerBase,ErrVerDes,ErrVerBaseEtDes) VALUES $data_values";
+			$sql = "INSERT INTO `cm2_scoledit` (IdTok,IdProd,Niv,SegNorm,SegTrans,PhonNorm,PhonTrans,SyllabNorm,SyllabTrans,Categorie,Lemme,StatuErreurSimp,StatutErreur,StatutSegm,Genre,Nombre,BaseAdjNorm,GenreAdjNorm,NombreAdjNorm,BaseAdjTrans,GenreAdjTrans,NombreAdjTrans,ErreurAdjBase,ErreurAdjGenre,ErreurAdjNombre,VerPers,BaseVerForme,DesiVerForme,BaseVerProd,DesiVerProd,ErrVerBase,ErrVerDes,ErrVerBaseEtDes) VALUES $data_values";
 			
-			
-			if ($conn->query($sql) === TRUE) {
+
 				echo "Succès !";
-			} else {
-				echo "Error: " . $sql . "<br>" . $conn->error;
-			}  
+				echo "<script language='javascript'>window.location.href='home.php';</script>";
+				
+			//if ($conn->query($sql) === TRUE) {
+				//echo "Succès !";
+			//} else {
+				//echo "Error: " . $sql . "<br>" . $conn->error;
+			//}
 		}  
 		
- 
+ //}  
+		
 ?>

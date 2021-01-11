@@ -114,10 +114,10 @@ class POSRepartitonByLevel
             if (($POS["Categorie"] == "NOM") or ($POS["Categorie"] == "NAM")){
                 $nbPOSByLevel[$POS["Niv"]]["Nom"] ++;
                 $nbPOSByLevel["Total"]["Nom"] ++;
-            } elseif (($POS["Categorie"] == "VER:impf") or ($POS ["Categorie"] == "VER:simp")or ($POS ["Categorie"] == "VER:pres") or ($POS ["Categorie"] == "VER:infi") or ($POS ["Categorie"] == "VER:cond") or ($POS ["Categorie"] == "VER:impe") or ($POS ["Categorie"] == "VER:futu") or ($POS ["Categorie"] == "VER:subi") or ($POS ["Categorie"] == "VER:subp")){
+            } elseif (($POS["Categorie"] == "VER:impf") or ($POS ["Categorie"] == "VER:simp")or ($POS ["Categorie"] == "VER:pres") or ($POS ["Categorie"] == "VER:infi") or ($POS ["Categorie"] == "VER:cond") or ($POS ["Categorie"] == "VER:impe") or ($POS ["Categorie"] == "VER:futu") or ($POS ["Categorie"] == "VER:subi") or ($POS ["Categorie"] == "VER:subp") or ($POS["Categorie"] == "VER:ppre")){
                 $nbPOSByLevel[$POS["Niv"]]["Verbe"] ++;
                 $nbPOSByLevel["Total"]["Verbe"] ++;
-            } elseif ($POS["Categorie"] == "VER:ppre") {
+            } elseif ($POS["Categorie"] == "VER:pper") {
 				$nbPOSByLevel[$POS["Niv"]]["ParticipePasse"] ++;
                 $nbPOSByLevel["Total"]["Verbe"] ++;
             } elseif (($POS["Categorie"] == "PRO:PER") or ($POS ["Categorie"] == "PRO:REL")or ($POS ["Categorie"] == "PRO:IND") or ($POS ["Categorie"] == "PRO/PER")){

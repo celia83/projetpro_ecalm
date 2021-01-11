@@ -24,6 +24,8 @@ class POSRepartitonByLevel
             "CP" => array(
 				"TotalPOS" => 0,
                 "Nom" => 0,
+				"Verbe" => 0,
+				"ParticipePasse" => 0,
                 "Pronom" => 0,
                 "Déterminant" => 0,
                 "Préposition" => 0,
@@ -34,7 +36,10 @@ class POSRepartitonByLevel
                
                ),
             "CE1" => array(
-                 "Nom" => 0,
+                "TotalPOS" => 0,
+                "Nom" => 0,
+                "Verbe" => 0,
+				"ParticipePasse" => 0,
                 "Pronom" => 0,
                 "Déterminant" => 0,
                 "Préposition" => 0,
@@ -42,10 +47,13 @@ class POSRepartitonByLevel
                 "Adverbe" => 0,
                 "Adjectif" => 0,
                 "AutresCategories" => 0,
-                "TotalPOS" => 0,
+
 				),
             "CE2" => array(
+				"TotalPOS" => 0,
                 "Nom" => 0,
+                "Verbe" => 0,
+				"ParticipePasse" => 0,
                 "Pronom" => 0,
                 "Déterminant" => 0,
                 "Préposition" => 0,
@@ -53,11 +61,12 @@ class POSRepartitonByLevel
                 "Adverbe" => 0,
                 "Adjectif" => 0,
                 "AutresCategories" => 0,
-                "TotalPOS" => 0,
                 ),
             "CM1" => array(
                 "TotalPOS" => 0,
                 "Nom" => 0,
+                "Verbe" => 0,
+				"ParticipePasse" => 0,
                 "Pronom" => 0,
                 "Déterminant" => 0,
                 "Préposition" => 0,
@@ -69,6 +78,8 @@ class POSRepartitonByLevel
             "CM2" => array(
                  "TotalPOS" => 0,
                  "Nom" => 0,
+                "Verbe" => 0,
+				"ParticipePasse" => 0,
                 "Pronom" => 0,
                 "Déterminant" => 0,
                 "Préposition" => 0,
@@ -78,7 +89,10 @@ class POSRepartitonByLevel
                 "AutresCategories" => 0,
                 ),
             "Total" => array(
+				"TotalPOS" => 0,
                 "Nom" => 0,
+                "Verbe" => 0,
+				"ParticipePasse" => 0,
                 "Pronom" => 0,
                 "Déterminant" => 0,
                 "Préposition" => 0,
@@ -86,7 +100,6 @@ class POSRepartitonByLevel
                 "Adverbe" => 0,
                 "Adjectif" => 0,
                 "AutresCategories" => 0,
-                "TotalPOS" => 0,
                 )
             );
 
@@ -101,6 +114,12 @@ class POSRepartitonByLevel
             if (($POS["Categorie"] == "NOM") or ($POS["Categorie"] == "NAM")){
                 $nbPOSByLevel[$POS["Niv"]]["Nom"] ++;
                 $nbPOSByLevel["Total"]["Nom"] ++;
+            } elseif (($POS["Categorie"] == "VER:impf") or ($POS ["Categorie"] == "VER:simp")or ($POS ["Categorie"] == "VER:pres") or ($POS ["Categorie"] == "VER:infi") or ($POS ["Categorie"] == "VER:cond") or ($POS ["Categorie"] == "VER:impe") or ($POS ["Categorie"] == "VER:futu") or ($POS ["Categorie"] == "VER:subi") or ($POS ["Categorie"] == "VER:subp")){
+                $nbPOSByLevel[$POS["Niv"]]["Verbe"] ++;
+                $nbPOSByLevel["Total"]["Verbe"] ++;
+            } elseif ($POS["Categorie"] == "VER:ppre") {
+				$nbPOSByLevel[$POS["Niv"]]["ParticipePasse"] ++;
+                $nbPOSByLevel["Total"]["Verbe"] ++;
             } elseif (($POS["Categorie"] == "PRO:PER") or ($POS ["Categorie"] == "PRO:REL")or ($POS ["Categorie"] == "PRO:IND") or ($POS ["Categorie"] == "PRO/PER")){
                 $nbPOSByLevel[$POS["Niv"]]["Pronom"] ++;
                 $nbPOSByLevel["Total"]["Pronom"] ++;

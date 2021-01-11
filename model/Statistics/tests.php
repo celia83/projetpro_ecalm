@@ -6,6 +6,10 @@ include "TenseRepartition.php";
 #$nbWords = new NbWordProd();
 #var_dump($nbWords->createTabNbWordsProd());
 
-$tabVerb = new TenseRepartition();
-var_dump($tabVerb->createTabTenseRepartition());
+$tabPOS = new TenseRepartition();
+var_dump($tabPOS->createTabTenseRepartition());
+
+include "POSRepartitionByLevel.php";
+$tabPOS = new POSRepartitonByLevel();
+var_dump($tabPOS->createTabPOSRepartitionByLevel());
 

@@ -80,7 +80,7 @@ AND DesiVerForme LIKE "'.$this->desinence.'"'.$this->typeErr;
             $this->tense = "VER:ppre";
         } elseif ($this->tense == "Présent"){
             $this->tense = "VER:pres";
-        } elseif ($this->tense == "Passé simple"){ #ATTENTION : Conjonctions de coordination et de subordination sont traitées de la même manière avec Treetagger
+        } elseif ($this->tense == "Passé simple"){
             $this->tense= "VER:simp";
         } elseif ($this->tense== "Subjonctif imparfait"){
             $this->tense = "VER:subi";

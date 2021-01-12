@@ -79,7 +79,7 @@ class StandardizedBaseOrEnding {
                 "Total" => array()
             ));
 
-        #CRemplir le tableau
+        #Remplir le tableau
         foreach($tabVerbs as $verb){
             if ($verb["ErrVerBase"] == 1 ){
                 array_push($verbByLevelTab[$verb["Niv"]]["Erreur base"],$verb);
@@ -116,7 +116,8 @@ class StandardizedBaseOrEnding {
             #On calcule le nombre de verbes avec une erreur sur la base et la désinence
             $nbBaseAndEndErr = sizeof($tabError["Erreur base et désinence"]) ;
 
-            #Si on a des verbes dans la catégories (donc total différent de 0) on calcul les pourcentages
+            #Ajout au tableau final
+            #Si on a des verbes dans la catégorie (donc total différent de 0) on calcule les pourcentages
             if ($total != 0){
                 $finalTab[$level]["Normé"] = (string) $nbStandardized  / $total * 100 . "%";
                 $finalTab[$level]["Erreur base"] = (string) $nbBaseErr / $total * 100 . "%";

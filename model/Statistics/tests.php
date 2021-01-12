@@ -3,7 +3,8 @@
 #include "TenseRepartition.php";
 #include "POSRepartitionByLevel.php";
 #include "FailureAndSuccessTenses.php";
-include "StandardizedBaseOrEnding.php";
+#include "StandardizedBaseOrEnding.php";
+include "StandardizedBaseEndingProportion.php";
 
 
 #$nbWords = new NbWordProd();
@@ -19,6 +20,9 @@ include "StandardizedBaseOrEnding.php";
 #$tabVerb = new FailureAndSuccessTenses();
 #var_dump($tabVerb->createTabFailureSuccess("nonEr"));
 
-$tab = new StandardizedBaseOrEnding();
-var_dump($tab->createTabStandardizedBaseOrEnding("tous", "Imparfait"));
+#$tab = new StandardizedBaseOrEnding();
+#var_dump($tab->createTabStandardizedBaseOrEnding("tous", "Imparfait"));
+
+$tab = new StandardizedBaseEndingProportion();
+var_dump($tab->createTabStandardizedBaseEndingProportion("tous", "Imparfait"));
 

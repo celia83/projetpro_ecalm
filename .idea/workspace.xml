@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="9f06283a-08ab-4111-b796-b44b206d44d8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/SearchByCriteria/CriterionVerb.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/SearchByCriteria/CriterionVerb.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/Statistics/tests.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/Statistics/tests.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -65,7 +64,8 @@
       <workItem from="1610007047930" duration="10397000" />
       <workItem from="1610029453541" duration="1287000" />
       <workItem from="1610094625618" duration="13208000" />
-      <workItem from="1610360819125" duration="7697000" />
+      <workItem from="1610360819125" duration="9268000" />
+      <workItem from="1610439498494" duration="6023000" />
     </task>
     <servers />
   </component>

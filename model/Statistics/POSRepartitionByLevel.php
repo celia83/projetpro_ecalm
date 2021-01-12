@@ -2,10 +2,10 @@
 
 include_once "../DataBase.php";
 
-class POSRepartitonByLevel
+class POSRepartitionByLevel
 {
     /*
-     *  /*
+     *
      * Cette fonction sélectionne les POS dans la base de données et calcule la répartition des POS de chaque catégorie grammaticale en fonction des niveaux.
      * Les résultats sont exprimés en pourcentage et affichés dans un tableau.
      * @return array $percentagePOSByLevel

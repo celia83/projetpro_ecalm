@@ -3,6 +3,13 @@
 include_once "../DataBase.php";
 
 class FailureAndSuccessTenses {
+    /*
+     * Fonction qui retourne un tableau indiquant les pourcentages de formes correctes, de formes incorrectes mais qui permettent de
+     * restituer la forme sonore et de formes incorrectes ne permettant pas de restituer la forme sonore
+     * Elle permet à l'utilisateur de choisir d'afficher ces informations pour les verbes en -er, non en -er ou pour tous
+     * @param String $verbType "er" | "nonEr" | Tous_les_verbes
+     * @return $finalTab le tableau ainsi créé
+     */
     public function createTabFailureSuccess ($verbType) {
         /*  Indications :
             - Orthographe normée : forme correcte => SegNorm == SegTrans

@@ -20,5 +20,5 @@ include "StandardizedBaseOrEnding.php";
 #var_dump($tabVerb->createTabFailureSuccess("nonEr"));
 
 $tab = new StandardizedBaseOrEnding();
-var_dump($tab->createTabStandardizedBaseOrEnding("tous"));
+var_dump($tab->createTabStandardizedBaseOrEnding("tous", "Imparfait"));
 

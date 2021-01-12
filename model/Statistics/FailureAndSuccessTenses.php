@@ -3,14 +3,16 @@
 include_once "../DataBase.php";
 
 class FailureAndSuccessTenses {
-    /*
-     * Fonction qui retourne un tableau indiquant les pourcentages de formes correctes, de formes incorrectes mais qui permettent de
-     * restituer la forme sonore et de formes incorrectes ne permettant pas de restituer la forme sonore
-     * Elle permet à l'utilisateur de choisir d'afficher ces informations pour les verbes en -er, non en -er ou pour tous
-     * @param String $verbType "er" | "nonEr" | Tous_les_verbes
-     * @return $finalTab le tableau ainsi créé
-     */
-    public function createTabFailureSuccess ($verbType) {
+
+    public function createTabFailureSuccess ($verbGroup) {
+        /*
+        * Fonction qui retourne un tableau indiquant les pourcentages de formes correctes, de formes incorrectes mais qui permettent de
+        * restituer la forme sonore et de formes incorrectes ne permettant pas de restituer la forme sonore
+        * Elle permet à l'utilisateur de choisir d'afficher ces informations pour les verbes en -er, non en -er ou pour tous
+        * @param String $verbGroup "er" | "nonEr" | Tous_les_verbes
+        * @return $finalTab le tableau ainsi créé
+        */
+
         /*  Indications :
             - Orthographe normée : forme correcte => SegNorm == SegTrans
             - Phonologie normée : forme incorrecte mais qui permet de restituer la forme sonore => SegNorm != SegTrans et PhonNorm = PhonTrans
@@ -19,10 +21,10 @@ class FailureAndSuccessTenses {
 
         #Créer la requête
         #Si l'utilisateur veut les verbes en er
-        if ($verbType == "er") {
+        if ($verbGroup == "er") {
             $request ='SELECT Niv, SegNorm, SegTrans, PhonNorm, PhonTrans, Categorie, ErrVerBase, ErrVerDes, ErrVerBaseEtDes FROM cm2_scoledit WHERE Categorie LIKE "VER%" AND Categorie LIKE "VER:pper" = 0 AND SegmNorm LIKE "%er"' ;;
         #Si l'utilisateur veut les verbes qui ne sont pas en er
-        } elseif ($verbType == "nonEr"){
+        } elseif ($verbGroup == "nonEr"){
             $request = 'SELECT Niv, SegNorm, SegTrans, PhonNorm, PhonTrans, Categorie, ErrVerBase, ErrVerDes, ErrVerBaseEtDes FROM cm2_scoledit WHERE Categorie LIKE "VER%" AND Categorie LIKE "VER:pper" = 0 AND SegNorm LIKE "%er" = 0' ;;
         #Si l'utilisateur veut tous les verbes
         } else {
@@ -34,7 +36,7 @@ class FailureAndSuccessTenses {
         $tabVerbs= $database->getData($request);
 
         #Classer les verbes récoltés en fonction de leur niveau et de leur tiroir verbal pour les futurs calculs
-        $tabVerbsByLevel = array(
+        $verbsByLevelTab = array(
             "CP" => array(
                 "Ensemble des Verbes" => array(),
                 "Imparfait" => array(),
@@ -73,62 +75,27 @@ class FailureAndSuccessTenses {
 
         foreach ($tabVerbs as $verb) {
             if ($verb["Categorie"] == "VER:impf"){
-                array_push ($tabVerbsByLevel[$verb["Niv"]]["Imparfait"], $verb);
-                array_push ($tabVerbsByLevel[$verb["Niv"]]["Ensemble des Verbes"], $verb);
+                array_push ($verbsByLevelTab[$verb["Niv"]]["Imparfait"], $verb);
+                array_push ($verbsByLevelTab[$verb["Niv"]]["Ensemble des Verbes"], $verb);
             } elseif ($verb["Categorie"] == "VER:infi"){
-                array_push ($tabVerbsByLevel[$verb["Niv"]]["Infinitif"], $verb);
-                array_push ($tabVerbsByLevel[$verb["Niv"]]["Ensemble des Verbes"], $verb);
+                array_push ($verbsByLevelTab[$verb["Niv"]]["Infinitif"], $verb);
+                array_push ($verbsByLevelTab[$verb["Niv"]]["Ensemble des Verbes"], $verb);
             }elseif ($verb["Categorie"] == "VER:pres"){
-                array_push ($tabVerbsByLevel[$verb["Niv"]]["Présent"], $verb);
-                array_push ($tabVerbsByLevel[$verb["Niv"]]["Ensemble des Verbes"], $verb);
+                array_push ($verbsByLevelTab[$verb["Niv"]]["Présent"], $verb);
+                array_push ($verbsByLevelTab[$verb["Niv"]]["Ensemble des Verbes"], $verb);
             }elseif ($verb["Categorie"] == "VER:simp"){
-                array_push ($tabVerbsByLevel[$verb["Niv"]]["Passé Simple"], $verb);
-                array_push ($tabVerbsByLevel[$verb["Niv"]]["Ensemble des Verbes"], $verb);
+                array_push ($verbsByLevelTab[$verb["Niv"]]["Passé Simple"], $verb);
+                array_push ($verbsByLevelTab[$verb["Niv"]]["Ensemble des Verbes"], $verb);
             } else {
-                array_push ($tabVerbsByLevel[$verb["Niv"]]["Ensemble des Verbes"], $verb);
+                array_push ($verbsByLevelTab[$verb["Niv"]]["Ensemble des Verbes"], $verb);
             }
         }
 
         #Créer le tableau final
-        $finalTab = array(
-            "CP" => array(
-                "Ensemble des Verbes" => array(),
-                "Imparfait" => array(),
-                "Infinitif" => array(),
-                "Présent" => array(),
-                "Passé Simple" => array(),
-            ),
-            "CE1" => array(
-                "Ensemble des Verbes" => array(),
-                "Imparfait" => array(),
-                "Infinitif" => array(),
-                "Présent" => array(),
-                "Passé Simple" => array(),
-            ),
-            "CE2" => array(
-                "Ensemble des Verbes" => array(),
-                "Imparfait" => array(),
-                "Infinitif" => array(),
-                "Présent" => array(),
-                "Passé Simple" => array(),
-            ),
-            "CM1" => array(
-                "Ensemble des Verbes" => array(),
-                "Imparfait" => array(),
-                "Infinitif" => array(),
-                "Présent" => array(),
-                "Passé Simple" => array(),
-            ),
-            "CM2" => array(
-                "Ensemble des Verbes" => array(),
-                "Imparfait" => array(),
-                "Infinitif" => array(),
-                "Présent" => array(),
-                "Passé Simple" => array(),
-            ));
+        $finalTab = array();
 
         #Faire les calculs pour chaque niveau
-        foreach ($tabVerbsByLevel as $level => $tabTense){
+        foreach ($verbsByLevelTab as $level => $tabTense){
             foreach ($tabTense as $tense => $tab) {
                 #Calculer le nombre de formes
                 $nbForms = sizeof($tab);

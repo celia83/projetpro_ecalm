@@ -5,7 +5,8 @@
 #include "FailureAndSuccessTenses.php";
 #include "StandardizedBaseOrEnding.php";
 #include "StandardizedBaseEndingProportion.php";
-include "NbFormeVerbales.php";
+#include "NbFormeVerbales.php";
+include "AllVerbs.php";
 
 #$nbWords = new NbWordProd();
 #var_dump($nbWords->createTabNbWordsProd());
@@ -26,5 +27,9 @@ include "NbFormeVerbales.php";
 #$tab = new StandardizedBaseEndingProportion();
 #var_dump($tab->createTabStandardizedBaseEndingProportion("tous", "Imparfait"));
 
-$nbverbales = new NbFormeVerbales();
-var_dump($nbverbales->createTabNbFormeVerbales());
+#$nbverbales = new NbFormeVerbales();
+#var_dump($nbverbales->createTabNbFormeVerbales());
+
+
+$tabVerbs = new AllVerbs();
+var_dump($tabVerbs->createTabAllVerbs());

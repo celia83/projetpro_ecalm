@@ -123,10 +123,10 @@ class POSRepartitionByLevel
             } elseif (($POS["Categorie"] == "PRO:PER") or ($POS ["Categorie"] == "PRO:REL")or ($POS ["Categorie"] == "PRO:IND") or ($POS ["Categorie"] == "PRO/PER")){
                 $nbPOSByLevel[$POS["Niv"]]["Pronom"] ++;
                 $nbPOSByLevel["Total"]["Pronom"] ++;
-            } elseif (($POS["Categorie"] == "DET:ART")or ($POS["Categorie"] == "PRP:det") or ($POS["Categorie"] == "DET:POS")){
+            } elseif (($POS["Categorie"] == "DET:ART") or ($POS["Categorie"] == "DET:POS")){
                 $nbPOSByLevel[$POS["Niv"]]["Déterminant"] ++;
                 $nbPOSByLevel["Total"]["Déterminant"] ++;
-            } elseif ($POS["Categorie"]== "PRP"){
+            } elseif ($POS["Categorie"]== "PRP") or ($POS["Categorie"] == "PRP:det"){
                 $nbPOSByLevel[$POS["Niv"]]["Préposition"] ++;
                 $nbPOSByLevel["Total"]["Préposition"] ++;
             } elseif ($POS["Categorie"] == "KON") {

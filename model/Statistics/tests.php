@@ -6,14 +6,14 @@
 #include "StandardizedBaseOrEnding.php";
 #include "StandardizedBaseEndingProportion.php";
 #include "NbFormeVerbales.php";
-include "AllVerbs.php";
+#include "AllVerbs.php";
+include "RepartionFormesVerbales.php";
 
 #$nbWords = new NbWordProd();
 #var_dump($nbWords->createTabNbWordsProd());
 
 #$tabPOS = new TenseRepartition();
 #var_dump($tabPOS->createTabTenseRepartition());
-
 
 #$tabPOS = new POSRepartitonByLevel();
 #var_dump($tabPOS->createTabPOSRepartitionByLevel());
@@ -30,6 +30,10 @@ include "AllVerbs.php";
 #$nbverbales = new NbFormeVerbales();
 #var_dump($nbverbales->createTabNbFormeVerbales());
 
+#$tabVerbs = new AllVerbs();
+#var_dump($tabVerbs->createTabAllVerbs());
 
-$tabVerbs = new AllVerbs();
-var_dump($tabVerbs->createTabAllVerbs());
+$repartionFormesVerbales = new RepartionFormesVerbales();
+var_dump($repartionFormesVerbales->createTabRepartionFormesVerbales());
+
+

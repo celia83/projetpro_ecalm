@@ -84,31 +84,31 @@ class NbFormeVerbales
        
         #calcule le pourcentage        
 		if ($CP>0){
-			$CPpourcentageNbVerbale = $CPAnna / $CP; 
+			$CPpourcentageNbVerbale = ($CPAnna / $CP*100)."％"; 
 		}else{
 			$CPpourcentageNbVerbale = 0;
 		}
 		#calcule le pourcentage
         if ($CE1>0){
-			$CE1pourcentageNbVerbale = $CE1Anna / $CE1;
+			$CE1pourcentageNbVerbale = ($CE1Anna / $CE1*100)."％";
 		}else{
 			$CE1pourcentageNbVerbale = 0;
 		}
 		#calcule le pourcentage
 		if ($CE2>0){
-			$CE2pourcentageNbVerbale = $CE2Anna / $CE2;
+			$CE2pourcentageNbVerbale = ($CE2Anna / $CE2*100)."％";
 		}else{
 			$CE2pourcentageNbVerbale = 0;
 		}
 		#calcule le pourcentage
 		if ($CM1>0){
-			$CM1pourcentageNbVerbale = $CM1Anna / $CM1;
+			$CM1pourcentageNbVerbale = ($CM1Anna / $CM1*100)."％";
 		}else{
 			$CM1pourcentageNbVerbale = 0;
 		}
 		#calcule le pourcentage
 		if ($CM2>0){
-			$CM2pourcentageNbVerbale = $CM2Anna / $CM2;
+			$CM2pourcentageNbVerbale = ($CM2Anna / $CM2*100)."％";
 		}else{
 			$CM2pourcentageNbVerbale = 0;
 		}        

@@ -47,11 +47,8 @@ AND StatutErreur LIKE "'.$this->errStatus.'"
 AND StatutSegm LIKE "'.$this->segmStatus.'" 
 AND Lemme LIKE "'.$this->lemma.'"';
 
-        var_dump($request);
-
         $database = new DataBase();
         $tab= $database->getData($request);
-
         return $tab;
     }
 

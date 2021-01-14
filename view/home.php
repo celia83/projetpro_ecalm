@@ -5,8 +5,8 @@
         <title>E-Calm</title>
         <meta charset="UTF-8"/> <!-- dit en quel encodage je suis-->
         <link rel="stylesheet" href = "../public/css/style.css"/> <!-- donne la feuille de style en css utilisée-->
-        <script src="../public/js/script.js"></script> <!--Appel du script javascript-->
         <script type="text/javascript" src="../public/js/jquery-3.4.1.js"></script> <!--appel de JQuery-->
+        <script src="../public/js/script.js"></script> <!--Appel du script javascript-->
     </head>
     <body>
         <header>

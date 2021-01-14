@@ -8,7 +8,7 @@ class DataBase {
      */
     private static function connection(){
         try { /* tentative de connexion à la BD*/
-            $db = new PDO('mysql:host=localhost;dbname=scoledit', 'root', '');
+            $db = new PDO('mysql:host=localhost;dbname=scoledit', 'root', '', array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
             return $db;
         } catch (Exception $e) {
             die('Erreur : '.$e->getMessage());
@@ -26,6 +26,7 @@ class DataBase {
         #Requêter la base
         try {
             $response = $db->query($request);
+
             #Récupérer les informations de la requête (le mode PDO::FETCH_ASSOC permet d'éviter que le résultats de dédouble les colonnes)
             $tab = array();
             while ($enr = $response->fetch(PDO::FETCH_ASSOC)) {

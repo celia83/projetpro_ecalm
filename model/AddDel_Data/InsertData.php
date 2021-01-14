@@ -5,7 +5,7 @@ include_once "../DataBase.php";
 
 class InsertData
 {
-	/*
+	/**
      * Cette fonction inséré les données du fichier de csv à la base de données
      */
      
@@ -35,8 +35,8 @@ class InsertData
 			}
 			
 			#traiter le fichier de csv
-			$Insert = new InsertData();
-			$result = $Insert->input_csv($handle);
+
+			$result = self::input_csv($handle);
 			$len_result = count($result);  
 
 			#voir si le fichier est vide
@@ -102,9 +102,7 @@ class InsertData
 			
 			#call la fonction de getData 
 			$database = new DataBase();
-			$inserData= $database->getData($request);
-
-			echo "Succès !";  
+			$database->addData($request);
 	 } 	
  }  
 		

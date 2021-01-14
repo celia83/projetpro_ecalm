@@ -4,8 +4,7 @@ include_once "../DataBase.php";
 
 class POSRepartitionByLevel
 {
-    /*
-     *
+    /**
      * Cette fonction sélectionne les POS dans la base de données et calcule la répartition des POS de chaque catégorie grammaticale en fonction des niveaux.
      * Les résultats sont exprimés en pourcentage et affichés dans un tableau.
      * @return array $percentagePOSByLevel
@@ -126,7 +125,7 @@ class POSRepartitionByLevel
             } elseif (($POS["Categorie"] == "DET:ART") or ($POS["Categorie"] == "DET:POS")){
                 $nbPOSByLevel[$POS["Niv"]]["Déterminant"] ++;
                 $nbPOSByLevel["Total"]["Déterminant"] ++;
-            } elseif ($POS["Categorie"]== "PRP") or ($POS["Categorie"] == "PRP:det"){
+            } elseif (($POS["Categorie"]== "PRP") or ($POS["Categorie"] == "PRP:det")){
                 $nbPOSByLevel[$POS["Niv"]]["Préposition"] ++;
                 $nbPOSByLevel["Total"]["Préposition"] ++;
             } elseif ($POS["Categorie"] == "KON") {

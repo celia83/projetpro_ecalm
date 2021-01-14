@@ -1,6 +1,6 @@
 <?php
 
-include_once "../DataBase.php";
+include_once "D:/Documents/Applications/Wamp/www/projetpro_ecalm/model/DataBase.php";
 
 class CriterionVerb extends Criterion{
 
@@ -21,7 +21,7 @@ class CriterionVerb extends Criterion{
 
     }
 
-    /*
+    /**
      * Cette fonction permet de retourner un tableau en fonction des critères sélectionnés par l'utilisateur
      * @return array $tab contenant les lignes retournées par la requête
      */
@@ -57,7 +57,7 @@ AND DesiVerForme LIKE "'.$this->desinence.'"'.$this->typeErr;
         return $tab;
     }
 
-    /*
+    /**
      * Les données provenant de la page HTML sont dans un format agréable à lire pour l'utilisateur, cette fonction permet de transcrire ces données
      * pour qu'elles correspondent à ce qu'on a dans la base de données
      * @return void

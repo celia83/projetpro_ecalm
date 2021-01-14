@@ -4,7 +4,7 @@ include_once "../DataBase.php";
 
 class RepartionFormesVerbales
 {
-    /*
+    /**
      * Cette fonction sélectionne la répartition des formes verbales non normées 
      * selon si leur base et/ou leurdésinence respectent ou non la phonologie
      * @return array $tabProd

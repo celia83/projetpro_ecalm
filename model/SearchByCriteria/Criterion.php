@@ -1,6 +1,6 @@
 <?php
 
-include_once "../DataBase.php";
+include_once "D:/Documents/Applications/Wamp/www/projetpro_ecalm/model/DataBase.php";
 
 class Criterion{
 
@@ -21,7 +21,7 @@ class Criterion{
         $this->lemma=$lemma;
     }
 
-    /*
+    /**
      * Cette fonction permet de retourner un tableau en fonction des critères sélectionnés par l'utilisateur
      * @return array $tab contenant les lignes retournées par la requête
      */
@@ -47,13 +47,15 @@ AND StatutErreur LIKE "'.$this->errStatus.'"
 AND StatutSegm LIKE "'.$this->segmStatus.'" 
 AND Lemme LIKE "'.$this->lemma.'"';
 
+        var_dump($request);
+
         $database = new DataBase();
         $tab= $database->getData($request);
 
         return $tab;
     }
 
-    /*
+    /**
      * Les données provenant de la page HTML sont dans un format agréable à lire pour l'utilisateur, cette fonction permet de transcrire ces données
      * pour qu'elles correspondent à ce qu'on a dans la base de données
      * @return void
@@ -73,25 +75,25 @@ AND Lemme LIKE "'.$this->lemma.'"';
         #Normalisation des catégories grammaticales
         if ($this->pos == "Adverbe"){
             $this->pos = "ADV";
-        } elseif ($this->pos == "Adjectif"){
+        } elseif ($this->pos == "Adjectifs"){
             $this->pos = "ADJ";
-        } elseif ($this->pos == "Verbe"){
+        } elseif ($this->pos == "Verbes"){
             $this->pos = "VER%";
-        } elseif ($this->pos == "Nom"){
+        } elseif ($this->pos == "Noms"){
             $this->pos = "NOM";
-        } elseif ($this->pos == "Nom Propre"){
+        } elseif ($this->pos == "Noms propres"){
             $this->pos = "NAM";
-        } elseif ($this->pos == "Déterminant") {
+        } elseif ($this->pos == "Déterminants") {
             $this->pos = "DET%";
-        } elseif ($this->pos == "Pronom"){
+        } elseif ($this->pos == "Pronoms"){
             $this->pos = "PRO%";
-        } elseif ($this->pos == "Préposition"){
+        } elseif ($this->pos == "Prépositions"){
             $this->pos = "PRP%";
         } elseif ($this->pos == "Conjonctions"){ #ATTENTION : Conjonctions de coordination et de subordination sont traitées de la même manière avec Treetagger
             $this->pos = "KON";
         } elseif ($this->pos == "Abréviations"){
             $this->pos = "ABR";
-        } elseif ($this->pos == "Préposition"){
+        } elseif ($this->pos == "Prépositions"){
             $this->pos = "INT";
         } elseif ($this->pos == "Chiffres"){
             $this->pos = "NUM";
@@ -100,10 +102,10 @@ AND Lemme LIKE "'.$this->lemma.'"';
         }
 
         #Normalisation des Statuts d'erreur (la terminologie reste la même si ce n'est les numéros qui précèdent le mot par ex "01-Normé" donc on peut simplement ajouter % devant)
-        $this->errStatus = "%".$this->errStatus;
+        $this->errStatus = "%".$this->errStatus ."%";
 
         #Normalisation des Status de segments (la situation est la même que pour le statut des erreurs)
-        $this->segmStatus = "%".$this->segmStatus;
+        $this->segmStatus = "%".$this->segmStatus . "%";
 
         #Normalisation du lemme (si on n'a pas de lemme précisé on les sélectionne tous avec %)
         if($this->lemma == ""){

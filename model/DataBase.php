@@ -2,9 +2,9 @@
 
 class DataBase {
 
-    /*
+    /**
      * Permet la connexion à la base de données
-     * @return le PDO $db
+     * @return PDO $db
      */
     private static function connection(){
         try { /* tentative de connexion à la BD*/
@@ -15,10 +15,10 @@ class DataBase {
         }
     }
 
-    /*
+    /**
      * Fonction qui se connecte à une base de données, éxecute la requête passée en paramètre et retourne un tableau des éléments ainsi sélectionnésù
-     * @param array $request
-     * @return $tab un tableau contenant le résultat de la requête
+     * @param string $request
+     * @return array $tab un tableau contenant le résultat de la requête
      */
     public function getData($request){
         #Connexion à la base de données
@@ -35,6 +35,17 @@ class DataBase {
             die ('Erreur : ' . $e->getMessage());
         }
         return $tab;
+    }
+
+    public function addData($request){
+        #Connexion à la base de données
+        $db = self::connection();
+        #Requêter la base
+        try {
+            $db->query($request);
+        } catch (Exception $e){
+            die ('Erreur : ' . $e->getMessage());
+        }
     }
 }
 

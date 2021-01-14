@@ -4,7 +4,7 @@ include_once "../DataBase.php";
 
 class NbWordProd
 {
-    /*
+    /**
      * Cette fonction sélectionne seulement les mots dans la bdd et les compte (hors ponctuations et balises) : elle crée un tableau final
      * avec le nombre de mots par niveau, la longueur moyenne des roductions par niveau et la taille min et max de ces productions par niveau
      * @return array $tabProd

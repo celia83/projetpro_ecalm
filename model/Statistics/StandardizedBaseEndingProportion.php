@@ -5,10 +5,12 @@ include_once "../DataBase.php";
 class StandardizedBaseEndingProportion {
     public function createTabStandardizedBaseEndingProportion($verbGroup, $tense)
     {
-        /*
-         * @param $verbGroup    Choix du groupe du verbe (-er | non -er | tous_les_verbes)
-         * @param $tense    Choix du temps (Infinitif | Présent | Imparfait | Passé Simple)
-         * @return $finalTab
+        /**
+         * Crée le tableau des proportions de bases et désinences normées.
+         * L'utilisateur peut choisir entre les verbes en er ou non et entre les quatre temps (infinitif, présent, imparfait, passé simple)
+         * @param string $verbGroup    Choix du groupe du verbe (-er | non -er | tous_les_verbes)
+         * @param string $tense    Choix du temps (Infinitif | Présent | Imparfait | Passé Simple)
+         * @return array $finalTab
          */
         #Créer la requête
         #Normaliser le temps des verbes pour la requête sql

@@ -4,8 +4,7 @@ include_once "../DataBase.php";
 
 class AllVerbs 
 {
-    /*
-     *  /*
+    /**
      * Cette fonction sélectionne tous les verbes dans la base de données et donne le nombre de bases et de désinences.
      * Les résultats sont affichés dans un tableau.
      * @return array $percentageAllVerbsByLevel

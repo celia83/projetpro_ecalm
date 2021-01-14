@@ -4,7 +4,7 @@ include_once "../DataBase.php";
 
 class NbFormeVerbales
 {
-    /*
+    /**
      * Cette fonction sélectionne le nombre total de formes verbales, hors P.Passés. 
      * Et le nombre formes verbales analysées et le pourcentage de formes analysées.
      * @return array $tabProd

@@ -85,25 +85,25 @@ AND BaseAdjNorm LIKE "'.$this->base.'"';
         }
 
         #Normaliser les erreurs de genre
-        if ($this->errGenre == "Oui"){
+        if ($this->errGenre == "Avec"){
             $this->errGenre = "1";
-        } elseif ($this->errGenre== "Non"){
+        } elseif ($this->errGenre== "Sans"){
             $this->errGenre = "0";
         } else {
             $this->errGenre = "%";
         }
 
         #Normaliser les erreurs de nombre
-        if ($this->errNumber == "Oui"){
+        if ($this->errNumber == "Avec"){
             $this->errNumber  = "1";
-        } elseif ($this->errNumber == "Non"){
+        } elseif ($this->errNumber == "Sans"){
             $this->errNumber  = "0";
         } else {
             $this->errNumber  = "%";
         }
 
         #Normaliser les requêtes sur la base : si on ne précise pas de base on sélectionne toutes les bases, sinon on sélectionne les entrée qui commencent par ce que l'utilisateur a indiqué
-        if($this->base == ""){
+        if($this->base == "undefined"){
             $this->base = "%";
         } else {
             $this->base=$this->base ."%";

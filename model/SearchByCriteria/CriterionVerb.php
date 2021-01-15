@@ -7,16 +7,16 @@ class CriterionVerb extends Criterion{
     private $tense;
     private $person;
     private $typeErr;
-    private $desinence;
+    private $ending;
     private $base;
 
-    public function __construct($corpus, $level, $pos, $errStatus, $segmStatus, $lemma,$tense, $person, $typeErr, $desinence, $base){
+    public function __construct($corpus, $level, $pos, $errStatus, $segmStatus, $lemma,$tense, $person, $typeErr, $base, $ending){
 
         parent::__construct($corpus, $level, $pos, $errStatus, $segmStatus, $lemma);
         $this->tense=$tense;
         $this->person=$person;
         $this->typeErr=$typeErr;
-        $this->desinence=$desinence;
+        $this-> ending= $ending;
         $this->base=$base;
 
     }
@@ -49,7 +49,7 @@ AND StatutSegm LIKE "'.$this->segmStatus.'"
 AND Lemme LIKE "'.$this->lemma.'" 
 AND VerPers LIKE "'.$this->person.'" 
 AND BaseVerForme LIKE "'.$this->base.'" 
-AND DesiVerForme LIKE "'.$this->desinence.'"'.$this->typeErr;
+AND DesiVerForme LIKE "'.$this-> ending.'"'.$this->typeErr;
 
         $database = new DataBase();
         $tab= $database->getData($request);
@@ -119,13 +119,13 @@ AND DesiVerForme LIKE "'.$this->desinence.'"'.$this->typeErr;
         }
 
         #Normaliser la base
-        if($this->base == ""){
+        if($this->base == "undefined"){
             $this->base = "%";
         }
 
         #Normaliser la désinence
-        if($this->desinence == ""){
-            $this->desinence = "%";
+        if($this->ending == "undefined"){
+            $this->ending = "%";
         }
     }
 }

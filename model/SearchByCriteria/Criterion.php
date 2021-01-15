@@ -70,7 +70,7 @@ AND Lemme LIKE "'.$this->lemma.'"';
         }
 
         #Normalisation des catégories grammaticales
-        if ($this->pos == "Adverbe"){
+        if ($this->pos == "Adverbes"){
             $this->pos = "ADV";
         } elseif ($this->pos == "Adjectifs"){
             $this->pos = "ADJ";
@@ -94,19 +94,35 @@ AND Lemme LIKE "'.$this->lemma.'"';
             $this->pos = "INT";
         } elseif ($this->pos == "Chiffres"){
             $this->pos = "NUM";
+        } elseif ($this->pos == "Interjections"){
+            $this->pos = "INT";
         } else {
             $this->pos = "%";
         }
 
         #Normalisation des Statuts d'erreur (la terminologie reste la même si ce n'est les numéros qui précèdent le mot par ex "01-Normé" donc on peut simplement ajouter % devant)
-        $this->errStatus = "%".$this->errStatus ."%";
+        if ($this->errStatus == "Tous"){
+            $this->errStatus = "%";
+        } else {
+            $this->errStatus = "%".$this->errStatus ."%";
+        }
+
 
         #Normalisation des Status de segments (la situation est la même que pour le statut des erreurs)
-        $this->segmStatus = "%".$this->segmStatus . "%";
+        if ($this->segmStatus == "Tous"){
+            $this->segmStatus = "%";
+        } else {
+            $this->segmStatus = "%" . $this->segmStatus . "%";
+        }
 
         #Normalisation du lemme (si on n'a pas de lemme précisé on les sélectionne tous avec %)
         if($this->lemma == ""){
             $this->lemma = "%";
+        }
+
+        #Normalisation du niveau
+        if ($this->level == "Tous"){
+            $this->level = "%";
         }
     }
 }

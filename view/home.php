@@ -196,19 +196,32 @@
         <!--Partie pour la sélection des tableaux-->
         <article id = "statisticsSelection" hidden>
             <form action ="../index.php?action=showStats" method="POST">
-                <div>
-                    <label for="tabStats">Afficher le tableau : </label>
-                    <select  id="tabStats" name="tabStats">
-                        <option value = "Nombre de mots des productions">Nombre de mots des productions</option>
-                        <option value = "Erreur Base">Répartition des POS en fonction du niveau</option>
-                        <option value = "Erreur Désinence">Répartition des tiroir verbaux</option>
-                        <option value = "Erreur Base et Désinence">Nombre de formes verbales analysées</option>
-                        <option value = "Erreur Désinence">Répartition des échecs et réussites pour les tiroirs verbaux les plus employés</option>
-                        <option value = "Erreur Désinence">Répartition des formes verbales selon si leur base et/ou leur désinence sont normées</option>
-                        <option value = "Erreur Désinence">Proportion de bases et de désinences normées et non normées</option>
-                        <option value = "Erreur Désinence">Répartition des formes verbales non normées selon si leur base et/ou leur désinence respectent ou non la phonologie</option>
-                    </select>
-                </div>
+                <article>
+                    <div>
+                        <label for="tabStats">Afficher le tableau : </label>
+                        <select  id="tabStats" name="tabStats">
+                            <option value = "NbWordProd">Nombre de mots des productions</option>
+                            <option value = "POSRepartitionByLevel">Répartition des POS en fonction du niveau</option>
+                            <option value = "TenseRepartition">Répartition des tiroir verbaux</option>
+                            <option value = "NbVerbalForms">Nombre de formes verbales analysées</option>
+                            <option value = "FailureAndSuccessTenses">Répartition des échecs et réussites pour les tiroirs verbaux les plus employés</option>
+                            <option value = "StandardizedBaseOrEnding">Répartition des formes verbales selon si leur base et/ou leur désinence sont normées</option>
+                            <option value = "StandardizedBaseEndingProportion">Proportion de bases et de désinences normées et non normées</option>
+                            <!-- ATTENTION A COMPLETER LA VALEUR DU DERNIER TABLEAU-->
+                            <option value = "">Répartition des formes verbales non normées selon si leur base et/ou leur désinence respectent ou non la phonologie</option>
+                        </select>
+                    </div>
+                </article>
+
+                <article id ="groupSelection" hidden>
+                    <div>
+                        <label for="groupSelection">Sélectionnez un groupe :  </label>
+                        <input class = "verbGroup" type="radio" id = "-er"  name="verbGroup" value = "-er"/><label for="-er">Verbes en -er</label>
+                        <input class = "verbGroup" type="radio" id = "non-er"  name="verbGroup" value = "non-er"/><label for="non-er">Verbes non en -er</label>
+                        <input class = "verbGroup" type="radio" id = "tous"  name="verbGroup" value = "tous"/><label for="tous">Tous les verbes</label>
+                    </div>
+                </article>
+
 
                 <div>
                     <input id="getStats" value ="Afficher les statistiques" type="submit" />

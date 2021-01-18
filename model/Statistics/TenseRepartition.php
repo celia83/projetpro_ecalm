@@ -1,6 +1,6 @@
 <?php
 
-include_once "../DataBase.php";
+include_once "D:/Documents/Applications/Wamp/www/projetpro_ecalm/model/DataBase.php";
 
 class TenseRepartition
 {
@@ -144,7 +144,7 @@ class TenseRepartition
                 if ($tense == "totalVerbs") {
                     $totalVerbs = $nbVerb;
                 } elseif($totalVerbs ==0) {
-                    $percentageVerbsByLevel[$level][$tense] = "Pas de verbes";
+                    $percentageVerbsByLevel[$level][$tense] = "0%";
                 } else {
                     $percentageVerbsByLevel[$level][$tense] =(string) $nbVerb / $totalVerbs * 100 ."%";
                     $sumVerbs += $nbVerb;
@@ -153,7 +153,7 @@ class TenseRepartition
             if($totalVerbs != 0){
                 $percentageVerbsByLevel[$level]["Total"] = (string) $sumVerbs / $totalVerbs * 100 . "%";
             } else {
-                $percentageVerbsByLevel[$level]["Total"] = "Pas de verbes";
+                $percentageVerbsByLevel[$level]["Total"] = "0%";
             }
         }
 

@@ -1,11 +1,11 @@
 $(document).ready(function () {
     //Navigation entre les volets Données et Statistiques
-    $("#data").click(function (){
+    $("#data").on("click",function (){
         $("#statisticsSelection").hide();
         $("#dataSelection").show();
     });
 
-    $("#statistics").click(function (){
+    $("#statistics").on("click",function (){
         $("#statisticsSelection").show();
         $("#dataSelection").hide();
     });
@@ -134,7 +134,87 @@ $(document).ready(function () {
         });
     });
 
+    //Envoyer le formulaire pour les stats
+    //Permet d'afficher la partie permettant la sélection des verbes en -er ou non
+    $("#tabStats").change(function (){
+        var selected = $("#tabStats > option:selected").val();
+        switch (selected){
+            case "FailureAndSuccessTenses" :
+            case "StandardizedBaseOrEnding" :
+            case "StandardizedBaseEndingProportion" :
+                $("#groupSelection").show();
+                break;
+            default : $("#groupSelection").hide();
+        }
+    });
 
+    //Permet d'afficher dans la zone de résultats les résultats de la requête faite par l'utilisateur
+    $("#getStats").on("click", function (event) {
+        event.preventDefault();
+        //Critère généraux
+        var tabName = $("#tabStats > option:selected").val();
+        var verbGroup = document.querySelector('input[name="verbGroup"]:checked').value;
+        var tense = "";
 
+        data = 'tabName=' + tabName + '&verbGroup=' + verbGroup + '&tense=' + tense;
+
+        //Envoyer les données à la page d'index et récupérer le résultat
+        $.ajax({
+            url: 'index.php?action=showStats',
+            method: 'POST',
+            data: data,
+            success: function (result) {
+                //décoder le json
+                var message = JSON.parse(result);
+                switch (tabName) {
+                    //Tableau : Nombre de motsdes productions
+                    case "NbWordProd" :
+                    //Tableau : Nombre de formes verbales analysées
+                    case "NbVerbalForms" :
+                        $("#resultsTable").html("<tr id ='headerTab'><td></td><td>CP</td><td>CE1</td><td>CE2</td><td>CM1</td><td>CM2</td></tr>");
+                        for (var key in message){
+                            var value = message[key];
+                            $("#resultsTable").append("<tr><td>" + key + "</td><td>" + value["CP"] + "</td><td>" + value["CE1"] + "</td><td>" + value["CE2"] + "</td><td>"+ value["CM1"]+ "</td><td>"+value["CM2"]+"</td></tr>");
+                        }
+                        break;
+                    //Tableau : Répartition des POS (le même que les tiroirs verbaux)
+                    case "POSRepartitionByLevel" :
+                    //Tableau : Répartition des tiroirs verbaux
+                    case "TenseRepartition" :
+                        $("#resultsTable").html("<tr id ='headerTab'><td></td><td>CP</td><td>CE1</td><td>CE2</td><td>CM1</td><td>CM2</td><td>Total</td></tr>");
+                        var infos = Object.keys(message["CP"]);
+                        for (var i = 0 ; i< infos.length; i++) {
+                            var info = infos[i];
+                            $("#resultsTable").append("<tr><td>"+info+"</td><td>" + message["CP"][info] + "</td><td>" + message["CE1"][info] + "</td><td>" + message["CE2"][info] + "</td><td>" + message["CM1"][info] + "</td><td>" + message["CM2"][info] + "</td><td>" + message["Total"][info] + "</td></tr>");
+                        }
+                        break;
+                    //Tableau : Répartition des échecs et réussites pour les tiroirs verbaux les plus employés
+                    case "FailureAndSuccessTenses" :
+                        $("#resultsTable").html("<tr id ='headerTab'><td></td><td></td><td>CP</td><td>CE1</td><td>CE2</td><td>CM1</td><td>CM2</td></tr>");
+                        var infos = Object.keys(message["CP"]);
+                        var subInfos = Object.keys(message["CP"]["Ensemble des Verbes"]);
+                        for (var j = 0 ; j< infos.length; j++) {
+                            for (var k = 0 ; k<subInfos.length; k++){
+                                var info = infos[j];
+                                var subInfo = subInfos[k];
+                                $("#resultsTable").append("<tr><td>"+info+"</td><td>"+subInfo+"</td><td>" + message["CP"][info][subInfo] + "</td><td>" + message["CE1"][info][subInfo] + "</td><td>" + message["CE2"][info][subInfo] + "</td><td>" + message["CM1"][info][subInfo] + "</td><td>" + message["CM2"][info][subInfo] + "</td></tr>");
+                            }
+                        }
+                        break;
+                        //Tableau : Répartition des formes verbales selon si leur base et/ou leur désinence sont normées
+                    case "StandardizedBaseOrEnding" :
+
+                        break;
+                        //Tableau : Proportion de bases et de désinences normées et non normées
+                    case "StandardizedBaseEndingProportion" :
+
+                        break;
+                    default:
+                        $("#resultsTable").html("<tr id ='headerTab'><td></td><td>CP</td><td>CE1</td><td>CE2</td><td>CM1</td><td>CM2</td></tr>");
+                }
+
+            }
+        })
+    });
 });
 

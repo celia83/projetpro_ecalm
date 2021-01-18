@@ -4,7 +4,14 @@
 require_once('D:/Documents/Applications/Wamp/www/projetpro_ecalm/model/SearchByCriteria/Criterion.php');
 require_once('D:/Documents/Applications/Wamp/www/projetpro_ecalm/model/SearchByCriteria/CriterionVerb.php');
 require_once('D:/Documents/Applications/Wamp/www/projetpro_ecalm/model/SearchByCriteria/CriterionAdjective.php');
+require_once('D:/Documents/Applications/Wamp/www/projetpro_ecalm/model/Statistics/FailureAndSuccessTenses.php');
+require_once('D:/Documents/Applications/Wamp/www/projetpro_ecalm/model/Statistics/NbVerbalForms.php');
 require_once('D:/Documents/Applications/Wamp/www/projetpro_ecalm/model/Statistics/NbWordProd.php');
+require_once('D:/Documents/Applications/Wamp/www/projetpro_ecalm/model/Statistics/POSRepartitionByLevel.php');
+require_once('D:/Documents/Applications/Wamp/www/projetpro_ecalm/model/Statistics/RepartionFormesVerbales.php');
+require_once('D:/Documents/Applications/Wamp/www/projetpro_ecalm/model/Statistics/StandardizedBaseEndingProportion.php');
+require_once('D:/Documents/Applications/Wamp/www/projetpro_ecalm/model/Statistics/StandardizedBaseOrEnding.php');
+require_once('D:/Documents/Applications/Wamp/www/projetpro_ecalm/model/Statistics/TenseRepartition.php');
 
 class HomeController {
     /**

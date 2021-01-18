@@ -1,6 +1,6 @@
 <?php
 
-include_once "../DataBase.php";
+include_once "D:/Documents/Applications/Wamp/www/projetpro_ecalm/model/DataBase.php";
 
 class RepartionFormesVerbales
 {

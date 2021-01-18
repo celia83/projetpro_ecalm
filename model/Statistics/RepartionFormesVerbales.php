@@ -6,7 +6,7 @@ class RepartionFormesVerbales
 {
     /**
      * Cette fonction sélectionne la répartition des formes verbales non normées 
-     * selon si leur base et/ou leurdésinence respectent ou non la phonologie
+     * selon si leur base et/ou leur désinence respectent ou non la phonologie
      * @return array $tabProd
      */
      

@@ -2,7 +2,7 @@
 
 include_once "../DataBase.php";
 
-class NbFormeVerbales
+class NbVerbalForms
 {
     /**
      * Cette fonction sélectionne le nombre total de formes verbales, hors P.Passés. 
@@ -10,7 +10,7 @@ class NbFormeVerbales
      * @return array $tabProd
      */
      
-    public function createTabNbFormeVerbales(){
+    public function createTabNbVerbalForms(){
         #Sélectionner seulement les verbes dans la base de données (hors p.passés)
 		$request = 'SELECT * FROM `cm2_scoledit` WHERE Categorie LIKE "VER%" AND Categorie LIKE "VER:pper" = 0';
         #Récupération des données dans la base de données

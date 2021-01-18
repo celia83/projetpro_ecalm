@@ -8,9 +8,9 @@ class StandardizedBaseOrEnding {
         /**
          * Cette fonction crée un tableau qui donne le pourcentage pour chaque niveau de forme verbale normées, ayant une erreur sur la base, sur la désinence et sur les deux.
          * L'utilisateur peut choisir d'afficher le tableau en fonction d'un temps (Infinitif, Imparfait, Présent, Passé Simple) et d'un type de verbe (en -er, non en -er ou tous)
-         * @param $verbGroup    Choix du groupe du verbe (-er | non -er | tous_les_verbes)
-         * @param $tense    Choix du temps (Infinitif | Présent | Imparfait | Passé Simple)
-         * @return $finalTab
+         * @param string $verbGroup    Choix du groupe du verbe (-er | non -er | tous_les_verbes)
+         * @param string $tense    Choix du temps (Infinitif | Présent | Imparfait | Passé Simple)
+         * @return array $finalTab
          */
         #Créer la requête
         #Normaliser le temps des verbes pour la requête sql

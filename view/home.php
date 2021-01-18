@@ -15,7 +15,7 @@
             <section id="connexion">Connexion</section>
         </header>
 
-        <!--Partie pour la sélection des critère-->
+        <!--Partie pour la sélection des critères-->
         <section id = "criteriaSelection">
             <form action ="../index.php?action=showResults" method="POST">
                 <!--Afficher les critères généraux -->

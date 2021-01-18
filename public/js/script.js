@@ -1,4 +1,30 @@
 $(document).ready(function () {
+    //Navigation entre les volets Données et Statistiques
+    $("#data").click(function (){
+        $("#statisticsSelection").hide();
+        $("#dataSelection").show();
+    });
+
+    $("#statistics").click(function (){
+        $("#statisticsSelection").show();
+        $("#dataSelection").hide();
+    });
+
+    //Permet d'afficher les critères avancés pour les verbes
+    $("#pos").change(function (){
+        var selected = $("#pos > option:selected").val();
+        if (selected === "Verbes"){
+            $("#adjectiveCriteria").hide();
+            $("#verbCriteria").show();
+        } else if (selected === "Adjectifs") {
+            $("#adjectiveCriteria").show();
+            $("#verbCriteria").hide();
+        } else {
+            $("#adjectiveCriteria").hide();
+            $("#verbCriteria").hide();
+        }
+    });
+
     //Permet d'afficher dans la zone de résultats les résultats de la requête faite par l'utilisateur
     $("#getResults").on("click", function (event) {
         event.preventDefault();
@@ -109,19 +135,6 @@ $(document).ready(function () {
     });
 
 
-//Permet d'afficher les critères avancés pour les verbes
-    $("#pos").change(function (){
-        var selected = $("#pos > option:selected").val();
-        if (selected === "Verbes"){
-            $("#adjectiveCriteria").hide();
-            $("#verbCriteria").show();
-        } else if (selected === "Adjectifs") {
-            $("#adjectiveCriteria").show();
-            $("#verbCriteria").hide();
-        } else {
-            $("#adjectiveCriteria").hide();
-            $("#verbCriteria").hide();
-        }
-    });
+
 });
 

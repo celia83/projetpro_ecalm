@@ -28,7 +28,7 @@ class StandardizedBaseOrEnding {
 
         #Sélectionner soit les verbes en -er, soit les verbes qui ne sont pas en -er, soit tous et insérer le temps voulu
         if ($verbGroup == "er") {
-            $request = 'SELECT Niv, ErrVerBase, ErrVerDes, ErrVerBaseEtDes FROM `cm2_scoledit` WHERE Categorie LIKE "'.$tenseSQL.'" AND Categorie LIKE "VER:pper" AND SegmNorm LIKE "%er"' ;;
+            $request = 'SELECT Niv, ErrVerBase, ErrVerDes, ErrVerBaseEtDes FROM `cm2_scoledit` WHERE Categorie LIKE "'.$tenseSQL.'" AND Categorie LIKE "VER:pper" AND SegNorm LIKE "%er"' ;;
             #Si l'utilisateur veut les verbes qui ne sont pas en er
         } elseif ($verbGroup == "nonEr"){
             $request = 'SELECT Niv, ErrVerBase, ErrVerDes, ErrVerBaseEtDes FROM `cm2_scoledit` WHERE Categorie LIKE "'.$tenseSQL.'" AND Categorie LIKE "VER:pper" AND SegNorm LIKE "%er" = 0' ;;

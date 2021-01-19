@@ -7,7 +7,7 @@
 #include "StandardizedBaseEndingProportion.php";
 #include "NbFormeVerbales.php";
 #include "AllVerbs.php";
-include "RepartionFormesVerbales.php";
+include "VerbalFormsRepartitionBaseAndEndingPhono.php";
 
 #$nbWords = new NbWordProd();
 #var_dump($nbWords->createTabNbWordsProd());

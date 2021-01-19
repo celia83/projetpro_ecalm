@@ -8,7 +8,7 @@ require_once('D:/Documents/Applications/Wamp/www/projetpro_ecalm/model/Statistic
 require_once('D:/Documents/Applications/Wamp/www/projetpro_ecalm/model/Statistics/NbVerbalForms.php');
 require_once('D:/Documents/Applications/Wamp/www/projetpro_ecalm/model/Statistics/NbWordProd.php');
 require_once('D:/Documents/Applications/Wamp/www/projetpro_ecalm/model/Statistics/POSRepartitionByLevel.php');
-//require_once('D:/Documents/Applications/Wamp/www/projetpro_ecalm/model/Statistics/RepartionFormesVerbales.php');
+require_once('D:/Documents/Applications/Wamp/www/projetpro_ecalm/model/Statistics/VerbalFormsRepartitionBaseAndEndingPhono.php');
 require_once('D:/Documents/Applications/Wamp/www/projetpro_ecalm/model/Statistics/StandardizedBaseEndingProportion.php');
 require_once('D:/Documents/Applications/Wamp/www/projetpro_ecalm/model/Statistics/StandardizedBaseOrEnding.php');
 require_once('D:/Documents/Applications/Wamp/www/projetpro_ecalm/model/Statistics/TenseRepartition.php');
@@ -129,6 +129,12 @@ class HomeController {
             case "StandardizedBaseEndingProportion" :
                 $standardizedBaseEndingProportion = new StandardizedBaseEndingProportion();
                 $tab =$standardizedBaseEndingProportion ->createTabStandardizedBaseEndingProportion($verbGroup, $tense);
+                echo json_encode($tab);
+                break;
+            #Tableau : Répartition des formes verbales non normées selon si leur base et/ou leur désinence respectent ou non la phonologie
+            case "VerbalFormsRepartitionBaseAndEndingPhono" :
+                $verbalFormsRepartitionBaseAndEndingPhono = new VerbalFormsRepartitionBaseAndEndingPhono();
+                $tab =$verbalFormsRepartitionBaseAndEndingPhono ->createTabVerbalFormsRepartitionBaseAndEndingPhono($verbGroup, $tense);
                 echo json_encode($tab);
                 break;
             default:

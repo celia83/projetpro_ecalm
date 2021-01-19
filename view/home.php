@@ -207,8 +207,7 @@
                             <option value = "FailureAndSuccessTenses">Répartition des échecs et réussites pour les tiroirs verbaux les plus employés</option>
                             <option value = "StandardizedBaseOrEnding">Répartition des formes verbales selon si leur base et/ou leur désinence sont normées</option>
                             <option value = "StandardizedBaseEndingProportion">Proportion de bases et de désinences normées et non normées</option>
-                            <!-- ATTENTION A COMPLETER LA VALEUR DU DERNIER TABLEAU-->
-                            <option value = "">Répartition des formes verbales non normées selon si leur base et/ou leur désinence respectent ou non la phonologie</option>
+                            <option value = "VerbalFormsRepartitionBaseAndEndingPhono">Répartition des formes verbales non normées selon si leur base et/ou leur désinence respectent ou non la phonologie</option>
                         </select>
                     </div>
                 </article>

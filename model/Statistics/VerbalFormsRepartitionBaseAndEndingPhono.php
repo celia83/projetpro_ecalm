@@ -1,13 +1,13 @@
 <?php
 
-include_once "../DataBase.php";
+include_once "D:/Documents/Applications/Wamp/www/projetpro_ecalm/model/DataBase.php";
 
-class RepartionFormesVerbales{
+class VerbalFormsRepartitionBaseAndEndingPhono{
 
-    public function createTabRepartionFormesVerbales($verbGroup, $tense){
+    public function createTabVerbalFormsRepartitionBaseAndEndingPhono($verbGroup, $tense){
 		/**
 		 * Cette fonction sélectionne la répartition des formes verbales non normées 
-		 * selon si leur base et/ou leurdésinence respectent ou non la phonologie
+		 * selon si leur base et/ou leur désinence respectent ou non la phonologie
 		 * @return array $tabProd
 		 */
 		#Créer la requête
@@ -26,7 +26,7 @@ class RepartionFormesVerbales{
         
         #Sélectionner soit les verbes en -er, soit les verbes qui ne sont pas en -er, soit tous et insérer le temps voulu
         if ($verbGroup == "er") {
-            $GroupSQL = 'AND SegmNorm LIKE "%er"' ;
+            $GroupSQL = 'AND SegNorm LIKE "%er"' ;
             #Si l'utilisateur veut les verbes qui ne sont pas en er
         } elseif ($verbGroup == "nonEr"){
             $GroupSQL = 'AND SegNorm LIKE "%er" = 0' ;

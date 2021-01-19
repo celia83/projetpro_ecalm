@@ -145,6 +145,7 @@ $(document).ready(function () {
                 break;
             case "StandardizedBaseOrEnding" :
             case "StandardizedBaseEndingProportion" :
+            case "VerbalFormsRepartitionBaseAndEndingPhono":
                 $("#groupSelection").show();
                 $("#tenseSelection").show();
                 break;
@@ -167,6 +168,7 @@ $(document).ready(function () {
                 break;
             case "StandardizedBaseOrEnding" :
             case "StandardizedBaseEndingProportion" :
+            case "VerbalFormsRepartitionBaseAndEndingPhono":
                 var verbGroup = document.querySelector('input[name="verbGroup"]:checked').value;
                 tense = document.querySelector('input[name="tense"]:checked').value;
                 break;
@@ -174,9 +176,8 @@ $(document).ready(function () {
                 verbGroup = "";
                 tense = "";
         }
-        //var verbGroup = document.querySelector('input[name="verbGroup"]:checked').value;
-        //var tense = "";
 
+        //Données à envoyer vers le serveur avec ajax
         data = 'tabName=' + tabName + '&verbGroup=' + verbGroup + '&tense=' + tense;
 
         //Envoyer les données à la page d'index et récupérer le résultat
@@ -196,6 +197,8 @@ $(document).ready(function () {
                     case "StandardizedBaseOrEnding" :
                     //Tableau : Proportion de bases et de désinences normées et non normées
                     case "StandardizedBaseEndingProportion" :
+                    //Tableau : Répartition des formes verbales non normées selon si leur base et/ou leur désinence respectent ou non la phonologie
+                    case "VerbalFormsRepartitionBaseAndEndingPhono":
                         $("#resultsTable").html("<tr id ='headerTab'><td></td><td>CP</td><td>CE1</td><td>CE2</td><td>CM1</td><td>CM2</td></tr>");
                         for (var key in message){
                             var value = message[key];
@@ -226,14 +229,6 @@ $(document).ready(function () {
                             }
                         }
                         break;
-                        //Tableau : Répartition des formes verbales selon si leur base et/ou leur désinence sont normées
-                    //case "StandardizedBaseOrEnding" :
-
-                        //break;
-                        //Tableau : Proportion de bases et de désinences normées et non normées
-                    //case "StandardizedBaseEndingProportion" :
-
-                        //break;
                     default:
                         $("#resultsTable").html("<tr id ='headerTab'><td></td><td>CP</td><td>CE1</td><td>CE2</td><td>CM1</td><td>CM2</td></tr>");
                 }

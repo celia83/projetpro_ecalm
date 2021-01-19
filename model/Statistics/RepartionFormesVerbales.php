@@ -26,7 +26,7 @@ class RepartionFormesVerbales{
         
         #Sélectionner soit les verbes en -er, soit les verbes qui ne sont pas en -er, soit tous et insérer le temps voulu
         if ($verbGroup == "er") {
-            $GroupSQL = 'AND SegmNorm LIKE "%er"' ;
+            $GroupSQL = 'AND SegNorm LIKE "%er"' ;
             #Si l'utilisateur veut les verbes qui ne sont pas en er
         } elseif ($verbGroup == "nonEr"){
             $GroupSQL = 'AND SegNorm LIKE "%er" = 0' ;

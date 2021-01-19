@@ -1,6 +1,6 @@
 <?php
 
-include_once "../DataBase.php";
+include_once "D:/Documents/Applications/Wamp/www/projetpro_ecalm/model/DataBase.php";
 
 class POSRepartitionByLevel
 {
@@ -118,7 +118,7 @@ class POSRepartitionByLevel
                 $nbPOSByLevel["Total"]["Verbe"] ++;
             } elseif ($POS["Categorie"] == "VER:pper") {
 				$nbPOSByLevel[$POS["Niv"]]["ParticipePasse"] ++;
-                $nbPOSByLevel["Total"]["Verbe"] ++;
+                $nbPOSByLevel["Total"]["ParticipePasse"] ++;
             } elseif (($POS["Categorie"] == "PRO:PER") or ($POS ["Categorie"] == "PRO:REL")or ($POS ["Categorie"] == "PRO:IND") or ($POS ["Categorie"] == "PRO/PER")){
                 $nbPOSByLevel[$POS["Niv"]]["Pronom"] ++;
                 $nbPOSByLevel["Total"]["Pronom"] ++;
@@ -154,7 +154,7 @@ class POSRepartitionByLevel
                 if ($NivPOS == "TotalPOS") {
                     $TotalPOS = $nbPOS;
                 } elseif($TotalPOS == 0) {
-                    $percentagePOSByLevel[$level][$NivPOS] = "Pas de POS";
+                    $percentagePOSByLevel[$level][$NivPOS] = "0%";
                 } else {
                     $percentagePOSByLevel[$level][$NivPOS] =(string) $nbPOS / $TotalPOS * 100 ."%";
                     $sumPOS += $nbPOS;
@@ -163,7 +163,7 @@ class POSRepartitionByLevel
             if($TotalPOS != 0){
                 $percentagePOSByLevel[$level]["Total"] = (string) $sumPOS / $TotalPOS * 100 . "%";
             } else {
-                $percentagePOSByLevel[$level]["Total"] = "Pas de POS";
+                $percentagePOSByLevel[$level]["Total"] = "0%";
             }
         }
 

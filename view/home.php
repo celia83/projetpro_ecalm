@@ -12,14 +12,19 @@
         <header>
             <img alt="logo_lidilem" id = "logo_lidilem" src="../public/assets/img/logo_LIDILEM_CMJN.jpg"/>
             <img alt="logo_ecalm" id = "logo_ecalm" src="../public/assets/img/Ecalm_logo_transparent.png"/>
-            <section id="connexion">Connexion</section>
+            <article id="connexion">Connexion</article>
         </header>
 
-        <!--Partie pour la sélection des critère-->
-        <section id = "criteriaSelection">
+        <!--Boutons pour naviguer entre les articles : soit données soit statistiques quand on n'est pas un gestionnaire-->
+        <button id = "data" type="button">Données</button>
+        <button id = "statistics" type="button">Statistiques</button>
+
+
+        <!--Partie pour la sélection des critères-->
+        <article id = "dataSelection">
             <form action ="../index.php?action=showResults" method="POST">
                 <!--Afficher les critères généraux -->
-                <section id = "generalCriteria">
+                <article id = "generalCriteria">
                     <h2>Critères Généraux</h2>
                     <div>
                         <label for="corpus">Corpus : </label>
@@ -89,10 +94,10 @@
                         <label for="lemma">Lemme : </label>
                         <input type="text" id="lemma" name="lemma" />
                     </div>
-                </section>
+                </article>
 
                 <!--Afficher les critères spécifiques aux verbes -->
-                <section id = "verbCriteria" hidden>
+                <article id = "verbCriteria" hidden>
                     <h2>Critères Avancés</h2>
                     <div>
                         <label for="tense">Tiroir verbal : </label>
@@ -142,10 +147,10 @@
                         <input type="text" id="ending" name="ending" />
                     </div>
 
-                </section>
+                </article>
 
                 <!--Afficher les critères spécifiques aux adjectifs -->
-                <section id = "adjectiveCriteria" hidden >
+                <article id = "adjectiveCriteria" hidden >
                     <h2>Critères Avancés</h2>
                     <div>
                         <label for="genre">Genre : </label>
@@ -180,22 +185,61 @@
                         <input type="text" id="baseAdj" name="baseAdj" />
                     </div>
 
-                </section>
+                </article>
 
                 <div>
                     <input id="getResults" value ="Résultats" type="submit" />
                 </div>
             </form>
-        </section>
+        </article>
+
+        <!--Partie pour la sélection des tableaux-->
+        <article id = "statisticsSelection" hidden>
+            <form action ="../index.php?action=showStats" method="POST">
+                <article>
+                    <div>
+                        <label for="tabStats">Afficher le tableau : </label>
+                        <select  id="tabStats" name="tabStats">
+                            <option value = "NbWordProd">Nombre de mots des productions</option>
+                            <option value = "POSRepartitionByLevel">Répartition des POS en fonction du niveau</option>
+                            <option value = "TenseRepartition">Répartition des tiroir verbaux</option>
+                            <option value = "NbVerbalForms">Nombre de formes verbales analysées</option>
+                            <option value = "FailureAndSuccessTenses">Répartition des échecs et réussites pour les tiroirs verbaux les plus employés</option>
+                            <option value = "StandardizedBaseOrEnding">Répartition des formes verbales selon si leur base et/ou leur désinence sont normées</option>
+                            <option value = "StandardizedBaseEndingProportion">Proportion de bases et de désinences normées et non normées</option>
+                            <!-- ATTENTION A COMPLETER LA VALEUR DU DERNIER TABLEAU-->
+                            <option value = "">Répartition des formes verbales non normées selon si leur base et/ou leur désinence respectent ou non la phonologie</option>
+                        </select>
+                    </div>
+                </article>
+
+                <article id ="groupSelection" hidden>
+                    <div>
+                        <label for="groupSelection">Sélectionnez un groupe :  </label>
+                        <input class = "verbGroup" type="radio" id = "-er"  name="verbGroup" value = "-er"/><label for="-er">Verbes en -er</label>
+                        <input class = "verbGroup" type="radio" id = "non-er"  name="verbGroup" value = "non-er"/><label for="non-er">Verbes non en -er</label>
+                        <input class = "verbGroup" type="radio" id = "tous"  name="verbGroup" value = "tous"/><label for="tous">Tous les verbes</label>
+                    </div>
+                </article>
+
+
+                <div>
+                    <input id="getStats" value ="Afficher les statistiques" type="submit" />
+                </div>
+            </form>
+
+        </article>
 
         <!--Partie pour l'affichage des résultats-->
-        <section>
+        <article>
             <h2>Résultats</h2>
             <div id = "resultsDiv">
                 <table id = "resultsTable">
 
                 </table>
             </div>
-        </section>
+        </article>
+
+
     </body>
 </html>

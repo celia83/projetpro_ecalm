@@ -215,10 +215,21 @@
 
                 <article id ="groupSelection" hidden>
                     <div>
-                        <label for="groupSelection">Sélectionnez un groupe :  </label>
-                        <input class = "verbGroup" type="radio" id = "-er"  name="verbGroup" value = "-er"/><label for="-er">Verbes en -er</label>
-                        <input class = "verbGroup" type="radio" id = "non-er"  name="verbGroup" value = "non-er"/><label for="non-er">Verbes non en -er</label>
+                        <label for="verbGroup">Sélectionnez un groupe :  </label>
+                        <input class = "verbGroup" type="radio" id = "er"  name="verbGroup" value = "er"/><label for="er">Verbes en -er</label>
+                        <input class = "verbGroup" type="radio" id = "nonEr"  name="verbGroup" value = "nonEr"/><label for="nonEr">Verbes non en -er</label>
                         <input class = "verbGroup" type="radio" id = "tous"  name="verbGroup" value = "tous"/><label for="tous">Tous les verbes</label>
+                    </div>
+                </article>
+
+                <article id ="tenseSelection" hidden>
+                    <div>
+                        <label for="tense">Sélectionnez un tiroir verbal :  </label>
+                        <input class = "tense" type="radio" id = "Infinitif"  name="tense" value = "Infinitif"/><label for="infinitif">Infinitif</label>
+                        <input class = "tense" type="radio" id = "Présent"  name="tense" value = "Présent"/><label for="Présent">Présent</label>
+                        <input class = "tense" type="radio" id = "Imparfait"  name="tense" value = "Imparfait"/><label for="Imparfait">Imparfait</label>
+                        <input class = "tense" type="radio" id = "Passé Simple"  name="tense" value = "Passé Simple"/><label for="Passé Simple">Passé Simple</label>
+                        <input class = "tense" type="radio" id = "tous"  name="tense" value = "tous"/><label for="tous">Tous les tiroirs verbaux</label>
                     </div>
                 </article>
 

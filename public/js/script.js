@@ -140,21 +140,42 @@ $(document).ready(function () {
         var selected = $("#tabStats > option:selected").val();
         switch (selected){
             case "FailureAndSuccessTenses" :
+                $("#tenseSelection").hide();
+                $("#groupSelection").show();
+                break;
             case "StandardizedBaseOrEnding" :
             case "StandardizedBaseEndingProportion" :
                 $("#groupSelection").show();
+                $("#tenseSelection").show();
                 break;
-            default : $("#groupSelection").hide();
+            default :
+                $("#groupSelection").hide();
+                $("#tenseSelection").hide();
         }
     });
 
     //Permet d'afficher dans la zone de résultats les résultats de la requête faite par l'utilisateur
     $("#getStats").on("click", function (event) {
+        //permet de ne pas envoyer le formulaire
         event.preventDefault();
-        //Critère généraux
+        //Critères généraux
         var tabName = $("#tabStats > option:selected").val();
-        var verbGroup = document.querySelector('input[name="verbGroup"]:checked').value;
-        var tense = "";
+        switch (tabName){
+            case "FailureAndSuccessTenses" :
+                var verbGroup = document.querySelector('input[name="verbGroup"]:checked').value;
+                var tense = "";
+                break;
+            case "StandardizedBaseOrEnding" :
+            case "StandardizedBaseEndingProportion" :
+                var verbGroup = document.querySelector('input[name="verbGroup"]:checked').value;
+                tense = document.querySelector('input[name="tense"]:checked').value;
+                break;
+            default :
+                verbGroup = "";
+                tense = "";
+        }
+        //var verbGroup = document.querySelector('input[name="verbGroup"]:checked').value;
+        //var tense = "";
 
         data = 'tabName=' + tabName + '&verbGroup=' + verbGroup + '&tense=' + tense;
 
@@ -171,6 +192,10 @@ $(document).ready(function () {
                     case "NbWordProd" :
                     //Tableau : Nombre de formes verbales analysées
                     case "NbVerbalForms" :
+                    //Tableau : Répartition des formes verbales selon si leur base et/ou leur désinence sont normées
+                    case "StandardizedBaseOrEnding" :
+                    //Tableau : Proportion de bases et de désinences normées et non normées
+                    case "StandardizedBaseEndingProportion" :
                         $("#resultsTable").html("<tr id ='headerTab'><td></td><td>CP</td><td>CE1</td><td>CE2</td><td>CM1</td><td>CM2</td></tr>");
                         for (var key in message){
                             var value = message[key];
@@ -202,13 +227,13 @@ $(document).ready(function () {
                         }
                         break;
                         //Tableau : Répartition des formes verbales selon si leur base et/ou leur désinence sont normées
-                    case "StandardizedBaseOrEnding" :
+                    //case "StandardizedBaseOrEnding" :
 
-                        break;
+                        //break;
                         //Tableau : Proportion de bases et de désinences normées et non normées
-                    case "StandardizedBaseEndingProportion" :
+                    //case "StandardizedBaseEndingProportion" :
 
-                        break;
+                        //break;
                     default:
                         $("#resultsTable").html("<tr id ='headerTab'><td></td><td>CP</td><td>CE1</td><td>CE2</td><td>CM1</td><td>CM2</td></tr>");
                 }

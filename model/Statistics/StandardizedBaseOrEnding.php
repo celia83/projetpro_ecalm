@@ -119,19 +119,19 @@ class StandardizedBaseOrEnding {
             #Ajout au tableau final
             #Si on a des verbes dans la catégorie (donc total différent de 0) on calcule les pourcentages
             if ($total != 0){
-                $finalTab[$level]["Normé"] = (string) $nbStandardized  / $total * 100 . "%";
-                $finalTab[$level]["Erreur base"] = (string) $nbBaseErr / $total * 100 . "%";
-                $finalTab[$level]["Erreur désinence"] = (string) $nbEndErr  / $total * 100 . "%";
-                $finalTab[$level]["Erreur base et désinence"] = (string) $nbBaseAndEndErr / $total * 100 . "%";
-                $finalTab[$level]["Total"] = (string) ($nbStandardized +  $nbBaseErr + $nbEndErr + $nbBaseAndEndErr) / $total * 100 . "%";
+                $finalTab["Normé"][$level] = (string) $nbStandardized  / $total * 100 . "%";
+                $finalTab["Erreur base"][$level] = (string) $nbBaseErr / $total * 100 . "%";
+                $finalTab["Erreur désinence"][$level] = (string) $nbEndErr  / $total * 100 . "%";
+                $finalTab["Erreur base et désinence"][$level] = (string) $nbBaseAndEndErr / $total * 100 . "%";
+                $finalTab["Total"][$level] = (string) ($nbStandardized +  $nbBaseErr + $nbEndErr + $nbBaseAndEndErr) / $total * 100 . "%";
 
             #Sinon on dit à l'utilisateur qu'on n'a pas les données
             } else {
-                $finalTab[$level]["Normé"] = "Pas de données";
-                $finalTab[$level]["Erreur base"] = "Pas de données";
-                $finalTab[$level]["Erreur désinence"] = "Pas de données";
-                $finalTab[$level]["Erreur base et désinence"] = "Pas de données";
-                $finalTab[$level]["Total"] = "Pas de données" ;
+                $finalTab["Normé"][$level] = "0%";
+                $finalTab["Erreur base"][$level] = "0%";
+                $finalTab["Erreur désinence"][$level] = "0%";
+                $finalTab["Erreur base et désinence"][$level] = "0%";
+                $finalTab["Total"][$level] = "0%" ;
             }
         }
 

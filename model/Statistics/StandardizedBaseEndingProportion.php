@@ -129,23 +129,23 @@ class StandardizedBaseEndingProportion {
             #Calcul des pourcentages et ajout au tableau
             #On vérifie à chaque fois qu'on a bien un total (donc qu'on a des verbes pour faire le calcul) : éviter la division par 0
             if ($totalBase != 0) {
-                $finalTab[$level]["Base normée"] = (string)$nbStandardizedBase / $totalBase * 100 . "%";
-                $finalTab[$level]["Base erronée"] = (string)$nbWrongBase / $totalBase * 100 . "%";
-                $finalTab[$level]["TotalBase"] = (string)($nbStandardizedBase + $nbWrongBase) / $totalBase * 100 . "%";
+                $finalTab["Base normée"][$level] = (string)$nbStandardizedBase / $totalBase * 100 . "%";
+                $finalTab["Base erronée"][$level] = (string)$nbWrongBase / $totalBase * 100 . "%";
+                $finalTab["TotalBase"][$level] = (string)($nbStandardizedBase + $nbWrongBase) / $totalBase * 100 . "%";
             }else {
-                $finalTab[$level]["Base normée"] = "Pas de données";
-                $finalTab[$level]["Base erronée"] = "Pas de données";
-                $finalTab[$level]["TotalBase"] = "Pas de données";
+                $finalTab["Base normée"][$level] = "0%";
+                $finalTab["Base erronée"][$level] = "0%";
+                $finalTab["TotalBase"][$level] = "0%";
             }
 
             if ($totalDes != 0) {
-                $finalTab[$level]["Désinence normée"] = (string) $nbStandardizedDes  / $totalDes * 100 . "%";
-                $finalTab[$level]["Désinence erronée"] = (string) $nbWrongDes / $totalDes * 100 . "%";
-                $finalTab[$level]["TotalDes"] = (string) ($nbStandardizedDes + $nbWrongDes)  / $totalDes * 100 . "%";
+                $finalTab["Désinence normée"][$level] = (string) $nbStandardizedDes  / $totalDes * 100 . "%";
+                $finalTab["Désinence erronée"][$level] = (string) $nbWrongDes / $totalDes * 100 . "%";
+                $finalTab["TotalDes"][$level] = (string) ($nbStandardizedDes + $nbWrongDes)  / $totalDes * 100 . "%";
             }else {
-                $finalTab[$level]["Désinence normée"] = "Pas de données";
-                $finalTab[$level]["Désinence erronée"] = "Pas de données";
-                $finalTab[$level]["TotalDes"] = "Pas de données";
+                $finalTab["Désinence normée"][$level] = "0%";
+                $finalTab["Désinence erronée"][$level] = "0%";
+                $finalTab["TotalDes"][$level] = "0%";
             }
         }
 

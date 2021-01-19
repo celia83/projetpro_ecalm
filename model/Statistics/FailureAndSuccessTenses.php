@@ -22,7 +22,7 @@ class FailureAndSuccessTenses {
         #Créer la requête
         #Si l'utilisateur veut les verbes en er
         if ($verbGroup == "er") {
-            $request ='SELECT Niv, SegNorm, SegTrans, PhonNorm, PhonTrans, Categorie, ErrVerBase, ErrVerDes, ErrVerBaseEtDes FROM cm2_scoledit WHERE Categorie LIKE "VER%" AND Categorie LIKE "VER:pper" = 0 AND SegmNorm LIKE "%er"' ;;
+            $request ='SELECT Niv, SegNorm, SegTrans, PhonNorm, PhonTrans, Categorie, ErrVerBase, ErrVerDes, ErrVerBaseEtDes FROM cm2_scoledit WHERE Categorie LIKE "VER%" AND Categorie LIKE "VER:pper" = 0 AND SegNorm LIKE "%er"' ;;
         #Si l'utilisateur veut les verbes qui ne sont pas en er
         } elseif ($verbGroup == "nonEr"){
             $request = 'SELECT Niv, SegNorm, SegTrans, PhonNorm, PhonTrans, Categorie, ErrVerBase, ErrVerDes, ErrVerBaseEtDes FROM cm2_scoledit WHERE Categorie LIKE "VER%" AND Categorie LIKE "VER:pper" = 0 AND SegNorm LIKE "%er" = 0' ;;
@@ -121,9 +121,9 @@ class FailureAndSuccessTenses {
                 }
 
                 if ($nbForms == 0 ){
-                    $finalTab[$level][$tense]["Orthographe normée"] = "Pas de données";
-                    $finalTab[$level][$tense]["Phonologie normée"] = "Pas de données";
-                    $finalTab[$level][$tense]["Phonologie non normée"] = "Pas de données";
+                    $finalTab[$level][$tense]["Orthographe normée"] = "0%";
+                    $finalTab[$level][$tense]["Phonologie normée"] = "0%";
+                    $finalTab[$level][$tense]["Phonologie non normée"] = "0%";
                 } else {
                     $finalTab[$level][$tense]["Orthographe normée"] = (string) $orthoNorm / $nbForms * 100 . "%";
                     $finalTab[$level][$tense]["Phonologie normée"] = (string) $phonoNorm / $nbForms * 100 . "%";

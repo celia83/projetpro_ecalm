@@ -19,7 +19,7 @@ include "RepartionFormesVerbales.php";
 #var_dump($tabPOS->createTabPOSRepartitionByLevel());
 
 #$tabVerb = new FailureAndSuccessTenses();
-#var_dump($tabVerb->createTabFailureSuccess("nonEr"));
+#var_dump($tabVerb->createTabFailureSuccess("er"));
 
 #$tab = new StandardizedBaseOrEnding();
 #var_dump($tab->createTabStandardizedBaseOrEnding("tous", "Imparfait"));
@@ -34,6 +34,6 @@ include "RepartionFormesVerbales.php";
 #var_dump($tabVerbs->createTabAllVerbs());
 
 $repartionFormesVerbales = new RepartionFormesVerbales();
-var_dump($repartionFormesVerbales->createTabRepartionFormesVerbales());
+var_dump($repartionFormesVerbales->createTabRepartionFormesVerbales("tous", "Imparfait"));
 
 

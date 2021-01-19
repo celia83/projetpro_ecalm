@@ -5,7 +5,7 @@
 #include "FailureAndSuccessTenses.php";
 #include "StandardizedBaseOrEnding.php";
 #include "StandardizedBaseEndingProportion.php";
-#include "NbVerbalForms.php";
+#include "NbFormeVerbales.php";
 #include "AllVerbs.php";
 include "RepartionFormesVerbales.php";
 

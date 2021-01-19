@@ -1,8 +1,7 @@
 <?php
 
-include_once "D:/Documents/Applications/Wamp/www/projetpro_ecalm/model/DataBase.php";
+include_once "../DataBase.php";
 
-<<<<<<< HEAD
 class RepartionFormesVerbales{
 
     public function createTabRepartionFormesVerbales($verbGroup, $tense){
@@ -38,17 +37,6 @@ class RepartionFormesVerbales{
 		
 
 		
-=======
-class RepartionFormesVerbales
-{
-    /**
-     * Cette fonction sélectionne la répartition des formes verbales non normées 
-     * selon si leur base et/ou leur désinence respectent ou non la phonologie
-     * @return array $tabProd
-     */
-     
-    public function createTabRepartionFormesVerbales(){
->>>>>>> d3a7ba6cbad209d23233c490959c803573a6297a
         #Sélectionner seulement les verbes avec erreurs sur la base seule dans la base de données
 		$request = 'SELECT * FROM `cm2_scoledit` WHERE Categorie LIKE "' . $tenseSQL . '" AND ErrVerBase LIKE "1" AND Categorie LIKE "VER:pper" ' . $GroupSQL . '';
         #Récupération des données dans la base de données

@@ -156,28 +156,28 @@
                         <label for="genre">Genre : </label>
                         <input type="radio" id = "Masculin" class="genre" name="genre" value = "Masculin"/><label for="Masculin">Masculin</label>
                         <input type="radio" id = "Féminin" class="genre" name="genre" value = "Féminin"/><label for="Féminin">Féminin</label>
-                        <input type="radio" id = "Les deux" class="genre" name="genre" value = "Les deux"/><label for="Les deux">Les deux</label>
+                        <input type="radio" id = "Les deux" class="genre" name="genre" value = "Les deux" checked/><label for="Les deux">Les deux</label>
                     </div>
 
                     <div>
                         <label for="number">Nombre : </label>
                         <input type="radio" id = "Singulier" class="number" name="number" value = "Singulier"/><label for="Singulier">Singulier</label>
                         <input type="radio" id = "Pluriel" class="number" name="number" value = "Pluriel"/><label for="Pluriel">Pluriel</label>
-                        <input type="radio" id = "Les deux" class="number" name="number" value = "Les deux"/><label for="Les deux">Les deux</label>
+                        <input type="radio" id = "Les deux" class="number" name="number" value = "Les deux" checked/><label for="Les deux">Les deux</label>
                     </div>
 
                     <div>
                         <label for="errGenre">Erreur de genre : </label>
                         <input type="radio" id = "Avec" class="errGenre" name="errGenre" value = "Avec"/><label for="Avec">Avec</label>
                         <input type="radio" id = "Sans" class="errGenre" name="errGenre" value = "Sans"/><label for="Sans">Sans</label>
-                        <input type="radio" id = "Tous" class="errGenre" name="errGenre" value = "Tous"/><label for="Tous">Tous</label>
+                        <input type="radio" id = "Tous" class="errGenre" name="errGenre" value = "Tous" checked/><label for="Tous">Tous</label>
                     </div>
 
                     <div>
                         <label for="errNumber">Erreur de nombre : </label>
                         <input type="radio" id = "Avec" class="errNumber" name="errNumber" value = "Avec"/><label for="Avec">Avec</label>
                         <input type="radio" id = "Sans" class="errNumber" name="errNumber" value = "Sans"/><label for="Sans">Sans</label>
-                        <input type="radio" id = "Tous" class="errNumber" name="errNumber" value = "Tous"/><label for="Tous">Tous</label>
+                        <input type="radio" id = "Tous" class="errNumber" name="errNumber" value = "Tous" checked/><label for="Tous">Tous</label>
                     </div>
 
                     <div>
@@ -217,7 +217,7 @@
                         <label for="verbGroup">Sélectionnez un groupe :  </label>
                         <input class = "verbGroup" type="radio" id = "er"  name="verbGroup" value = "er"/><label for="er">Verbes en -er</label>
                         <input class = "verbGroup" type="radio" id = "nonEr"  name="verbGroup" value = "nonEr"/><label for="nonEr">Verbes non en -er</label>
-                        <input class = "verbGroup" type="radio" id = "tous"  name="verbGroup" value = "tous"/><label for="tous">Tous les verbes</label>
+                        <input class = "verbGroup" type="radio" id = "tous"  name="verbGroup" value = "tous" checked/><label for="tous">Tous les verbes</label>
                     </div>
                 </article>
 
@@ -228,7 +228,7 @@
                         <input class = "tense" type="radio" id = "Présent"  name="tense" value = "Présent"/><label for="Présent">Présent</label>
                         <input class = "tense" type="radio" id = "Imparfait"  name="tense" value = "Imparfait"/><label for="Imparfait">Imparfait</label>
                         <input class = "tense" type="radio" id = "Passé Simple"  name="tense" value = "Passé Simple"/><label for="Passé Simple">Passé Simple</label>
-                        <input class = "tense" type="radio" id = "tous"  name="tense" value = "tous"/><label for="tous">Tous les tiroirs verbaux</label>
+                        <input class = "tense" type="radio" id = "tous"  name="tense" value = "tous" checked/><label for="tous">Tous les tiroirs verbaux</label>
                     </div>
                 </article>
 

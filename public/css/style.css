@@ -43,6 +43,21 @@ h2 {
     color: white;
 }
 
+h2#resultsTitle{
+    border: none;
+    border-radius: 15px 15px 0px 0px;
+    box-shadow: 1px 0px 6px 0px #4b4b4b;
+    width: 400px;
+    height: 30px;
+    font: 15px RobotoRegular;
+    color: white;
+    background: RGB(85,85,85);
+    vertical-align: middle;
+    text-align: center;
+    margin: 20px 100px 0px 100px;
+    padding-top: 10px;
+}
+
 button#data, #statistics {
     border: none;
     border-radius: 15px 15px 0px 0px;
@@ -107,6 +122,9 @@ div.adjectiveCriteriaDivs{
 
 div#resultsDiv{
     color: black;
+    background-color: RGB(242,242,242);
+    margin: 0px 100px;
+    height : 100%;
 }
 
 div#downloadTableDiv{
@@ -138,7 +156,7 @@ input#getResults, input#getStats, input#downloadTable{
     border: none;
     border-radius: 5px 5px 5px 5px;
     box-shadow: 0 0 4px RGB(2,125,180);
-    width: 130px;
+    width: 100px;
     height: 35px;
     font: 14px RobotoRegular;
     color: white;
@@ -168,4 +186,19 @@ input#getStats, input#downloadTable{
     align-items: flex-start;
     margin-right: 30px;
 }
+
+table, tr, td {
+    border-collapse: collapse;
+    background-color: white;
+    border: 1px solid RGB(127, 140, 141);
+    text-align: center;
+    padding : 3px;
+}
+
+table {
+    width:100%;
+    font: 13px RobotoRegular;
+}
+
+
 

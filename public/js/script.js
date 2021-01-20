@@ -68,7 +68,7 @@ $(document).ready(function () {
 
                 //créer le tableau à injecter dans la page html
 
-                $("#resultsTable").html("<tr id ='headerTab'><td>LIEN VERS LE SCAN</td><td>CORPUS</td><td>NIVEAU</td><td>ELEVE</td><td>LEMME</td><td>FORME NORMEE</td><td>FORME TRANSCRITE</td><td>PHONOLOGIE NORMEE</td><td>PHONOLOGIE TRANSCRITE</td><td>CATEGORIE</td><td>STATUT D'ERREUR</td><td>STATUT SEGMENTATION</td><td>GENRE</td><td>NOMBRE</td></tr>");
+                $("#resultsTable").html("<tr id ='headerTab'><td>SCAN</td><td>CORPUS</td><td>NIVEAU</td><td>ELEVE</td><td>LEMME</td><td>FORME NORMEE</td><td>FORME TRANSCRITE</td><td>PHONOLOGIE NORMEE</td><td>PHONOLOGIE TRANSCRITE</td><td>CATEGORIE</td><td>STATUT D'ERREUR</td><td>STATUT SEGMENTATION</td><td>GENRE</td><td>NOMBRE</td></tr>");
                 for (var i = 0 ; i< message.length; i++){
                     //permettra d'afficher en couleur les différentes parties du mot produit par l'élève
                     //découpage en syllabes
@@ -125,7 +125,7 @@ $(document).ready(function () {
 
                 }
 
-                //Changer leur couleur en focntion des erreurs
+                //Changer leur couleur en fonction des erreurs
                 $(".correct").css("color", "#4CA86A");
                 $(".false").css("color", "#4CA86A");
 

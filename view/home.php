@@ -260,7 +260,7 @@
 
         <!--Partie pour l'affichage des résultats-->
         <article>
-            <h2>Résultats</h2>
+            <h2 id="resultsTitle">Résultats</h2>
             <div id = "resultsDiv">
                 <table id = "resultsTable">
 

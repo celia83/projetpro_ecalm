@@ -8,6 +8,6 @@ class DownLoadController{
      * @param $table
      */
     function downLoadResults($table){
-        
+
     }
 }

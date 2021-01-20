@@ -22,7 +22,7 @@
 
         <!--Partie pour la sélection des critères-->
         <article id = "dataSelection">
-            <form action ="../index.php?action=showResults" method="POST">
+            <form id="dataSelectionForm" action ="../index.php?action=showResults" method="POST">
                 <!--Afficher les critères généraux -->
                 <article id = "generalCriteria">
                     <h2>Critères Généraux</h2>
@@ -195,7 +195,7 @@
 
         <!--Partie pour la sélection des tableaux-->
         <article id = "statisticsSelection" hidden>
-            <form action ="../index.php?action=showStats" method="POST">
+            <form id = "statisticsSelectionForm" action ="../index.php?action=showStats" method="POST">
                 <article>
                     <div>
                         <label for="tabStats">Afficher le tableau : </label>
@@ -249,7 +249,5 @@
                 </table>
             </div>
         </article>
-
-
     </body>
 </html>

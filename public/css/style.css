@@ -1,3 +1,14 @@
+/*Charger les polices */
+@font-face {
+    font-family: "RobotoRegular";
+    src: url("../assets/fonts/Roboto-Regular.ttf");
+}
+
+@font-face {
+    font-family: "RobotoBold";
+    src: url("../assets/fonts/Roboto-Bold.ttf");
+}
+
 /* STYLE DE L'EN-TETE */
 header{
     background-color: RGB(85,85,85);
@@ -23,5 +34,30 @@ img#logo_lidilem{
     max-width: 100%;
     height: auto;
     padding-left : 20px;
+}
+
+
+/* STYLE DE LA PARTIE DONNEE*/
+h2 {
+    font: 20px RobotoBold;
+    color: white;
+}
+
+#dataSelectionForm, #statisticsSelectionForm{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    background-color: RGB(124,0,0);
+    padding: 20px;
+}
+
+div {
+    padding: 5px;
+    font: 15px RobotoRegular;
+    color: white;
+}
+
+label {
+    padding-right: 10px;
 }
 

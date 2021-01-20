@@ -19,6 +19,9 @@ try {
         } elseif ($_GET['action'] == 'showStats'){
             $controller = new HomeController();
             $controller -> showStatsTab($_POST["tabName"], $_POST["verbGroup"], $_POST["tense"]);
+        }  elseif ($_GET['action'] == 'downloadResults') {
+            $controller = new DownloadController();
+            $controller -> downLoadResults($_POST["table"]) ;
         } else {
             echo "Error 404 : page non trouvée";
         }

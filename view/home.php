@@ -238,7 +238,13 @@
                 </div>
             </form>
 
+
         </article>
+
+
+        <div>
+            <input id="downloadTable" value ="Télécharger le résultat" type="submit" />
+        </div>
 
         <!--Partie pour l'affichage des résultats-->
         <article>

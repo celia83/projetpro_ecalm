@@ -236,5 +236,32 @@ $(document).ready(function () {
             }
         })
     });
+
+    $("#downloadTable").on("click", function (){
+        //récupérer le contenu de la balise <table>
+        var tableHTML = document.getElementById("resultsTable").rows;
+        var table = [];
+        for (var i = 0; i < tableHTML.length; i++){
+            var line = [];
+            for (var j = 0; j < tableHTML[i].cells.length; j++){
+                line.push(tableHTML[i].cells[j].innerHTML);
+            }
+            table.push(line);
+        }
+
+        console.log(table);
+        //console.log(table);
+        //console.log(table[0].cells[1].innerHTML);
+
+        $.ajax({
+            url: 'index.php?action=downloadResults',
+            method: 'POST',
+            data: "table=" + table,
+            success: function (result) {
+                alert("Fichier téléchargé sur votre ordinateur.")
+            }
+        });
+    });
+
 });
 

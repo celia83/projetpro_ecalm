@@ -51,13 +51,21 @@ h2 {
     padding: 20px;
 }
 
+
+
 div {
     padding: 5px;
     font: 15px RobotoRegular;
     color: white;
 }
 
+div#resultsDiv{
+    color: black;
+}
+
+
 label {
     padding-right: 10px;
 }
+
 

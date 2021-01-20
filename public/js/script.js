@@ -68,7 +68,7 @@ $(document).ready(function () {
 
                 //créer le tableau à injecter dans la page html
 
-                $("#resultsTable").html("<tr id ='headerTab'><td>SCAN</td><td>CORPUS</td><td>NIVEAU</td><td>ELEVE</td><td>LEMME</td><td>FORME NORMEE</td><td>FORME TRANSCRITE</td><td>PHONOLOGIE NORMEE</td><td>PHONOLOGIE TRANSCRITE</td><td>CATEGORIE</td><td>STATUT D'ERREUR</td><td>STATUT SEGMENTATION</td><td>GENRE</td><td>NOMBRE</td></tr>");
+                $("#resultsTable").html("<tr id ='headerTab'><td>SCAN</td><td>CORPUS</td><td>NIVEAU</td><td>ELEVE</td><td>LEMME</td><td>FORME<br/>NORMEE</td><td>FORME<br/>TRANSCRITE</td><td>PHONOLOGIE<br/>NORMEE</td><td>PHONOLOGIE<br/>TRANSCRITE</td><td>CATEGORIE</td><td>STATUT<br/>D'ERREUR</td><td>STATUT<br/>SEGMENTATION</td><td>GENRE</td><td>NOMBRE</td></tr>");
                 for (var i = 0 ; i< message.length; i++){
                     //permettra d'afficher en couleur les différentes parties du mot produit par l'élève
                     //découpage en syllabes
@@ -222,10 +222,17 @@ $(document).ready(function () {
                         var infos = Object.keys(message["CP"]);
                         var subInfos = Object.keys(message["CP"]["Ensemble des Verbes"]);
                         for (var j = 0 ; j< infos.length; j++) {
+                            $("#resultsTable").append("<tr id = 'ligne"+j+"'><td rowspan='4'>"+infos[j]+"</td></tr>");
                             for (var k = 0 ; k<subInfos.length; k++){
                                 var info = infos[j];
                                 var subInfo = subInfos[k];
-                                $("#resultsTable").append("<tr><td>"+info+"</td><td>"+subInfo+"</td><td>" + message["CP"][info][subInfo] + "</td><td>" + message["CE1"][info][subInfo] + "</td><td>" + message["CE2"][info][subInfo] + "</td><td>" + message["CM1"][info][subInfo] + "</td><td>" + message["CM2"][info][subInfo] + "</td></tr>");
+                                //$("#resultsTable").append("<tr><td>"+info+"</td><td>"+subInfo+"</td><td>" + message["CP"][info][subInfo] + "</td><td>" + message["CE1"][info][subInfo] + "</td><td>" + message["CE2"][info][subInfo] + "</td><td>" + message["CM1"][info][subInfo] + "</td><td>" + message["CM2"][info][subInfo] + "</td></tr>");
+                                if(k === 0){
+                                    $("#ligne"+j).append("<td>"+subInfo+"</td><td>" + message["CP"][info][subInfo] + "</td><td>" + message["CE1"][info][subInfo] + "</td><td>" + message["CE2"][info][subInfo] + "</td><td>" + message["CM1"][info][subInfo] + "</td><td>" + message["CM2"][info][subInfo] + "</td>");
+                                } else {
+                                    $("#resultsTable").append("<tr><td>"+subInfo+"</td><td>" + message["CP"][info][subInfo] + "</td><td>" + message["CE1"][info][subInfo] + "</td><td>" + message["CE2"][info][subInfo] + "</td><td>" + message["CM1"][info][subInfo] + "</td><td>" + message["CM2"][info][subInfo] + "</td></tr>");
+                                }
+
                             }
                         }
                         break;

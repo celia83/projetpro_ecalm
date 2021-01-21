@@ -125,9 +125,9 @@ class FailureAndSuccessTenses {
                     $finalTab[$level][$tense]["Phonologie normée"] = "0%";
                     $finalTab[$level][$tense]["Phonologie non normée"] = "0%";
                 } else {
-                    $finalTab[$level][$tense]["Orthographe normée"] = (string) $orthoNorm / $nbForms * 100 . "%";
-                    $finalTab[$level][$tense]["Phonologie normée"] = (string) $phonoNorm / $nbForms * 100 . "%";
-                    $finalTab[$level][$tense]["Phonologie non normée"] = (string) $phonoNonNorm / $nbForms * 100 . "%";
+                    $finalTab[$level][$tense]["Orthographe normée"] = (string) round($orthoNorm / $nbForms * 100,2) . "%";
+                    $finalTab[$level][$tense]["Phonologie normée"] = (string) round($phonoNorm / $nbForms * 100,2) . "%";
+                    $finalTab[$level][$tense]["Phonologie non normée"] = (string) round($phonoNonNorm / $nbForms * 100,2) . "%";
                 }
 
             }

@@ -129,9 +129,9 @@ class StandardizedBaseEndingProportion {
             #Calcul des pourcentages et ajout au tableau
             #On vérifie à chaque fois qu'on a bien un total (donc qu'on a des verbes pour faire le calcul) : éviter la division par 0
             if ($totalBase != 0) {
-                $finalTab["Base normée"][$level] = (string)$nbStandardizedBase / $totalBase * 100 . "%";
-                $finalTab["Base erronée"][$level] = (string)$nbWrongBase / $totalBase * 100 . "%";
-                $finalTab["TotalBase"][$level] = (string)($nbStandardizedBase + $nbWrongBase) / $totalBase * 100 . "%";
+                $finalTab["Base normée"][$level] = (string) round($nbStandardizedBase / $totalBase * 100 ,2). "%";
+                $finalTab["Base erronée"][$level] = (string) round($nbWrongBase / $totalBase * 100 ,2). "%";
+                $finalTab["TotalBase"][$level] = (string) round(($nbStandardizedBase + $nbWrongBase) / $totalBase * 100,2) . "%";
             }else {
                 $finalTab["Base normée"][$level] = "0%";
                 $finalTab["Base erronée"][$level] = "0%";
@@ -139,9 +139,9 @@ class StandardizedBaseEndingProportion {
             }
 
             if ($totalDes != 0) {
-                $finalTab["Désinence normée"][$level] = (string) $nbStandardizedDes  / $totalDes * 100 . "%";
-                $finalTab["Désinence erronée"][$level] = (string) $nbWrongDes / $totalDes * 100 . "%";
-                $finalTab["TotalDes"][$level] = (string) ($nbStandardizedDes + $nbWrongDes)  / $totalDes * 100 . "%";
+                $finalTab["Désinence normée"][$level] = (string) round( $nbStandardizedDes  / $totalDes * 100,2) . "%";
+                $finalTab["Désinence erronée"][$level] = (string)  round($nbWrongDes / $totalDes * 100,2) . "%";
+                $finalTab["TotalDes"][$level] = (string)  round(($nbStandardizedDes + $nbWrongDes)  / $totalDes * 100,2) . "%";
             }else {
                 $finalTab["Désinence normée"][$level] = "0%";
                 $finalTab["Désinence erronée"][$level] = "0%";

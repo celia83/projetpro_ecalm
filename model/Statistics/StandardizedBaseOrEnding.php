@@ -119,11 +119,11 @@ class StandardizedBaseOrEnding {
             #Ajout au tableau final
             #Si on a des verbes dans la catégorie (donc total différent de 0) on calcule les pourcentages
             if ($total != 0){
-                $finalTab["Normé"][$level] = (string) $nbStandardized  / $total * 100 . "%";
-                $finalTab["Erreur base"][$level] = (string) $nbBaseErr / $total * 100 . "%";
-                $finalTab["Erreur désinence"][$level] = (string) $nbEndErr  / $total * 100 . "%";
-                $finalTab["Erreur base et désinence"][$level] = (string) $nbBaseAndEndErr / $total * 100 . "%";
-                $finalTab["Total"][$level] = (string) ($nbStandardized +  $nbBaseErr + $nbEndErr + $nbBaseAndEndErr) / $total * 100 . "%";
+                $finalTab["Normé"][$level] = (string)round( $nbStandardized  / $total * 100,2) . "%";
+                $finalTab["Erreur base"][$level] = (string) round($nbBaseErr / $total * 100,2) . "%";
+                $finalTab["Erreur désinence"][$level] = (string) round($nbEndErr  / $total * 100,2) . "%";
+                $finalTab["Erreur base et désinence"][$level] = (string) round($nbBaseAndEndErr / $total * 100,2) . "%";
+                $finalTab["Total"][$level] = (string) round(($nbStandardized +  $nbBaseErr + $nbEndErr + $nbBaseAndEndErr) / $total * 100,2) . "%";
 
             #Sinon on dit à l'utilisateur qu'on n'a pas les données
             } else {

@@ -146,12 +146,12 @@ class TenseRepartition
                 } elseif($totalVerbs ==0) {
                     $percentageVerbsByLevel[$level][$tense] = "0%";
                 } else {
-                    $percentageVerbsByLevel[$level][$tense] =(string) $nbVerb / $totalVerbs * 100 ."%";
+                    $percentageVerbsByLevel[$level][$tense] =(string) round($nbVerb / $totalVerbs * 100 ,2)."%";
                     $sumVerbs += $nbVerb;
                 }
             }
             if($totalVerbs != 0){
-                $percentageVerbsByLevel[$level]["Total"] = (string) $sumVerbs / $totalVerbs * 100 . "%";
+                $percentageVerbsByLevel[$level]["Total"] = (string) round($sumVerbs / $totalVerbs * 100,2) . "%";
             } else {
                 $percentageVerbsByLevel[$level]["Total"] = "0%";
             }

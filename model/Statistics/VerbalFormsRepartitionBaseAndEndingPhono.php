@@ -117,43 +117,43 @@ class VerbalFormsRepartitionBaseAndEndingPhono{
        
         #calcule le pourcentage        
 		if ($CPbase>0){
-			$CPpourcentagebasenorme = ($CPbasenorme / $CPbase*100)."％";
-			$CPpourcentagebasenonnorme = (($CPbase-$CPbasenorme)/ $CPbase*100)."％"; 
+			$CPpourcentagebasenorme = (string) round(($CPbasenorme / $CPbase*100),2)."％";
+			$CPpourcentagebasenonnorme = (string) round((($CPbase-$CPbasenorme)/ $CPbase*100),2)."％";
 		}else{
-			$CPpourcentagebasenorme = 0;
-			$CPpourcentagebasenonnorme = 0;
+			$CPpourcentagebasenorme = "0%";
+			$CPpourcentagebasenonnorme = "0%";
 		}
 		#calcule le pourcentage
         if ($CE1base>0){
-			$CE1pourcentagebasenorme = ($CE1basenorme / $CE1base*100)."％";
-			$CE1pourcentagebasenonnorme = (($CE1base-$CE1basenorme) / $CE1base*100)."％";
+			$CE1pourcentagebasenorme = (string) round(($CE1basenorme / $CE1base*100),2)."％";
+			$CE1pourcentagebasenonnorme = (string) round((($CE1base-$CE1basenorme) / $CE1base*100),2)."％";
 		}else{
-			$CE1pourcentagebasenorme = 0;
-			$CE1pourcentagebasenonnorme = 0;
+			$CE1pourcentagebasenorme = "0%";
+			$CE1pourcentagebasenonnorme = "0%";
 		}
 		#calcule le pourcentage
 		if ($CE2base>0){
-			$CE2pourcentagebasenorme = ($CE2basenorme / $CE2base*100)."％";
-			$CE2pourcentagebasenonnorme = (($CE2base-$CE2basenorme) / $CE2base*100)."％";
+			$CE2pourcentagebasenorme = (string) round(($CE2basenorme / $CE2base*100),2)."％";
+			$CE2pourcentagebasenonnorme =(string) round( (($CE2base-$CE2basenorme) / $CE2base*100),2)."％";
 		}else{
-			$CE2pourcentagebasenorme = 0;
-			$CE2pourcentagebasenonnorme = 0;
+			$CE2pourcentagebasenorme = "0%";
+			$CE2pourcentagebasenonnorme = "0%";
 		}
 		#calcule le pourcentage
 		if ($CM1base>0){
-			$CM1pourcentagebasenorme = ($CM1basenorme / $CM1base*100)."％";
-			$CM1pourcentagebasenonnorme = (($CM1base-$CM1basenorme) / $CM1base*100)."％";
+			$CM1pourcentagebasenorme = (string) round(($CM1basenorme / $CM1base*100),2)."％";
+			$CM1pourcentagebasenonnorme = (string) round((($CM1base-$CM1basenorme) / $CM1base*100),2)."％";
 		}else{
-			$CM1pourcentagebasenorme = 0;
-			$CM1pourcentagebasenonnorme = 0;
+			$CM1pourcentagebasenorme ="0%";
+			$CM1pourcentagebasenonnorme = "0%";
 		}
 		#calcule le pourcentage
 		if ($CM2base>0){
-			$CM2pourcentagebasenorme = ($CM2basenorme / $CM2base*100)."％";
-			$CM2pourcentagebasenonnorme = (($CM2base-$CM2basenorme) / $CM2base*100)."％";
+			$CM2pourcentagebasenorme =(string) round( ($CM2basenorme / $CM2base*100),2)."％";
+			$CM2pourcentagebasenonnorme = (string) round((($CM2base-$CM2basenorme) / $CM2base*100),2)."％";
 		}else{
-			$CM2pourcentagebasenorme = 0;
-			$CM2pourcentagebasenonnorme = 0;
+			$CM2pourcentagebasenorme = "0%";
+			$CM2pourcentagebasenonnorme = "0%";
 		}
 				
 		
@@ -237,43 +237,43 @@ class VerbalFormsRepartitionBaseAndEndingPhono{
        
         #calcule le pourcentage        
 		if ($CPdesin>0){
-			$CPpourcentageNormeDes = ($CPbaseNormeDes / $CPdesin*100)."％";
-			$CPpourcentageNonNormeDes = (($CPdesin-$CPbaseNormeDes)/ $CPdesin*100)."％"; 
+			$CPpourcentageNormeDes = (string)round(($CPbaseNormeDes / $CPdesin*100),2)."％";
+			$CPpourcentageNonNormeDes =(string)round( (($CPdesin-$CPbaseNormeDes)/ $CPdesin*100),2)."％";
 		}else{
-			$CPpourcentageNormeDes = 0;
-			$CPpourcentageNonNormeDes = 0;
+			$CPpourcentageNormeDes = "0%";
+			$CPpourcentageNonNormeDes = "0%";
 		}
 		#calcule le pourcentage
         if ($CE1desin>0){
-			$CE1pourcentageNormeDes = ($CE1baseNormeDes / $CE1desin*100)."％";
-			$CE1pourcentageNonNormeDes = (($CE1desin-$CE1baseNormeDes) / $CE1desin*100)."％";
+			$CE1pourcentageNormeDes = (string)round(($CE1baseNormeDes / $CE1desin*100),2)."％";
+			$CE1pourcentageNonNormeDes = (string)round((($CE1desin-$CE1baseNormeDes) / $CE1desin*100),2)."％";
 		}else{
-			$CE1pourcentageNormeDes = 0;
-			$CE1pourcentageNonNormeDes = 0;
+			$CE1pourcentageNormeDes = "0%";
+			$CE1pourcentageNonNormeDes = "0%";
 		}
 		#calcule le pourcentage
 		if ($CE2desin>0){
-			$CE2pourcentageNormeDes = ($CE2baseNormeDes / $CE2desin*100)."％";
-			$CE2pourcentageNonNormeDes = (($CE2desin-$CE2baseNormeDes) / $CE2desin*100)."％";
+			$CE2pourcentageNormeDes = (string)round(($CE2baseNormeDes / $CE2desin*100),2)."％";
+			$CE2pourcentageNonNormeDes =(string)round( (($CE2desin-$CE2baseNormeDes) / $CE2desin*100),2)."％";
 		}else{
-			$CE2pourcentageNormeDes = 0;
-			$CE2pourcentageNonNormeDes = 0;
+			$CE2pourcentageNormeDes = "0%";
+			$CE2pourcentageNonNormeDes = "0%";
 		}
 		#calcule le pourcentage
 		if ($CM1desin>0){
-			$CM1pourcentageNormeDes = ($CM1baseNormeDes / $CM1desin*100)."％";
-			$CM1pourcentageNonNormeDes = (($CM1desin-$CM1baseNormeDes) / $CM1desin*100)."％";
+			$CM1pourcentageNormeDes = (string)round(($CM1baseNormeDes / $CM1desin*100),2)."％";
+			$CM1pourcentageNonNormeDes = (string)round((($CM1desin-$CM1baseNormeDes) / $CM1desin*100),2)."％";
 		}else{
-			$CM1pourcentageNormeDes = 0;
-			$CM1pourcentageNonNormeDes = 0;
+			$CM1pourcentageNormeDes = "0%";
+			$CM1pourcentageNonNormeDes = "0%";
 		}
 		#calcule le pourcentage
 		if ($CM2desin>0){
-			$CM2pourcentageNormeDes = ($CM2baseNormeDes / $CM2desin*100)."％";
-			$CM2pourcentageNonNormeDes = (($CM2desin-$CM2baseNormeDes) / $CM2desin*100)."％";
+			$CM2pourcentageNormeDes = (string)round(($CM2baseNormeDes / $CM2desin*100),2)."％";
+			$CM2pourcentageNonNormeDes = (string)round((($CM2desin-$CM2baseNormeDes) / $CM2desin*100),2)."％";
 		}else{
-			$CM2pourcentageNormeDes = 0;
-			$CM2pourcentageNonNormeDes = 0;
+			$CM2pourcentageNormeDes = "0%";
+			$CM2pourcentageNonNormeDes = "0%";
 		}		
 		
 		#Etape 7 :  ligne 1 du tableau = compter le nombre formes verbales avec erreur sur la base et la désinence 
@@ -356,43 +356,43 @@ class VerbalFormsRepartitionBaseAndEndingPhono{
        
         #calcule le pourcentage        
 		if ($CPbasedesin>0){
-			$CPpourcentageNormeBasedesin = ($CPbaseNormeBasedesin / $CPbasedesin*100)."％";
-			$CPpourcentageNonNormeBasedesin = (($CPbasedesin-$CPbaseNormeBasedesin)/ $CPbasedesin*100)."％"; 
+			$CPpourcentageNormeBasedesin =(string) round(($CPbaseNormeBasedesin / $CPbasedesin*100),2)."％";
+			$CPpourcentageNonNormeBasedesin = (string)round((($CPbasedesin-$CPbaseNormeBasedesin)/ $CPbasedesin*100),2)."％";
 		}else{
-			$CPpourcentageNormeBasedesin = 0;
-			$CPpourcentageNonNormeBasedesin = 0;
+			$CPpourcentageNormeBasedesin = "0%";
+			$CPpourcentageNonNormeBasedesin = "0%";
 		}
 		#calcule le pourcentage
         if ($CE1basedesin>0){
-			$CE1pourcentageNormeBasedesin = ($CE1baseNormeBasedesin / $CE1basedesin*100)."％";
-			$CE1pourcentageNonNormeBasedesin = (($CE1basedesin-$CE1baseNormeBasedesin) / $CE1basedesin*100)."％";
+			$CE1pourcentageNormeBasedesin = (string)round(($CE1baseNormeBasedesin / $CE1basedesin*100),2)."％";
+			$CE1pourcentageNonNormeBasedesin = (string)round((($CE1basedesin-$CE1baseNormeBasedesin) / $CE1basedesin*100),2)."％";
 		}else{
-			$CE1pourcentageNormeBasedesin = 0;
-			$CE1pourcentageNonNormeBasedesin = 0;
+			$CE1pourcentageNormeBasedesin = "0%";
+			$CE1pourcentageNonNormeBasedesin = "0%";
 		}
 		#calcule le pourcentage
 		if ($CE2basedesin>0){
-			$CE2pourcentageNormeBasedesin = ($CE2baseNormeBasedesin / $CE2basedesin*100)."％";
-			$CE2pourcentageNonNormeBasedesin = (($CE2basedesin-$CE2baseNormeBasedesin) / $CE2basedesin*100)."％";
+			$CE2pourcentageNormeBasedesin =(string) round(($CE2baseNormeBasedesin / $CE2basedesin*100),2)."％";
+			$CE2pourcentageNonNormeBasedesin = (string)round((($CE2basedesin-$CE2baseNormeBasedesin) / $CE2basedesin*100),2)."％";
 		}else{
-			$CE2pourcentageNormeBasedesin = 0;
-			$CE2pourcentageNonNormeBasedesin = 0;
+			$CE2pourcentageNormeBasedesin = "0%";
+			$CE2pourcentageNonNormeBasedesin = "0%";
 		}
 		#calcule le pourcentage
 		if ($CM1basedesin>0){
-			$CM1pourcentageNormeBasedesin = ($CM1baseNormeBasedesin / $CM1basedesin*100)."％";
-			$CM1pourcentageNonNormeBasedesin = (($CM1basedesin-$CM1baseNormeBasedesin) / $CM1basedesin*100)."％";
+			$CM1pourcentageNormeBasedesin =(string) round(($CM1baseNormeBasedesin / $CM1basedesin*100),2)."％";
+			$CM1pourcentageNonNormeBasedesin = (string)round((($CM1basedesin-$CM1baseNormeBasedesin) / $CM1basedesin*100),2)."％";
 		}else{
-			$CM1pourcentageNormeBasedesin = 0;
-			$CM1pourcentageNonNormeBasedesin = 0;
+			$CM1pourcentageNormeBasedesin = "0%";
+			$CM1pourcentageNonNormeBasedesin = "0%";
 		}
 		#calcule le pourcentage
 		if ($CM2basedesin>0){
-			$CM2pourcentageNormeBasedesin = ($CM2baseNormeBasedesin / $CM2basedesin*100)."％";
-			$CM2pourcentageNonNormeBasedesin = (($CM2basedesin-$CM2baseNormeBasedesin) / $CM2basedesin*100)."％";
+			$CM2pourcentageNormeBasedesin =(string) round(($CM2baseNormeBasedesin / $CM2basedesin*100),2)."％";
+			$CM2pourcentageNonNormeBasedesin = (string)round((($CM2basedesin-$CM2baseNormeBasedesin) / $CM2basedesin*100),2)."％";
 		}else{
-			$CM2pourcentageNormeBasedesin = 0;
-			$CM2pourcentageNonNormeBasedesin = 0;
+			$CM2pourcentageNormeBasedesin = "0%";
+			$CM2pourcentageNonNormeBasedesin = "0%";
 		}		
 
         #On crée le tableau final

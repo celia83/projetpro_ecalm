@@ -261,9 +261,11 @@
         </div>
 
         <article id="downloadExemplierSection" hidden>
-            <div id="cross"><i class="fas fa-times"></i></div>
-            <form id="downloadExemplierForm" action ="" method="POST">
+            <div id="cross">
                 <h3>Exporter un exemplier</h3>
+                <i class="fas fa-times"></i>
+            </div>
+            <form id="downloadExemplierForm" action ="" method="POST">
                 <article id="downloadExemplierArticle">
                     <div id="wordDiv">
                         <label for="word">Quel mot ? </label>

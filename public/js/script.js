@@ -317,7 +317,7 @@ $(document).ready(function () {
         })
     });
 
-    //Récupère le tableau contenu dans la balise html <table> et l'envoi au routeur sous forme d'array avec une ligne du tableau html par case de l'array
+    //Téléchargement des résultats : Récupère le tableau contenu dans la balise html <table> et l'envoie au routeur sous forme d'array avec une ligne du tableau html par case de l'array
     $("#downloadTable").on("click", function (){
         //récupérer le contenu de la balise <table>
         var tableHTML = document.getElementById("resultsTable").rows;
@@ -325,15 +325,10 @@ $(document).ready(function () {
         for (var i = 0; i < tableHTML.length; i++){
             var line = [];
             for (var j = 0; j < tableHTML[i].cells.length; j++){
-                line.push(tableHTML[i].cells[j].innerHTML);
+                line.push(tableHTML[i].cells[j].innerText);
             }
             table.push(line);
         }
-
-        //console.log(table);
-        //console.log(table);
-        //console.log(table[0].cells[1].innerHTML);
-
         $.ajax({
             url: 'index.php?action=downloadResults',
             method: 'POST',
@@ -344,7 +339,7 @@ $(document).ready(function () {
         });
     });
 
-    //Récupère le tableau contenu dans la balise html <table> et l'envoi au routeur sous forme d'array avec une ligne du tableau html par case de l'array
+    //Téléchargement d'un exemplier : Récupère le tableau contenu dans la balise html <table> et l'envoi au routeur sous forme d'array avec une ligne du tableau html par case de l'array
     $("body").on("click","#downloadExemplier", function (){
         $("#downloadExemplierSection").show();
         //récupérer le contenu de la balise <table>
@@ -356,8 +351,8 @@ $(document).ready(function () {
                 tableWords.push(lemma);
             }
         }
-        for (var j = 0; j < tableWords.length; j++){
-
+        $("select#word").html("<option id='"+tableWords[0]+"'>"+tableWords[0]+"</option>");
+        for (var j = 1; j < tableWords.length; j++){
             $("select#word").append("<option id='"+tableWords[j]+"'>"+tableWords[j]+"</option>");
         }
     });

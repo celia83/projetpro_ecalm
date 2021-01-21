@@ -156,12 +156,12 @@ class POSRepartitionByLevel
                 } elseif($TotalPOS == 0) {
                     $percentagePOSByLevel[$level][$NivPOS] = "0%";
                 } else {
-                    $percentagePOSByLevel[$level][$NivPOS] =(string) $nbPOS / $TotalPOS * 100 ."%";
+                    $percentagePOSByLevel[$level][$NivPOS] =(string) round($nbPOS / $TotalPOS * 100,2) ."%";
                     $sumPOS += $nbPOS;
                 }
             }
             if($TotalPOS != 0){
-                $percentagePOSByLevel[$level]["Total"] = (string) $sumPOS / $TotalPOS * 100 . "%";
+                $percentagePOSByLevel[$level]["Total"] = (string)  round($sumPOS / $TotalPOS * 100 ,2). "%";
             } else {
                 $percentagePOSByLevel[$level]["Total"] = "0%";
             }

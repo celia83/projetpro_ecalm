@@ -244,6 +244,7 @@ $(document).ready(function () {
         })
     });
 
+    //Récupère le tableau contenu dans la balise html <table> et l'envoi au routeur sous forme d'array avec une ligne du tableau html par case de l'array
     $("#downloadTable").on("click", function (){
         //récupérer le contenu de la balise <table>
         var tableHTML = document.getElementById("resultsTable").rows;
@@ -256,19 +257,40 @@ $(document).ready(function () {
             table.push(line);
         }
 
-        console.log(table);
+        //console.log(table);
         //console.log(table);
         //console.log(table[0].cells[1].innerHTML);
 
         $.ajax({
             url: 'index.php?action=downloadResults',
             method: 'POST',
-            data: "table=" + table,
+            data: {dataTable:JSON.stringify(table)},
             success: function (result) {
-                alert("Fichier téléchargé sur votre ordinateur.")
+                //console.log(result);
             }
         });
     });
 
+    //Récupère le tableau contenu dans la balise html <table> et l'envoi au routeur sous forme d'array avec une ligne du tableau html par case de l'array
+    $("body").on("click","#downloadExemplier", function (){
+        $("#downloadExemplierSection").show();
+        //récupérer le contenu de la balise <table>
+        var tableHTML = document.getElementById("resultsTable").rows;
+        var tableWords = [];
+        for (var i = 1; i < tableHTML.length; i++){
+            var lemma = tableHTML[i].cells[4].innerHTML;
+            if (tableWords.includes(lemma) === false){
+                tableWords.push(lemma);
+            }
+        }
+        for (var j = 0; j < tableWords.length; j++){
+
+            $("select#word").append("<option id='"+tableWords[j]+"'>"+tableWords[j]+"</option>");
+        }
+    });
+
+    $("body").on("click",".fa-times", function (){
+        $("#downloadExemplierSection").hide();
+    });
 });
 

@@ -1,5 +1,6 @@
 <?php
 require('controller/HomeController.php');
+require('controller/DownLoadController.php');
 
 try {
     if (isset($_GET['action'])) {
@@ -20,8 +21,10 @@ try {
             $controller = new HomeController();
             $controller -> showStatsTab($_POST["tabName"], $_POST["verbGroup"], $_POST["tense"]);
         }  elseif ($_GET['action'] == 'downloadResults') {
+            $data    = $_POST["dataTable"];
+            $data    = json_decode("$data", true);
             $controller = new DownloadController();
-            $controller -> downLoadResults($_POST["table"]) ;
+            $controller -> downLoadResults($data) ;
         } else {
             echo "Error 404 : page non trouvée";
         }

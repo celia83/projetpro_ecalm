@@ -1,5 +1,6 @@
 <?php
 
+include_once "model/Exporter/DownloadResults.php";
 
 class DownLoadController{
 
@@ -8,6 +9,7 @@ class DownLoadController{
      * @param $table
      */
     function downLoadResults($table){
-
+        $downloader = new DownloadResults();
+        $downloader->downloadTables($table);
     }
 }

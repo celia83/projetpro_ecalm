@@ -7,6 +7,7 @@
         <link rel="stylesheet" href = "../public/css/style.css"/> <!-- donne la feuille de style en css utilisée-->
         <script type="text/javascript" src="../public/js/jquery-3.4.1.js"></script> <!--appel de JQuery-->
         <script src="../public/js/script.js"></script> <!--Appel du script javascript-->
+        <script src="https://kit.fontawesome.com/bafcb5074c.js" crossorigin="anonymous"></script> <!--Site pour utiliser des icônes-->
     </head>
     <body>
         <header>
@@ -255,15 +256,42 @@
         </article>
 
         <div id="downloadTableDiv">
-            <input id="downloadTable" value ="Télécharger le résultat" type="submit" />
+            <input id="downloadExemplier" value ="Télécharger un exemplier" type="submit"/>
+            <input id="downloadTable" value ="Télécharger le résultat" type="submit"/>
         </div>
+
+        <article id="downloadExemplierSection" hidden>
+            <div id="cross"><i class="fas fa-times"></i></div>
+            <form id="downloadExemplierForm" action ="" method="POST">
+                <h3>Exporter un exemplier</h3>
+                <article id="downloadExemplierArticle">
+                    <div id="wordDiv">
+                        <label for="word">Quel mot ? </label>
+                        <select  id="word" name="word">
+
+                        </select>
+                    </div>
+                    <div id="nbLineDiv">
+                        <label for="nbLine">Combien de lignes souhaitez-vous ? </label>
+                        <select  id="nbLine" name="nbLine">
+                            <option value = "10">10</option>
+                            <option value = "20">20</option>
+                            <option value = "30">30</option>
+                            <option value = "40">40</option>
+                            <option value = "50">50</option>
+                        </select>
+                    </div>
+                </article>
+                <input id="getExemplier" value ="Télécharger l'exemplier" type="submit"/>
+            </form>
+        </article>
+
 
         <!--Partie pour l'affichage des résultats-->
         <article>
             <h2 id="resultsTitle">Résultats</h2>
             <div id = "resultsDiv">
                 <table id = "resultsTable">
-
                 </table>
             </div>
         </article>

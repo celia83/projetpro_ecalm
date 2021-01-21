@@ -1,5 +1,5 @@
 <?php
-include "DownloadResult.php";
+include "DownloadResults.php";
 #include "DownloadResultNbWordProd.php";
 #include "DownloadResultPOSRepartitionByLevel.php";
 #include "DownloadResultTenseRepartition.php";
@@ -15,8 +15,8 @@ $table = array('0'=>array(' ','CP','CE1','CE2'),
              );
              
              
-$resultat = new DownloadResult();
-($resultat->getResultsform($table));
+$resultat = new DownloadResults();
+$resultat->downloadTables($table);
 
 #$resultat = new DownloadResultNbWordProd();
 #var_dump($resultat->getResultsformNbWordProd());

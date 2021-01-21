@@ -9,6 +9,11 @@
     src: url("../assets/fonts/Roboto-Bold.ttf");
 }
 
+/* CURSEUR*/
+button, input, select, .fa-times{
+    cursor:  pointer;
+}
+
 /* STYLE DE L'EN-TETE */
 header{
     background-color: RGB(85,85,85);
@@ -152,7 +157,7 @@ select#tabStats{
     font: 13px RobotoRegular;
 }
 
-input#getResults, input#getStats, input#downloadTable{
+input#getResults, input#getStats, input#downloadTable, input#downloadExemplier, input#getExemplier{
     border: none;
     border-radius: 5px 5px 5px 5px;
     box-shadow: 0 0 4px RGB(2,125,180);
@@ -163,8 +168,17 @@ input#getResults, input#getStats, input#downloadTable{
     background: RGB(2,125,180);
 }
 
-input#getStats, input#downloadTable{
+input#getStats, input#downloadTable, input#downloadExemplier, input#getExemplier{
     width: 200px;
+}
+
+input#downloadExemplier{
+    margin-right : 20px;
+}
+
+input#getExemplier{
+    margin-top: 10px;
+    height: 30px;
 }
 
 
@@ -198,6 +212,47 @@ table, tr, td {
 table {
     width:100%;
     font: 13px RobotoRegular;
+}
+
+/*Position de la boite de téléchargement*/
+h3 {
+    color : white;
+    font: 22px RobotoBold;
+}
+article#downloadExemplierSection {
+    position: absolute;
+    z-index: 1;
+    top: 250px;
+    left:0;
+    right:0;
+    margin-left:auto;
+    margin-right:auto;
+    width: 500px;
+    height: 260px;
+    background-color: RGB(124,0,0);
+    border-radius: 10px 10px 10px 10px;
+    box-shadow: 0px 0px 6px 0 #1b1212;
+}
+article#downloadExemplierArticle{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    width: 340px;
+}
+
+form#downloadExemplierForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+div#cross{
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin: 5px 10px 0px 0px;
+    font-size: 20px;
 }
 
 

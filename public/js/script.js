@@ -67,8 +67,14 @@ $(document).ready(function () {
                 var message = JSON.parse(result);
 
                 //créer le tableau à injecter dans la page html
+                if(pos === "Adjectifs" || pos === "Noms"){
+                    $("#resultsTable").html("<tr id ='headerTab'><td>SCAN</td><td>CORPUS</td><td>NIVEAU</td><td>ELEVE</td><td>LEMME</td><td>FORME<br/>NORMEE</td><td>FORME<br/>TRANSCRITE</td><td>PHONOLOGIE<br/>NORMEE</td><td>PHONOLOGIE<br/>TRANSCRITE</td><td>CATEGORIE</td><td>STATUT<br/>D'ERREUR</td><td>STATUT<br/>SEGMENTATION</td><td>GENRE</td><td>NOMBRE</td></tr>");
+                } else if (pos === "Verbes"){
+                    $("#resultsTable").html("<tr id ='headerTab'><td>SCAN</td><td>CORPUS</td><td>NIVEAU</td><td>ELEVE</td><td>LEMME</td><td>FORME<br/>NORMEE</td><td>FORME<br/>TRANSCRITE</td><td>PHONOLOGIE<br/>NORMEE</td><td>PHONOLOGIE<br/>TRANSCRITE</td><td>CATEGORIE</td><td>STATUT<br/>D'ERREUR</td><td>STATUT<br/>SEGMENTATION</td><td>TIROIR<br/>VERBAL</td><td>PERSONNE</td></tr>");
+                } else {
+                    $("#resultsTable").html("<tr id ='headerTab'><td>SCAN</td><td>CORPUS</td><td>NIVEAU</td><td>ELEVE</td><td>LEMME</td><td>FORME<br/>NORMEE</td><td>FORME<br/>TRANSCRITE</td><td>PHONOLOGIE<br/>NORMEE</td><td>PHONOLOGIE<br/>TRANSCRITE</td><td>CATEGORIE</td><td>STATUT<br/>D'ERREUR</td><td>STATUT<br/>SEGMENTATION</td></tr>");
+                }
 
-                $("#resultsTable").html("<tr id ='headerTab'><td>SCAN</td><td>CORPUS</td><td>NIVEAU</td><td>ELEVE</td><td>LEMME</td><td>FORME<br/>NORMEE</td><td>FORME<br/>TRANSCRITE</td><td>PHONOLOGIE<br/>NORMEE</td><td>PHONOLOGIE<br/>TRANSCRITE</td><td>CATEGORIE</td><td>STATUT<br/>D'ERREUR</td><td>STATUT<br/>SEGMENTATION</td><td>GENRE</td><td>NOMBRE</td></tr>");
                 for (var i = 0 ; i< message.length; i++){
                     //permettra d'afficher en couleur les différentes parties du mot produit par l'élève
                     //découpage en syllabes
@@ -85,7 +91,7 @@ $(document).ready(function () {
                         ending = "";
                     }
 
-                    //S'il y a plus de deux syllabes on récupère es autres éléments
+                    //S'il y a plus de deux syllabes on récupère les autres éléments
                     if (cuttransSeg.length > 2){
                         var index = cuttransSeg.length - 2;
                         var middle =cuttransSeg[1,index];
@@ -93,7 +99,80 @@ $(document).ready(function () {
                         middle = "";
                     }
 
-                    $("#resultsTable").append("<tr id = 'mot"+[i]+"'><td></td><td></td><td>" + message[i].Niv +"</td><td>" + message[i].IdProd +"</td><td>" + message[i].Lemme +"</td><td>" + message[i].SegNorm +"</td><td><span class='base' id = 'base"+[i]+"'>" + base+"</span><span class='middle' id = 'middle"+[i]+"'>" +middle+"</span><span class='ending' id = 'ending"+[i]+"'>" + ending+"</span></td><td>" + message[i].PhonNorm+"</td><td>" + message[i].PhonTrans+"</td><td>" + message[i].Categorie+"</td><td>" + message[i].StatutErreur+"</td><td>" + message[i].StatutSegm+"</td></tr>");
+                    //Traitement pour connaitre le corpus
+                    var regexScoledit = new RegExp("[A-Z]+-[a-zA-Z]+[0-9]+-[0-9]+-[a-zA-Z]+-[a-zA-Z][0-9]-S[0-9]+-[A-Z][0-9]-[0-9]+-[0-9]+");
+                    var regexEcriscol = new RegExp("[A-Z]+-[a-zA-Z]+[0-9]+-[0-9]+-[a-zA-Z]+-[a-zA-Z][0-9]-E[0-9]+-[A-Z][0-9]-[0-9]+-[0-9]+");
+                    var regexResolco = new RegExp("[A-Z]+-[a-zA-Z]+[0-9]+-[0-9]+-[a-zA-Z]+-[a-zA-Z][0-9]-R[0-9]+-[A-Z][0-9]-[0-9]+-[0-9]+");
+                    var corpus ="";
+                    if (regexScoledit.test(message[i].IdTok)){
+                        corpus = "Scoledit";
+                    } else if (regexEcriscol.test(message[i].IdTok)){
+                        corpus = "Ecriscol";
+                    } else if (regexResolco.test(message[i].IdTok)){
+                        corpus = "Resolco";
+                    }
+
+                    //Normalisation des catégories
+                    var posMessage = message[i].Categorie;
+                    if (posMessage === "ADV"){
+                        pos = "Adverbe";
+                    } else if (posMessage === "ADJ"){
+                        pos = "Adjectif";
+                    } else if (posMessage.search("VER") === 0){
+                        pos = "Verbe";
+                    } else if (posMessage === "NOM"){
+                        pos = "Nom";
+                    } else if (posMessage === "NAM"){
+                        pos = "Nom propre";
+                    } else if (posMessage.search("DET") === 0) {
+                        pos = "Déterminant";
+                    } else if (posMessage.search("PRO") === 0){
+                        pos = "Pronom";
+                    } else if (posMessage.search("PRP") === 0){
+                        pos = "Préposition";
+                    } else if (posMessage === "KON"){
+                        pos = "Conjonction";
+                    } else if (posMessage === "ABR"){
+                        pos = "Abréviation";
+                    } else if (posMessage === "NUM"){
+                        pos = "Chiffres";
+                    } else if (posMessage === "INT"){
+                        pos = "Interjections";
+                    } else {
+                        pos = "Aucune";
+                    }
+
+                    //Remplissage des lignes du tableau
+                    if(pos === "Adjectif" || pos === "Nom"){
+                        $("#resultsTable").append("<tr id = 'mot"+[i]+"'><td></td><td>" + corpus +"</td><td>" + message[i].Niv +"</td><td>" + message[i].IdProd +"</td><td>" + message[i].Lemme +"</td><td>" + message[i].SegNorm +"</td><td><span class='base' id = 'base"+[i]+"'>" + base+"</span><span class='middle' id = 'middle"+[i]+"'>" +middle+"</span><span class='ending' id = 'ending"+[i]+"'>" + ending+"</span></td><td>" + message[i].PhonNorm+"</td><td>" + message[i].PhonTrans+"</td><td>" + pos+"</td><td>" + message[i].StatutErreur+"</td><td>" + message[i].StatutSegm+"</td><td>" + message[i].Genre +"</td><td>" + message[i].Nombre +"</td></tr>");
+                    } else if (pos === "Verbe") {
+                        //Trouver le tiroir verbal
+                        if (posMessage.search("cond") === 4){
+                            var tense = "Conditionnel";
+                        } else if (posMessage.search("futu")=== 4){
+                            tense = "Futur";
+                        } else if (posMessage.search("impe") === 4){
+                            tense = "Impératif";
+                        } else if (posMessage.search("impf") === 4){
+                            tense = "Imparfait";
+                        } else if (posMessage.search("infi") === 4) {
+                            tense = "Infinitif";
+                        } else if (posMessage.search("ppre") === 4){
+                            tense = "Participe présent";
+                        } else if (posMessage.search("pres") ===4){
+                            tense = "Présent";
+                        } else if (posMessage.search("simp") === 4){
+                            tense= "Passé simple";
+                        } else if (posMessage.search("subi")=== 4){
+                            tense = "Subjonctif imparfait";
+                        } else if (posMessage.search("subp")=== 4){
+                            tense = "Subjonctif présent";
+                        }
+
+                        $("#resultsTable").append("<tr id = 'mot"+[i]+"'><td></td><td>" + corpus +"</td><td>" + message[i].Niv +"</td><td>" + message[i].IdProd +"</td><td>" + message[i].Lemme +"</td><td>" + message[i].SegNorm +"</td><td><span class='base' id = 'base"+[i]+"'>" + base+"</span><span class='middle' id = 'middle"+[i]+"'>" +middle+"</span><span class='ending' id = 'ending"+[i]+"'>" + ending+"</span></td><td>" + message[i].PhonNorm+"</td><td>" + message[i].PhonTrans+"</td><td>" + pos+"</td><td>" + message[i].StatutErreur+"</td><td>" + message[i].StatutSegm+"</td><td>" + tense +"</td><td>" + message[i].VerPers +"</td></tr>");
+                    } else {
+                        $("#resultsTable").append("<tr id = 'mot"+[i]+"'><td></td><td>" + corpus +"</td><td>" + message[i].Niv +"</td><td>" + message[i].IdProd +"</td><td>" + message[i].Lemme +"</td><td>" + message[i].SegNorm +"</td><td><span class='base' id = 'base"+[i]+"'>" + base+"</span><span class='middle' id = 'middle"+[i]+"'>" +middle+"</span><span class='ending' id = 'ending"+[i]+"'>" + ending+"</span></td><td>" + message[i].PhonNorm+"</td><td>" + message[i].PhonTrans+"</td><td>" + pos+"</td><td>" + message[i].StatutErreur+"</td><td>" + message[i].StatutSegm+"</td></tr>");
+                    }
 
                     //Ajouter les classes correct ou false en fonction d'où se trouve l'erreur
                     if(message[i].ErrVerBase === "1"){
@@ -117,12 +196,6 @@ $(document).ready(function () {
                         $("#middle"+[i]).addClass("correct");
                         $("#ending"+[i]).addClass("correct");
                     }
-
-                    //Pour les noms et adjectifs ajouter le genre et le nombre
-                    if (message[i].Categorie === "NOM" || message[i].Categorie === "NAM" || message[i].Categorie === "ADJ"){
-                        $("#mot"+[i]).append("<td>" + message[i].Genre +"</td><td>" + message[i].Nombre +"</td>");
-                    }
-
                 }
 
                 //Changer leur couleur en fonction des erreurs
@@ -155,7 +228,7 @@ $(document).ready(function () {
         }
     });
 
-    //Permet d'afficher dans la zone de résultats les résultats de la requête faite par l'utilisateur
+    //Statistiques : Permet d'afficher dans la zone de résultats les résultats de la requête faite par l'utilisateur
     $("#getStats").on("click", function (event) {
         //permet de ne pas envoyer le formulaire
         event.preventDefault();

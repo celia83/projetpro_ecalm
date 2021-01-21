@@ -41,7 +41,7 @@ class CriterionVerb extends Criterion{
 
         #Rédiger la requête (pour les verbes la catégorie et le tiroir verbal sont les mêmes donc on sélectionne soit tous les verbes soit les verbes au conditionnel etc. dans la partie "Catégorie
         $request = 'SELECT * FROM `cm2_scoledit` 
-WHERE IdTok LIKE "'.$this->corpus.'" 
+WHERE IdTok REGEXP "'.$this->corpus.'" 
 AND Niv LIKE "'.$this->level.'" 
 AND Categorie LIKE "'.$this->tense.'"
 AND StatutErreur LIKE "'.$this->errStatus.'" 

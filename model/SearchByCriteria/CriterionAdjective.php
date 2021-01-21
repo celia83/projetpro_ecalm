@@ -40,7 +40,7 @@ class CriterionAdjective extends Criterion{
 
         #Rédiger la requête
         $request = 'SELECT * FROM `cm2_scoledit` 
-WHERE IdTok LIKE "'.$this->corpus.'" 
+WHERE IdTok REGEXP "'.$this->corpus.'" 
 AND Niv LIKE "'.$this->level.'" 
 AND Categorie LIKE "'.$this->pos.'" 
 AND StatutErreur LIKE "'.$this->errStatus.'" 

@@ -329,21 +329,42 @@ $(document).ready(function () {
         var tableHTML = document.getElementById("resultsTable").rows;
         var table = [];
         for (var i = 0; i < tableHTML.length; i++){
-            var line = [];
+            var lineTable = [];
             for (var j = 0; j < tableHTML[i].cells.length; j++){
-                line.push(tableHTML[i].cells[j].innerText);
+                var line = tableHTML[i].cells[j].innerText;
+                lineTable.push(line.replace("\n", " "));
             }
-            table.push(line);
+            var stringLine = lineTable.join("\t");
+            table.push(stringLine);
         }
-        $.ajax({
+         var stringTable = table.join("\n");
+
+        strDownload(stringTable, 'resultats.tsv');
+
+        /*$.ajax({
             url: 'index.php?action=downloadResults',
             method: 'POST',
             data: {dataTable:JSON.stringify(table)},
             success: function (result) {
                 //console.log(result);
             }
-        });
+        });*/
     });
+
+    //Permet le téléchargement d'un texte (string)
+    function strDownload(text, fileName) {
+        text = '' + text;
+        fileName = fileName || 'strDownload.txt';
+        var c = document.createElement('A'),
+            d = document.body;
+        d.appendChild(c);
+        c.href = 'data:text/plain;charset=utf-8,' + encodeURIComponent(text);
+        c.download = fileName;
+        c.click();
+        d.removeChild(c);
+    }
+
+
 
     //Téléchargement d'un exemplier : Récupère le tableau contenu dans la balise html <table> et l'envoi au routeur sous forme d'array avec une ligne du tableau html par case de l'array
     $("body").on("click","#downloadExemplier", function (){

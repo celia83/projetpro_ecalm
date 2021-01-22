@@ -297,5 +297,6 @@
                 </table>
             </div>
         </article>
+    <footer></footer>
     </body>
 </html>

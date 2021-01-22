@@ -1,6 +1,7 @@
 $(document).ready(function () {
     //Navigation entre les volets Données et Statistiques
     $("body").on("click","#data",function (){
+        $("#downloadExemplier").show();
         $("#statisticsSelection").hide();
         $("#dataSelection").show();
         $("button#data").css("box-shadow", "inset 0 0 11px 0px #600000");
@@ -11,6 +12,7 @@ $(document).ready(function () {
     $("body").on("click","#statistics",function (){
         $("#statisticsSelection").show();
         $("#dataSelection").hide();
+        $("#downloadExemplier").hide();
         $("button#data").css("box-shadow", "1px 0px 6px 0px #4b4b4b");
         $("button#data:hover").css("box-shadow", "inset 0 0 11px 0px #ede1e1ad");
         $("button#statistics").css("box-shadow", "inset 0 0 11px 0px #600000");
@@ -207,8 +209,6 @@ $(document).ready(function () {
                 //Changer leur couleur en fonction des erreurs
                 $(".correct").css("color", "#4CA86A");
                 $(".false").css("color", "#4CA86A");
-
-                //$("#resultsDiv").html(message);
             }
         });
     });
@@ -327,13 +327,17 @@ $(document).ready(function () {
     $("#downloadTable").on("click", function (){
         //récupérer le contenu de la balise <table>
         var tableHTML = document.getElementById("resultsTable").rows;
-        var table = [];
+        var table = []; //tableau des lignes du tableau html
+        //Pourcourir les lignes du tableau
         for (var i = 0; i < tableHTML.length; i++){
-            var lineTable = [];
+            var lineTable = []; //tableau des cellules de la ligne
+            //Parcourir les cellules de la ligne
             for (var j = 0; j < tableHTML[i].cells.length; j++){
+                //Récupérer le texte contenu dans les cellules
                 var line = tableHTML[i].cells[j].innerText;
                 lineTable.push(line.replace("\n", " "));
             }
+            //Convertir le tableau  de cellules en string (chaque cellule séparée par une tabulation
             //Traitement particulier du tableau sur les échecs et réussites qui a des cellules fusionnées
             if($("#tabStats > option:selected").val() === "FailureAndSuccessTenses"){
                 if(i === 0||i === 1 || i===5||i===9||i===13||i===17){
@@ -341,14 +345,17 @@ $(document).ready(function () {
                 } else {
                     stringLine = "\t" + lineTable.join("\t");
                 }
+            //Traitement de tous les autres tableaux
             } else {
                 stringLine = lineTable.join("\t");
             }
-
             table.push(stringLine);
         }
-         var stringTable = table.join("\n");
 
+        //Convertir le tableau des lignes en string (chaque ligne séparée par un retour chariot)
+        var stringTable = table.join("\n");
+
+        //Télécharger le tableau au format tsv
         strDownload(stringTable, 'resultats.tsv');
 
         /*$.ajax({
@@ -378,14 +385,14 @@ $(document).ready(function () {
 
     //Téléchargement d'un exemplier : Récupère le tableau contenu dans la balise html <table> et l'envoi au routeur sous forme d'array avec une ligne du tableau html par case de l'array
     $("body").on("click","#downloadExemplier", function (){
-        $("#downloadExemplierSection").show();
         //récupérer le contenu de la balise <table>
         var tableHTML = document.getElementById("resultsTable").rows;
+        $("#downloadExemplierSection").show();
         var tableWords = [];
         for (var i = 1; i < tableHTML.length; i++){
             var lemma = tableHTML[i].cells[4].innerHTML;
             if (tableWords.includes(lemma) === false){
-                tableWords.push(lemma);
+                    tableWords.push(lemma);
             }
         }
         $("select#word").html("<option id='"+tableWords[0]+"'>"+tableWords[0]+"</option>");

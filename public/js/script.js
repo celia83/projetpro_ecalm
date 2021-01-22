@@ -334,7 +334,17 @@ $(document).ready(function () {
                 var line = tableHTML[i].cells[j].innerText;
                 lineTable.push(line.replace("\n", " "));
             }
-            var stringLine = lineTable.join("\t");
+            //Traitement particulier du tableau sur les échecs et réussites qui a des cellules fusionnées
+            if($("#tabStats > option:selected").val() === "FailureAndSuccessTenses"){
+                if(i === 0||i === 1 || i===5||i===9||i===13||i===17){
+                    var stringLine = lineTable.join("\t");
+                } else {
+                    stringLine = "\t" + lineTable.join("\t");
+                }
+            } else {
+                stringLine = lineTable.join("\t");
+            }
+
             table.push(stringLine);
         }
          var stringTable = table.join("\n");

@@ -1,13 +1,19 @@
 $(document).ready(function () {
     //Navigation entre les volets Données et Statistiques
-    $("#data").on("click",function (){
+    $("body").on("click","#data",function (){
         $("#statisticsSelection").hide();
         $("#dataSelection").show();
+        $("button#data").css("box-shadow", "inset 0 0 11px 0px #600000");
+        $("button#statistics").css("box-shadow", "1px 0px 6px 0px #4b4b4b");
+        $("button#statistics:hover").css("box-shadow", "inset 0 0 11px 0px #ede1e1ad");
     });
 
-    $("#statistics").on("click",function (){
+    $("body").on("click","#statistics",function (){
         $("#statisticsSelection").show();
         $("#dataSelection").hide();
+        $("button#data").css("box-shadow", "1px 0px 6px 0px #4b4b4b");
+        $("button#data:hover").css("box-shadow", "inset 0 0 11px 0px #ede1e1ad");
+        $("button#statistics").css("box-shadow", "inset 0 0 11px 0px #600000");
     });
 
     //Permet d'afficher les critères avancés pour les verbes

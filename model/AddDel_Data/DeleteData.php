@@ -1,6 +1,6 @@
 <?php
 
-include_once "../DataBase.php";
+include_once "D:/Documents/Applications/Wamp/www/projetpro_ecalm/model/DataBase.php";
 
 class DeleteData 
 {
@@ -20,19 +20,18 @@ class DeleteData
      * les lignes qui correspondent au CM2 et à Scoledit et les supprimer.
      */    
 	
-	public function supprimerData(){	
+	public function deleteData(){
 
 		#Normaliser les critères pour que la requête soit adaptées au données de la bdd
         $this->normalizeCriterions();
         
         #Rédiger la requête pour supprimer les données de la base de données
-		$request = 'DELETE FROM `scoledit` 
+		$request = 'DELETE FROM `cm2_scoledit` 
 WHERE IdTok LIKE "'.$this->corpus.'" 
 AND Niv LIKE "'.$this->level.'"';
 		
         $database = new DataBase();
-        $deleteData= $database->getData($request);        			
-  
+        $database->addOrDelData($request);
 	 } 
 	 
 	protected function normalizeCriterions(){

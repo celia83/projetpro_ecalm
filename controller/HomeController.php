@@ -17,7 +17,7 @@ class HomeController {
     /**
      * Cette fonction permet d'afficher la page d'accueil
      */
-    function home(){
+    public function home(){
         require('view/home.php');
     }
 

@@ -1,6 +1,10 @@
 <?php
+
+session_start();
 require('controller/HomeController.php');
-require('controller/DownLoadController.php');
+require('controller/UserController.php');
+require('controller/ManagerController.php');
+
 
 try {
     if (isset($_GET['action'])) {
@@ -20,11 +24,31 @@ try {
         } elseif ($_GET['action'] == 'showStats'){
             $controller = new HomeController();
             $controller -> showStatsTab($_POST["tabName"], $_POST["verbGroup"], $_POST["tense"]);
-        }  elseif ($_GET['action'] == 'downloadResults') {
-            $data    = $_POST["dataTable"];
-            $data    = json_decode("$data", true);
-            $controller = new DownloadController();
-            $controller -> downLoadResults($data) ;
+        #Controleurs pour supprimer des données quand on est gestionnaire
+        } elseif ($_GET['action'] == 'deleteData'){
+            $controller = new ManagerController();
+            $controller -> delete($_POST["chooseCorpus"], $_POST["chooseLevel"]);
+        #Controleurs pour ajouter des données quand on est gestionnaire
+        } elseif ($_GET['action'] == 'addData'){
+            #Vérifier que l'on a bien un fichier csv
+            $fileInfos = pathinfo($_FILES['chooseFile']['name']);
+            $extension = $fileInfos['extension'];
+            $authorizedExtensions = "csv";
+            if ($extension == $authorizedExtensions){
+                $controller = new ManagerController();
+                $controller -> add($_FILES["chooseFile"]['tmp_name']);
+            }
+        #Controleur pour la connexion
+        } elseif ($_GET["action"]== "connectionPage") {
+            $controller = new UserController();
+            $controller->connectionPage();
+        } elseif ($_GET["action"]== "connection") {
+            $controller = new UserController();
+            $controller->login($_POST["login"], $_POST["psw"]);
+        #Controleur pour la déconnexion
+        } elseif ($_GET["action"]== "disconnection") {
+            $controller = new UserController();
+            $controller->logout();
         } else {
             echo "Error 404 : page non trouvée";
         }
@@ -32,6 +56,7 @@ try {
         $controller = new HomeController();
         $controller->home();
     }
+
 }catch(Exception $e) {
         echo 'Erreur : ' . $e->getMessage();
     }

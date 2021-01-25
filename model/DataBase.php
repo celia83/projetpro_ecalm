@@ -27,7 +27,7 @@ class DataBase {
         try {
             $response = $db->query($request);
 
-            #Récupérer les informations de la requête (le mode PDO::FETCH_ASSOC permet d'éviter que le résultats de dédouble les colonnes)
+            #Récupérer les informations de la requête (le mode PDO::FETCH_ASSOC permet d'éviter que le résultats ne dédouble les colonnes)
             $tab = array();
             while ($enr = $response->fetch(PDO::FETCH_ASSOC)) {
                 array_push($tab, $enr);
@@ -38,7 +38,7 @@ class DataBase {
         return $tab;
     }
 
-    public function addData($request){
+    public function addOrDelData($request){
         #Connexion à la base de données
         $db = self::connection();
         #Requêter la base

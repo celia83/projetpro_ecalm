@@ -1,7 +1,7 @@
 <?php
 
 #connecter à la base de données
-include_once "../DataBase.php";
+include_once "D:/Documents/Applications/Wamp/www/projetpro_ecalm/model/DataBase.php";
 
 class InsertData
 {
@@ -10,7 +10,7 @@ class InsertData
      */
      
 	#la fonction de traiter le fichier
-	public function input_csv($handle)   
+	public function input_csv($handle)
 		{   
 			$out = array ();   
 			$n = 0;   
@@ -27,10 +27,11 @@ class InsertData
 		}  
 
 	#la fonction d'inserer
-	public function inserercsv($file_path){
+	public function addCSV($file_path){
 
 			
-			if ( file_exists ( $file_path )){  
+			if ( file_exists ( $file_path )){
+
 			$handle = fopen($file_path, 'r');   			   
 			}
 			
@@ -47,8 +48,8 @@ class InsertData
 			} 
 			  
 			#un boucle pour obtenir les valeurs
-			for($i = 1; $i < $len_result; $i++)    
-			{   
+			$data_values="";
+			for($i = 1; $i < $len_result; $i++){
 
 				#split chaque ligne par ';'
 				$listre =  explode (';',implode($result[$i])); 
@@ -88,21 +89,24 @@ class InsertData
 				$ErrVerDes= ($listre[31]);
 				$ErrVerBaseEtDes= ($listre[32]);
 
-				$data_values .= "('$IdTok','$IdProd','$Niv','$SegNorm','$SegTrans','$PhonNorm','$PhonTrans','$SyllabNorm','$SyllabTrans','$Categorie','$Lemme','$StatuErreurSimp','$StatutErreur','$StatutSegm','$Genre','$Nombre','$BaseAdjNorm','$GenreAdjNorm','$NombreAdjNorm','$BaseAdjTrans','$GenreAdjTrans','$NombreAdjTrans','$ErreurAdjBase','$ErreurAdjGenre','$ErreurAdjNombre','$VerPers','$BaseVerForme','$DesiVerForme','$BaseVerProd','$DesiVerProd	','$ErrVerBase','$ErrVerDes','$ErrVerBaseEtDes'),";   
+				$data_values .= "('$IdTok','$IdProd','$Niv','$SegNorm','$SegTrans','$PhonNorm','$PhonTrans','$SyllabNorm','$SyllabTrans','$Categorie','$Lemme','$StatuErreurSimp','$StatutErreur','$StatutSegm','$Genre','$Nombre','$BaseAdjNorm','$GenreAdjNorm','$NombreAdjNorm','$BaseAdjTrans','$GenreAdjTrans','$NombreAdjTrans','$ErreurAdjBase','$ErreurAdjGenre','$ErreurAdjNombre','$VerPers','$BaseVerForme','$DesiVerForme','$BaseVerProd','$DesiVerProd	','$ErrVerBase','$ErrVerDes','$ErrVerBaseEtDes'),";
 			}
-			
+
+
 			#fermer la fonction de handle et supprimer le dernier indice   
-			$data_values = substr($data_values,0,-1); 
+			$data_values = substr($data_values,0,-1);
+
+
 			
 			#fermer la fonction de handle   
 			fclose($handle); 
 			
 			#insérer les données aux tables
-			$request = "INSERT INTO `scoledit` (IdTok,IdProd,Niv,SegNorm,SegTrans,PhonNorm,PhonTrans,SyllabNorm,SyllabTrans,Categorie,Lemme,StatuErreurSimp,StatutErreur,StatutSegm,Genre,Nombre,BaseAdjNorm,GenreAdjNorm,NombreAdjNorm,BaseAdjTrans,GenreAdjTrans,NombreAdjTrans,ErreurAdjBase,ErreurAdjGenre,ErreurAdjNombre,VerPers,BaseVerForme,DesiVerForme,BaseVerProd,DesiVerProd,ErrVerBase,ErrVerDes,ErrVerBaseEtDes) VALUES $data_values";
-			
+			$request = "INSERT INTO `cm2_scoledit` (IdTok,IdProd,Niv,SegNorm,SegTrans,PhonNorm,PhonTrans,SyllabNorm,SyllabTrans,Categorie,Lemme,StatuErreurSimp,StatutErreur,StatutSegm,Genre,Nombre,BaseAdjNorm,GenreAdjNorm,NombreAdjNorm,BaseAdjTrans,GenreAdjTrans,NombreAdjTrans,ErreurAdjBase,ErreurAdjGenre,ErreurAdjNombre,VerPers,BaseVerForme,DesiVerForme,BaseVerProd,DesiVerProd,ErrVerBase,ErrVerDes,ErrVerBaseEtDes) VALUES $data_values";
+			echo $request;
 			#call la fonction de getData 
 			$database = new DataBase();
-			$database->addData($request);
+			$database->addOrDelData($request);
 	 } 	
  }  
 		

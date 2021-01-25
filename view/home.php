@@ -13,13 +13,25 @@
         <header>
             <img alt="logo_lidilem" id = "logo_lidilem" src="../public/assets/img/logo_LIDILEM_CMJN.jpg"/>
             <img alt="logo_ecalm" id = "logo_ecalm" src="../public/assets/img/Ecalm_logo_transparent.png"/>
-            <article id="connexion">Connexion</article>
+            <!--<a href="view/userConnection.php">Connexion</a>-->
+            <div id="connectionArea"><?php
+                if (isset ($_SESSION["login"])){
+                echo '<a href="../index.php?action=disconnection">Déconnexion</a>';
+                } else {
+                echo '<a href="../index.php?action=connectionPage">Connexion</a>';
+                }?>
+            </div>
         </header>
 
         <!--Boutons pour naviguer entre les articles : soit données soit statistiques quand on n'est pas un gestionnaire-->
         <div id = "navigationButtons">
             <button id = "data" type="button">Données</button>
             <button id = "statistics" type="button">Statistiques descriptives</button>
+            <?php
+            if (isset ($_SESSION["login"])){
+                echo '<button id = "manager" type="button">Ajouter et Supprimer des données</button>';
+            }
+            ?>
         </div>
 
 
@@ -255,6 +267,13 @@
             </form>
         </article>
 
+        <div id="managerDiv" hidden>
+            <article id="managerArticle" >
+
+            </article>
+        </div>
+
+
         <div id="downloadTableDiv">
             <input id="downloadExemplier" value ="Télécharger un exemplier" type="submit"/>
             <input id="downloadTable" value ="Télécharger le résultat" type="submit"/>
@@ -290,7 +309,7 @@
 
 
         <!--Partie pour l'affichage des résultats-->
-        <article>
+        <article id = "resultsArticle">
             <h2 id="resultsTitle">Résultats</h2>
             <div id = "resultsDiv">
                 <table id = "resultsTable">

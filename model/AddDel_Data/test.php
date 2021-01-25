@@ -2,8 +2,8 @@
 include "InsertData.php";
 include "DeleteData.php";
 
-//$insertdate = new InsertData();
-//var_dump($insertdate->inserercsv("2_CM2_Scoledit.CSV") );
+$insertdate = new InsertData();
+$insertdate->addCSV("D:/Documents/Applications/Wamp/www/projet_utils/extrait.csv");
 
-$supprimerdate = new DeleteData("Scoledit", "CM2");
-var_dump($supprimerdate->supprimerData() );
+//$supprimerdate = new DeleteData("Scoledit", "CM2");
+//var_dump($supprimerdate->supprimerData() );

@@ -7,6 +7,10 @@ $(document).ready(function () {
         $("button#data").css("box-shadow", "inset 0 0 11px 0px #600000");
         $("button#statistics").css("box-shadow", "1px 0px 6px 0px #4b4b4b");
         $("button#statistics:hover").css("box-shadow", "inset 0 0 11px 0px #ede1e1ad");
+        $("#managerDiv").hide();
+        $("button#manager").css("box-shadow", "1px 0px 6px 0px #4b4b4b");
+        $("#resultsArticle").show();
+        $("#downloadTable").show();
     });
 
     $("body").on("click","#statistics",function (){
@@ -16,6 +20,23 @@ $(document).ready(function () {
         $("button#data").css("box-shadow", "1px 0px 6px 0px #4b4b4b");
         $("button#data:hover").css("box-shadow", "inset 0 0 11px 0px #ede1e1ad");
         $("button#statistics").css("box-shadow", "inset 0 0 11px 0px #600000");
+        $("#managerDiv").hide();
+        $("button#manager").css("box-shadow", "1px 0px 6px 0px #4b4b4b");
+        $("#resultsArticle").show();
+        $("#downloadTable").show();
+    });
+
+    $("body").on("click","#manager",function (){
+        $("#managerDiv").show();
+        $("button#manager").css("box-shadow", "inset 0 0 11px 0px #600000");
+        $("#statisticsSelection").hide();
+        $("#dataSelection").hide();
+        $("#downloadExemplier").hide();
+        $("button#data").css("box-shadow", "1px 0px 6px 0px #4b4b4b");
+        $("button#data:hover").css("box-shadow", "inset 0 0 11px 0px #ede1e1ad");
+        $("button#statistics").css("box-shadow", "1px 0px 6px 0px #4b4b4b");
+        $("#resultsArticle").hide();
+        $("#downloadTable").hide();
     });
 
     //Permet d'afficher les critères avancés pour les verbes
@@ -357,15 +378,6 @@ $(document).ready(function () {
 
         //Télécharger le tableau au format tsv
         strDownload(stringTable, 'resultats.tsv');
-
-        /*$.ajax({
-            url: 'index.php?action=downloadResults',
-            method: 'POST',
-            data: {dataTable:JSON.stringify(table)},
-            success: function (result) {
-                //console.log(result);
-            }
-        });*/
     });
 
     //Permet le téléchargement d'un texte (string)
@@ -404,5 +416,36 @@ $(document).ready(function () {
     $("body").on("click",".fa-times", function (){
         $("#downloadExemplierSection").hide();
     });
+
+    //Connection des utilisateurs
+    $("body").on("click","#connectionButton", function (event){
+        event.preventDefault();
+        var login = $("#login").val();
+        var psw = $("#psw").val();
+        $.ajax({
+            url: 'index.php?action=connection',
+            method: 'POST',
+            data : 'login='+login+"&psw="+psw,
+            success: function (result) {
+                var message = JSON.parse(result);
+                if(message === "true"){
+                    //$("#connectionArea").html("<a href=\"../index.php?action=disconnection\">Déconnexion</a>");
+                    document.location.href='index.php';
+                } else {
+                    $("#alerts").html(message);
+                }
+            }
+        });
+    });
+
+    //Partie gestionnaire
+    $("body").on("click","#manager", function (){
+        $("#managerArticle").html("<form id = 'addDataForm' action ='../index.php?action=addData' method='POST' enctype='multipart/form-data'><div><label for='chooseFile'>Ajouter un jeu de données depuis votre ordinateur (csv)</label><input id='chooseFile' name ='chooseFile' value ='addFile' type='file' /></div><div><label for='addData'></label><input id='addData' value ='Ajouter' type='submit' /></div></form><form id = 'deleteDataForm' action ='../index.php?action=deleteData' method='POST'><div id = 'levelDiv'><label for='chooseLevel'>Niveau : </label><select  id='chooseLevel' name='chooseLevel'></select></div><div id = 'corpusDiv'><label for='chooseCorpus'>Corpus de provenance : </label><select  id='chooseCorpus' name='chooseCorpus'><option value = 'Scoledit'>Scoledit</option><option value = 'Ecriscol'>Ecriscol</option><option value = 'Resolco'>Resolco</option></select></div><div><input id='deleteData' value ='Supprimer' type='submit' /></div></form>");
+        var levels = ["CP","CE1","CE2","CM1","CM2"];
+        for (var i = 0; i < levels.length;i++){
+            $("#chooseLevel").append("<option value = '"+levels[i]+"'>"+levels[i]+"</option>");
+        }
+    });
+
 });
 

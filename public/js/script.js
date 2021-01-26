@@ -171,9 +171,18 @@ $(document).ready(function () {
                         pos = "Aucune";
                     }
 
+                    var scanURL = "../public/assets/scans/" + message[i].Niv +"/"+ message[i].IdTok +".jpg";
+                    //console.log(imageExists(scanURL));
+                    if(imageExists(scanURL) === false){
+                        var scan = "Scan indisponible";
+                    } else {
+                        scan ="<a href = '"+scanURL+"' target='_blank'>Lien vers le scan</a>";
+                    }
+
+                    console.log(scanURL);
                     //Remplissage des lignes du tableau
                     if(pos === "Adjectif" || pos === "Nom"){
-                        $("#resultsTable").append("<tr id = 'mot"+[i]+"'><td></td><td>" + corpus +"</td><td>" + message[i].Niv +"</td><td>" + message[i].IdProd +"</td><td>" + message[i].Lemme +"</td><td>" + message[i].SegNorm +"</td><td><span class='base' id = 'base"+[i]+"'>" + base+"</span><span class='middle' id = 'middle"+[i]+"'>" +middle+"</span><span class='ending' id = 'ending"+[i]+"'>" + ending+"</span></td><td>" + message[i].PhonNorm+"</td><td>" + message[i].PhonTrans+"</td><td>" + pos+"</td><td>" + message[i].StatutErreur+"</td><td>" + message[i].StatutSegm+"</td><td>" + message[i].Genre +"</td><td>" + message[i].Nombre +"</td></tr>");
+                        $("#resultsTable").append("<tr id = 'mot"+[i]+"'><td class = 'scans' id='" + message[i].IdTok +"'>"+scan+"</td><td>" + corpus +"</td><td>" + message[i].Niv +"</td><td>" + message[i].IdProd +"</td><td>" + message[i].Lemme +"</td><td>" + message[i].SegNorm +"</td><td><span class='base' id = 'base"+[i]+"'>" + base+"</span><span class='middle' id = 'middle"+[i]+"'>" +middle+"</span><span class='ending' id = 'ending"+[i]+"'>" + ending+"</span></td><td>" + message[i].PhonNorm+"</td><td>" + message[i].PhonTrans+"</td><td>" + pos+"</td><td>" + message[i].StatutErreur+"</td><td>" + message[i].StatutSegm+"</td><td>" + message[i].Genre +"</td><td>" + message[i].Nombre +"</td></tr>");
                     } else if (pos === "Verbe") {
                         //Trouver le tiroir verbal
                         if (posMessage.search("cond") === 4){
@@ -198,9 +207,9 @@ $(document).ready(function () {
                             tense = "Subjonctif présent";
                         }
 
-                        $("#resultsTable").append("<tr id = 'mot"+[i]+"'><td></td><td>" + corpus +"</td><td>" + message[i].Niv +"</td><td>" + message[i].IdProd +"</td><td>" + message[i].Lemme +"</td><td>" + message[i].SegNorm +"</td><td><span class='base' id = 'base"+[i]+"'>" + base+"</span><span class='middle' id = 'middle"+[i]+"'>" +middle+"</span><span class='ending' id = 'ending"+[i]+"'>" + ending+"</span></td><td>" + message[i].PhonNorm+"</td><td>" + message[i].PhonTrans+"</td><td>" + pos+"</td><td>" + message[i].StatutErreur+"</td><td>" + message[i].StatutSegm+"</td><td>" + tense +"</td><td>" + message[i].VerPers +"</td></tr>");
+                        $("#resultsTable").append("<tr id = 'mot"+[i]+"'><td class = 'scans' id='" + message[i].IdTok +"'>"+scan+"</td><td>" + corpus +"</td><td>" + message[i].Niv +"</td><td>" + message[i].IdProd +"</td><td>" + message[i].Lemme +"</td><td>" + message[i].SegNorm +"</td><td><span class='base' id = 'base"+[i]+"'>" + base+"</span><span class='middle' id = 'middle"+[i]+"'>" +middle+"</span><span class='ending' id = 'ending"+[i]+"'>" + ending+"</span></td><td>" + message[i].PhonNorm+"</td><td>" + message[i].PhonTrans+"</td><td>" + pos+"</td><td>" + message[i].StatutErreur+"</td><td>" + message[i].StatutSegm+"</td><td>" + tense +"</td><td>" + message[i].VerPers +"</td></tr>");
                     } else {
-                        $("#resultsTable").append("<tr id = 'mot"+[i]+"'><td></td><td>" + corpus +"</td><td>" + message[i].Niv +"</td><td>" + message[i].IdProd +"</td><td>" + message[i].Lemme +"</td><td>" + message[i].SegNorm +"</td><td><span class='base' id = 'base"+[i]+"'>" + base+"</span><span class='middle' id = 'middle"+[i]+"'>" +middle+"</span><span class='ending' id = 'ending"+[i]+"'>" + ending+"</span></td><td>" + message[i].PhonNorm+"</td><td>" + message[i].PhonTrans+"</td><td>" + pos+"</td><td>" + message[i].StatutErreur+"</td><td>" + message[i].StatutSegm+"</td></tr>");
+                        $("#resultsTable").append("<tr id = 'mot"+[i]+"'><td class = 'scans' id='" + message[i].IdTok +"'>"+scan+"</td><td>" + corpus +"</td><td>" + message[i].Niv +"</td><td>" + message[i].IdProd +"</td><td>" + message[i].Lemme +"</td><td>" + message[i].SegNorm +"</td><td><span class='base' id = 'base"+[i]+"'>" + base+"</span><span class='middle' id = 'middle"+[i]+"'>" +middle+"</span><span class='ending' id = 'ending"+[i]+"'>" + ending+"</span></td><td>" + message[i].PhonNorm+"</td><td>" + message[i].PhonTrans+"</td><td>" + pos+"</td><td>" + message[i].StatutErreur+"</td><td>" + message[i].StatutSegm+"</td></tr>");
                     }
 
                     //Ajouter les classes correct ou false en fonction d'où se trouve l'erreur
@@ -440,12 +449,28 @@ $(document).ready(function () {
 
     //Partie gestionnaire
     $("body").on("click","#manager", function (){
-        $("#managerArticle").html("<form id = 'addDataForm' action ='../index.php?action=addData' method='POST' enctype='multipart/form-data'><div><label for='chooseFile'>Ajouter un jeu de données depuis votre ordinateur (csv)</label><input id='chooseFile' name ='chooseFile' value ='addFile' type='file' /></div><div><label for='addData'></label><input id='addData' value ='Ajouter' type='submit' /></div></form><form id = 'deleteDataForm' action ='../index.php?action=deleteData' method='POST'><div id = 'levelDiv'><label for='chooseLevel'>Niveau : </label><select  id='chooseLevel' name='chooseLevel'></select></div><div id = 'corpusDiv'><label for='chooseCorpus'>Corpus de provenance : </label><select  id='chooseCorpus' name='chooseCorpus'><option value = 'Scoledit'>Scoledit</option><option value = 'Ecriscol'>Ecriscol</option><option value = 'Resolco'>Resolco</option></select></div><div><input id='deleteData' value ='Supprimer' type='submit' /></div></form>");
-        var levels = ["CP","CE1","CE2","CM1","CM2"];
+        $("#managerArticle").html("<form id = 'addDataForm' action ='../index.php?action=addData' method='POST' enctype='multipart/form-data'><h2 id = 'addDataTitle'>Ajouter un jeu de données</h2><div id='addFileDiv'><input id='chooseFile' name ='chooseFile' value ='addFile' type='file' /><label id = 'addFileLabel' for='chooseFile'><i class=\"fas fa-upload\"></i></label><aside>Ajouter un jeu de données depuis votre ordinateur (format csv)</aside></div><div><label for='addData'></label><input id='addData' value ='Ajouter' type='submit' /></div></form><form id = 'deleteDataForm' action ='../index.php?action=deleteData' method='POST'><h2 id ='deleteDataTitle'>Supprimer un jeu de données</h2><div id = 'levelDiv'><label for='chooseLevel'>Niveau : </label><select  id='chooseLevel' name='chooseLevel'></select></div><div id = 'corpusDiv'><label for='chooseCorpus'>Corpus de provenance : </label><select  id='chooseCorpus' name='chooseCorpus'><option value = 'Scoledit'>Scoledit</option><option value = 'Ecriscol'>Ecriscol</option><option value = 'Resolco'>Resolco</option></select></div><div><input id='deleteData' value ='Supprimer' type='submit' /></div></form>");
+        var levels = ["CP","CE1","CE2","CM1","CM2", "6EME", "5EME", "4EME", "3EME", "2NDE", "1ERE", "L1", "L2", "L3", "M1", "M2"];
         for (var i = 0; i < levels.length;i++){
             $("#chooseLevel").append("<option value = '"+levels[i]+"'>"+levels[i]+"</option>");
         }
     });
+
+    //Traitement des scans
+    $("body").on("click","", function (){
+
+    });
+
+    function imageExists(image_url){
+
+        var http = new XMLHttpRequest();
+
+        http.open('HEAD', image_url, false);
+        http.send();
+
+        return http.status != 404;
+
+    }
 
 });
 

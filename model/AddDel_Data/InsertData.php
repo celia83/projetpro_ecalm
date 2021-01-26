@@ -103,7 +103,6 @@ class InsertData
 			
 			#insérer les données aux tables
 			$request = "INSERT INTO `cm2_scoledit` (IdTok,IdProd,Niv,SegNorm,SegTrans,PhonNorm,PhonTrans,SyllabNorm,SyllabTrans,Categorie,Lemme,StatuErreurSimp,StatutErreur,StatutSegm,Genre,Nombre,BaseAdjNorm,GenreAdjNorm,NombreAdjNorm,BaseAdjTrans,GenreAdjTrans,NombreAdjTrans,ErreurAdjBase,ErreurAdjGenre,ErreurAdjNombre,VerPers,BaseVerForme,DesiVerForme,BaseVerProd,DesiVerProd,ErrVerBase,ErrVerDes,ErrVerBaseEtDes) VALUES $data_values";
-			echo $request;
 			#call la fonction de getData 
 			$database = new DataBase();
 			$database->addOrDelData($request);

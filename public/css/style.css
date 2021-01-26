@@ -21,16 +21,21 @@ button, input, select, .fa-times{
 /*COULEURS DES BOUTONS QUAND ON PASSE LA SOURIS DESSUS ET QUAND ON CLIQUE*/
 
 
-button#data:hover,button#statistics:hover,button#manager:hover,input#getResults:hover, input#getStats:hover, input#downloadExemplier:hover, input#downloadTable:hover, input#getExemplier:hover{
+button#data:hover,button#statistics:hover,button#manager:hover,input#getResults:hover, input#getStats:hover, input#downloadExemplier:hover, input#downloadTable:hover, input#getExemplier:hover, input#addData{
     box-shadow: inset 0 0 11px 0px #ede1e1ad;
 }
 
-.fa-times:hover {
-    color: #7c0000;
+input#deleteData:hover{
+    box-shadow: inset 0 0 11px 0px rgba(26, 25, 25, 0.68);
+}
+
+input#deleteData:focus{
+    outline: none;
+    box-shadow: inset 0 0 11px 0px rgba(26, 25, 25, 0.68);
 }
 
 
-input#getResults:focus, input#getStats:focus, input#downloadExemplier:focus, input#downloadTable:focus, input#getExemplier:focus{
+input#getResults:focus, input#getStats:focus, input#downloadExemplier:focus, input#downloadTable:focus, input#getExemplier:focus, input#addData:hover{
     outline: none;
     box-shadow: inset 0 0 11px 0px #ede1e1ad;
 }
@@ -38,6 +43,10 @@ input#getResults:focus, input#getStats:focus, input#downloadExemplier:focus, inp
 button#data:focus,button#statistics:focus,button#manager:focus {
     outline: none;
     box-shadow: inset 0 0 11px 0px #600000;
+}
+
+.fa-times:hover {
+    color: #7c0000;
 }
 
 
@@ -203,7 +212,7 @@ select#tabStats{
     font: 13px RobotoRegular;
 }
 
-input#getResults, input#getStats, input#downloadTable, input#downloadExemplier, input#getExemplier{
+input#getResults, input#getStats, input#downloadTable, input#downloadExemplier, input#getExemplier, input#addData, input#deleteData{
     border: none;
     border-radius: 5px 5px 5px 5px;
     box-shadow: 0 0 4px RGB(2,125,180);
@@ -212,6 +221,11 @@ input#getResults, input#getStats, input#downloadTable, input#downloadExemplier, 
     font: 14px RobotoRegular;
     color: white;
     background: RGB(2,125,180);
+}
+
+input#deleteData{
+    background: RGB(217, 0, 27);
+    box-shadow: 0 0 4px #242323;
 }
 
 input#getStats, input#downloadTable, input#downloadExemplier, input#getExemplier{
@@ -335,7 +349,67 @@ form#connectionForm{
     margin: 0px auto 0px auto
 }
 
+/*PARTIE GESTIONNAIRE*/
+
 div#managerDiv{
     padding: 0px;
 }
 
+article#managerArticle{
+    justify-content: space-around;
+    padding: 20px 60px 25px 60px;
+}
+
+/*Ajouter des données*/
+
+div#addFileDiv{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+form#deleteDataForm, form#addDataForm{
+    width:100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-top: auto;
+    margin-bottom: auto;
+    padding : 10px;
+}
+
+
+
+/*input file*/
+
+label#addFileLabel {
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+    margin-right: 20px;
+}
+
+label#addFileLabel:hover {
+    color: RGB(2,125,180);
+}
+
+    /*et on masque le input*/
+input#chooseFile {
+    display: none;
+}
+
+.fa-upload:before {
+    font-size: 45px;
+}
+
+aside{
+    font :15px RobotoBold;
+}
+
+
+
+/*Partie suppression des données*/
+
+
+h2#addDataTitle, h2#deleteDataTitle {
+    align-self: flex-start;
+}

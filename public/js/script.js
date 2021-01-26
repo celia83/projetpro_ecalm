@@ -179,7 +179,6 @@ $(document).ready(function () {
                         scan ="<a href = '"+scanURL+"' target='_blank'>Lien vers le scan</a>";
                     }
 
-                    console.log(scanURL);
                     //Remplissage des lignes du tableau
                     if(pos === "Adjectif" || pos === "Nom"){
                         $("#resultsTable").append("<tr id = 'mot"+[i]+"'><td class = 'scans' id='" + message[i].IdTok +"'>"+scan+"</td><td>" + corpus +"</td><td>" + message[i].Niv +"</td><td>" + message[i].IdProd +"</td><td>" + message[i].Lemme +"</td><td>" + message[i].SegNorm +"</td><td><span class='base' id = 'base"+[i]+"'>" + base+"</span><span class='middle' id = 'middle"+[i]+"'>" +middle+"</span><span class='ending' id = 'ending"+[i]+"'>" + ending+"</span></td><td>" + message[i].PhonNorm+"</td><td>" + message[i].PhonTrans+"</td><td>" + pos+"</td><td>" + message[i].StatutErreur+"</td><td>" + message[i].StatutSegm+"</td><td>" + message[i].Genre +"</td><td>" + message[i].Nombre +"</td></tr>");
@@ -441,7 +440,7 @@ $(document).ready(function () {
                     //$("#connectionArea").html("<a href=\"../index.php?action=disconnection\">Déconnexion</a>");
                     document.location.href='index.php';
                 } else {
-                    $("#alerts").html(message);
+                    $("#alerts").html("<i class=\"fas fa-exclamation-circle\"></i>"+message);
                 }
             }
         });
@@ -454,11 +453,6 @@ $(document).ready(function () {
         for (var i = 0; i < levels.length;i++){
             $("#chooseLevel").append("<option value = '"+levels[i]+"'>"+levels[i]+"</option>");
         }
-    });
-
-    //Traitement des scans
-    $("body").on("click","", function (){
-
     });
 
     function imageExists(image_url){

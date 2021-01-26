@@ -16,9 +16,9 @@
             <!--<a href="view/userConnection.php">Connexion</a>-->
             <div id="connectionArea"><?php
                 if (isset ($_SESSION["login"])){
-                echo '<a href="../index.php?action=disconnection">Déconnexion</a>';
+                echo '<a class = "connectionDisconnection" href="../index.php?action=disconnection">Déconnexion</a>';
                 } else {
-                echo '<a href="../index.php?action=connectionPage">Connexion</a>';
+                echo '<a class = "connectionDisconnection"  href="../index.php?action=connectionPage">Connexion</a>';
                 }?>
             </div>
         </header>

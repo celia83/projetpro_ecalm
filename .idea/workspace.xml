@@ -3,10 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="9f06283a-08ab-4111-b796-b44b206d44d8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/AddDel_Data/InsertData.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/AddDel_Data/InsertData.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/home.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/home.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/userConnection.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/userConnection.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,7 +90,7 @@
       <workItem from="1611316744362" duration="14151000" />
       <workItem from="1611337479253" duration="681000" />
       <workItem from="1611564987945" duration="24035000" />
-      <workItem from="1611649813630" duration="7848000" />
+      <workItem from="1611649813630" duration="13275000" />
     </task>
     <servers />
   </component>

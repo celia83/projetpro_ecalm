@@ -27,7 +27,7 @@ class DeleteData
         
         #Rédiger la requête pour supprimer les données de la base de données
 		$request = 'DELETE FROM `cm2_scoledit` 
-WHERE IdTok LIKE "'.$this->corpus.'" 
+WHERE IdTok REGEXP "'.$this->corpus.'" 
 AND Niv LIKE "'.$this->level.'"';
 		
         $database = new DataBase();
@@ -37,16 +37,15 @@ AND Niv LIKE "'.$this->level.'"';
 	protected function normalizeCriterions(){
         #Normalisation du corpus : E : Ecriscol, S : Scoledit, R : Resolco, sinon on sélectionne tous les corpus avec %
         if ($this->corpus == "Scoledit"){
-            $this->corpus = "%S%";
+            $this->corpus = "[A-Z]+-[a-zA-Z]+[0-9]+-[0-9]+-[a-zA-Z]+-[a-zA-Z][0-9]-S[0-9]+-[A-Z][0-9]-[0-9]+-[0-9]+";
         } elseif ($this->corpus == "Ecriscol"){
-            $this->corpus = "%E%";
+            $this->corpus = "[A-Z]+-[a-zA-Z]+[0-9]+-[0-9]+-[a-zA-Z]+-[a-zA-Z][0-9]-E[0-9]+-[A-Z][0-9]-[0-9]+-[0-9]+";
         } elseif ($this->corpus == "Resolco"){
-            $this->corpus = "%R%";
+            $this->corpus = "[A-Z]+-[a-zA-Z]+[0-9]+-[0-9]+-[a-zA-Z]+-[a-zA-Z][0-9]-R[0-9]+-[A-Z][0-9]-[0-9]+-[0-9]+";
         } else {
-            $this->corpus = "%";
+            $this->corpus = "[A-Z]+-[a-zA-Z]+[0-9]+-[0-9]+-[a-zA-Z]+-[a-zA-Z][0-9]-[a-zA-Z][0-9]+-[A-Z][0-9]-[0-9]+-[0-9]+";
         }
-
-        }
+	}
 }	  
 		
 ?>

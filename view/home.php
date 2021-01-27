@@ -63,6 +63,18 @@
                                         <option value = "CE2">CE2</option>
                                         <option value = "CM1">CM1</option>
                                         <option value = "CM2">CM2</option>
+                                        <option value = "CP">6EME</option>
+                                        <option value = "CE1">5EME</option>
+                                        <option value = "CE2">4EME</option>
+                                        <option value = "CM1">3EME</option>
+                                        <option value = "CM2">2NDE</option>
+                                        <option value = "CM2">1ERE</option>
+                                        <option value = "CM2">TERMINALE</option>
+                                        <option value = "CM2">L1</option>
+                                        <option value = "CM2">L2</option>
+                                        <option value = "CM2">L3</option>
+                                        <option value = "CM2">M1</option>
+                                        <option value = "CM2">M2</option>
                                     </select>
                                 </div>
                                 <div class = "generalCriteriaDivs">

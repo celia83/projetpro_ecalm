@@ -1,4 +1,4 @@
-/*Charger les polices */
+/*CHARGEMENT DES POLICES*/
 @font-face {
     font-family: "RobotoRegular";
     src: url("../assets/fonts/Roboto-Regular.ttf");
@@ -14,18 +14,12 @@
     src: url("../assets/fonts/Roboto-Medium.ttf");
 }
 
-body{
-    margin:0px;
-}
-
 /* CURSEUR*/
 button, input, select, .fa-times{
     cursor:  pointer;
 }
 
-/*COULEURS DES BOUTONS QUAND ON PASSE LA SOURIS DESSUS ET QUAND ON CLIQUE*/
-
-
+/*STYLE DES BOUTONS AU CLICK ET PASSAGE DE LA SOURIS*/
 button#data:hover,button#statistics:hover,button#manager:hover,input#getResults:hover, input#getStats:hover, input#downloadExemplier:hover, input#downloadTable:hover, input#getExemplier:hover, input#addData:hover, input#connectionButton:hover{
     box-shadow: inset 0 0 11px 0px #ede1e1ad;
 }
@@ -38,8 +32,6 @@ input#deleteData:focus{
     outline: none;
     box-shadow: inset 0 0 11px 0px rgba(26, 25, 25, 0.68);
 }
-
-
 
 a.connectionDisconnection:hover, a.connectionDisconnection:focus{
     text-shadow: 0px 1px 7px #121111;
@@ -64,10 +56,11 @@ button#data:focus,button#statistics:focus,button#manager:focus {
     color: #7c0000;
 }
 
+/* STYLE DE L'EN-TETE ET PIED DE PAGE, ET DU BODY*/
+body{
+    margin:0px;
+}
 
-
-
-/* STYLE DE L'EN-TETE ET PIED DE PAGE*/
 header{
     background-color: RGB(85,85,85);
     display: flex;
@@ -88,7 +81,7 @@ footer{
 
 a.connectionDisconnection {
     text-decoration: none;
-    font : 31px RobotoMedium;
+    font : 20px RobotoMedium;
     color : RGB(170,170,170);
     margin-right:50px;
 }
@@ -100,6 +93,7 @@ a.homeButton{
     color: RGB(170,170,170);
 }
 
+/*Flèche de retour*/
 .fa-long-arrow-alt-left{
     margin-right: 20px;
 }
@@ -123,21 +117,6 @@ img#logo_lidilem{
 h2 {
     font: 20px RobotoBold;
     color: white;
-}
-
-h2#resultsTitle{
-    border: none;
-    border-radius: 15px 15px 0px 0px;
-    box-shadow: 1px 0px 6px 0px #4b4b4b;
-    width: 400px;
-    height: 30px;
-    font: 15px RobotoRegular;
-    color: white;
-    background: RGB(85,85,85);
-    vertical-align: middle;
-    text-align: center;
-    margin: 20px 100px 0px 100px;
-    padding-top: 10px;
 }
 
 button#data, #statistics, #manager {
@@ -212,14 +191,6 @@ div.adjectiveCriteriaDivs{
     padding:5px 5px 15px 5px;
 }
 
-div#resultsDiv{
-    color: black;
-    background-color: RGB(242,242,242);
-    margin: 0px 100px;
-    height : 100%;
-    padding: 10px;
-    box-shadow: 1px 3px 6px #2d2f2f;
-}
 
 div#downloadTableDiv{
     display: flex;
@@ -227,16 +198,13 @@ div#downloadTableDiv{
     margin: 0px 100px 0px 100px;
 }
 
-div#getResultsDiv {
-    display: flex;
-    align-items: flex-end;
-}
 
 label {
     padding-right: 10px;
 }
 
 select, input#lemma {
+    outline:none;
     width: 125px;
     font: 13px RobotoRegular;
 }
@@ -293,11 +261,37 @@ input#getExemplier{
     flex-direction: column;
     align-items: flex-start;
     margin-right: 30px;
-
-
 }
 
-/* STYLE DU TABLEAU DES RESULTATS*/
+/* STYLE DE LA PARTIE RESULTATS*/
+h2#resultsTitle{
+    border: none;
+    border-radius: 15px 15px 0px 0px;
+    box-shadow: 1px 0px 6px 0px #4b4b4b;
+    width: 400px;
+    height: 30px;
+    font: 15px RobotoRegular;
+    color: white;
+    background: RGB(85,85,85);
+    vertical-align: middle;
+    text-align: center;
+    margin: 20px 100px 0px 100px;
+    padding-top: 10px;
+}
+
+div#resultsDiv{
+    color: black;
+    background-color: RGB(242,242,242);
+    margin: 0px 100px;
+    height : 100%;
+    padding: 10px;
+    box-shadow: 1px 3px 6px #2d2f2f;
+}
+
+div#getResultsDiv {
+    display: flex;
+    align-items: flex-end;
+}
 
 table, tr, td {
     border-collapse: collapse;
@@ -312,7 +306,7 @@ table {
     font: 13px RobotoRegular;
 }
 
-/*Position de la boite de téléchargement*/
+/*STYLE DES BOUTONS DES TELECHARGEMENTS (EXEMPLIER ET TABLEAUX°*/
 h3 {
     margin: 5px;
     color: white;
@@ -428,7 +422,7 @@ form#deleteDataForm, form#addDataForm{
     padding : 10px;
 }
 
-/*input file*/
+/*Style de l'élément input file*/
 
 label#addFileLabel {
     cursor: pointer;
@@ -457,8 +451,6 @@ aside{
 
 
 /*Partie suppression des données*/
-
-
 h2#addDataTitle, h2#deleteDataTitle {
     align-self: flex-start;
 }

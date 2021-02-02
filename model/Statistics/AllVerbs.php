@@ -1,6 +1,6 @@
 <?php
 
-include_once "../DataBase.php";
+include_once "model/DataBase.php";
 
 class AllVerbs 
 {

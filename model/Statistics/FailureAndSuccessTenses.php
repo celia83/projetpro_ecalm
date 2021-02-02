@@ -1,6 +1,6 @@
 <?php
 
-include_once "D:/Documents/Applications/Wamp/www/projetpro_ecalm/model/DataBase.php";
+include_once "model/DataBase.php";
 
 class FailureAndSuccessTenses {
 
@@ -22,10 +22,10 @@ class FailureAndSuccessTenses {
         #Créer la requête
         #Si l'utilisateur veut les verbes en er
         if ($verbGroup == "er") {
-            $request ='SELECT Niv, SegNorm, SegTrans, PhonNorm, PhonTrans, Categorie, ErrVerBase, ErrVerDes, ErrVerBaseEtDes FROM cm2_scoledit WHERE Categorie LIKE "VER%" AND Categorie LIKE "VER:pper" = 0 AND SegNorm LIKE "%er"' ;;
+            $request ='SELECT Niv, SegNorm, SegTrans, PhonNorm, PhonTrans, Categorie, ErrVerBase, ErrVerDes, ErrVerBaseEtDes FROM cm2_scoledit WHERE Categorie LIKE "VER%" AND Categorie LIKE "VER:pper" = 0 AND Lemme LIKE "%er"' ;;
         #Si l'utilisateur veut les verbes qui ne sont pas en er
         } elseif ($verbGroup == "nonEr"){
-            $request = 'SELECT Niv, SegNorm, SegTrans, PhonNorm, PhonTrans, Categorie, ErrVerBase, ErrVerDes, ErrVerBaseEtDes FROM cm2_scoledit WHERE Categorie LIKE "VER%" AND Categorie LIKE "VER:pper" = 0 AND SegNorm LIKE "%er" = 0' ;;
+            $request = 'SELECT Niv, SegNorm, SegTrans, PhonNorm, PhonTrans, Categorie, ErrVerBase, ErrVerDes, ErrVerBaseEtDes FROM cm2_scoledit WHERE Categorie LIKE "VER%" AND Categorie LIKE "VER:pper" = 0 AND Lemme LIKE "%er" = 0' ;;
         #Si l'utilisateur veut tous les verbes
         } else {
             $request = 'SELECT Niv, SegNorm, SegTrans, PhonNorm, PhonTrans, Categorie, ErrVerBase, ErrVerDes, ErrVerBaseEtDes FROM cm2_scoledit WHERE Categorie LIKE "VER%" AND Categorie LIKE "VER:pper" = 0' ;

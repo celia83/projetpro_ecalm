@@ -1,6 +1,6 @@
 <?php
 
-include_once "D:/Documents/Applications/Wamp/www/projetpro_ecalm/model/DataBase.php";
+include_once "model/DataBase.php";
 
 class DeleteData 
 {
@@ -15,7 +15,7 @@ class DeleteData
         
     }
     
-	/*
+	/**
      * Cette fonction permet de sélectionner dans la base de données toutes 
      * les lignes qui correspondent au CM2 et à Scoledit et les supprimer.
      */    
@@ -31,7 +31,8 @@ WHERE IdTok REGEXP "'.$this->corpus.'"
 AND Niv LIKE "'.$this->level.'"';
 		
         $database = new DataBase();
-        $database->addOrDelData($request);
+        $nbLineAffected = $database->addOrDelData($request);
+        return $nbLineAffected;
 	 } 
 	 
 	protected function normalizeCriterions(){

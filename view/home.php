@@ -4,21 +4,21 @@
         <!-- Entête de la page-->
         <title>E-Calm</title>
         <meta charset="UTF-8"/> <!-- dit en quel encodage je suis-->
-        <link rel="stylesheet" href = "../public/css/style.css"/> <!-- donne la feuille de style en css utilisée-->
-        <script type="text/javascript" src="../public/js/jquery-3.4.1.js"></script> <!--appel de JQuery-->
-        <script src="../public/js/script.js"></script> <!--Appel du script javascript-->
+        <link rel="stylesheet" href = "public/css/style.css"/> <!-- donne la feuille de style en css utilisée-->
+        <script type="text/javascript" src="public/js/jquery-3.4.1.js"></script> <!--appel de JQuery-->
+        <script src="public/js/script.js"></script> <!--Appel du script javascript-->
         <script src="https://kit.fontawesome.com/bafcb5074c.js" crossorigin="anonymous"></script> <!--Site pour utiliser des icônes-->
     </head>
     <body>
         <header>
-            <img alt="logo_lidilem" id = "logo_lidilem" src="../public/assets/img/logo_LIDILEM_CMJN.jpg"/>
-            <img alt="logo_ecalm" id = "logo_ecalm" src="../public/assets/img/Ecalm_logo_transparent.png"/>
+            <img alt="logo_lidilem" id = "logo_lidilem" src="public/assets/img/logo_LIDILEM_CMJN.jpg"/>
+            <img alt="logo_ecalm" id = "logo_ecalm" src="public/assets/img/Ecalm_logo_transparent.png"/>
             <!--<a href="view/userConnection.php">Connexion</a>-->
             <div id="connectionArea"><?php
                 if (isset ($_SESSION["login"])){
-                echo '<a class = "connectionDisconnection" href="../index.php?action=disconnection">Déconnexion</a>';
+                echo '<a class = "connectionDisconnection" href="index.php?action=disconnection">Déconnexion</a>';
                 } else {
-                echo '<a class = "connectionDisconnection"  href="../index.php?action=connectionPage">Connexion</a>';
+                echo '<a class = "connectionDisconnection"  href="index.php?action=connectionPage">Connexion</a>';
                 }?>
             </div>
         </header>
@@ -38,7 +38,7 @@
 
         <!--Partie pour la sélection des critères-->
         <article id = "dataSelection">
-            <form id="dataSelectionForm" action ="../index.php?action=showResults" method="POST">
+            <form id="dataSelectionForm" action ="index.php?action=showResults" method="POST">
                 <article id = "criteria">
                     <!--Afficher les critères généraux -->
                     <article id = "generalCriteria">
@@ -81,18 +81,18 @@
                                     <label for="pos">Catégorie grammaticale : </label>
                                     <select  id="pos" name="pos">
                                         <option value = "Tous">Tous</option>
-                                        <option value = "Adjectifs">Adjectif</option>
-                                        <option value = "Adverbes">Adverbe</option>
-                                        <option value = "Verbes">Verbe</option>
-                                        <option value = "Noms">Nom</option>
-                                        <option value = "Noms propres">Nom Propre</option>
-                                        <option value = "Déterminants">Déterminant</option>
-                                        <option value = "Pronoms">Pronom</option>
-                                        <option value = "Prépositions">Préposition</option>
-                                        <option value = "Conjonctions">Conjonction de coordination et de subordination</option>
-                                        <option value = "Abréviations">Abréviations</option>
-                                        <option value = "Interjections">Interjections</option>
-                                        <option value = "Chiffres">Chiffres</option>
+                                        <option value = "Adjectif">Adjectif</option>
+                                        <option value = "Adverbe">Adverbe</option>
+                                        <option value = "Verbe">Verbe</option>
+                                        <option value = "Nom">Nom</option>
+                                        <option value = "Noms propre">Nom Propre</option>
+                                        <option value = "Déterminant">Déterminant</option>
+                                        <option value = "Pronom">Pronom</option>
+                                        <option value = "Préposition">Préposition</option>
+                                        <option value = "Conjonction">Conjonction de coordination et de subordination</option>
+                                        <option value = "Abréviation">Abréviations</option>
+                                        <option value = "Interjection">Interjections</option>
+                                        <option value = "Chiffre">Chiffres</option>
                                     </select>
                                 </div>
                             </article>
@@ -237,7 +237,7 @@
 
         <!--Partie pour la sélection des tableaux-->
         <article id = "statisticsSelection" hidden>
-            <form id = "statisticsSelectionForm" action ="../index.php?action=showStats" method="POST">
+            <form id = "statisticsSelectionForm" action ="index.php?action=showStats" method="POST">
                 <section id = "statisticTabsSection">
                     <article>
                         <div>
@@ -268,7 +268,7 @@
                             <input class = "tense" type="radio" id = "Infinitif"  name="tense" value = "Infinitif"/><label for="infinitif">Infinitif</label>
                             <input class = "tense" type="radio" id = "Présent"  name="tense" value = "Présent"/><label for="Présent">Présent</label>
                             <input class = "tense" type="radio" id = "Imparfait"  name="tense" value = "Imparfait"/><label for="Imparfait">Imparfait</label>
-                            <input class = "tense" type="radio" id = "Passé Simple"  name="tense" value = "Passé Simple"/><label for="Passé Simple">Passé Simple</label>
+                            <input class = "tense" type="radio" id = "Passé simple"  name="tense" value = "Passé simple"/><label for="Passé simple">Passé Simple</label>
                             <input class = "tense" type="radio" id = "tous"  name="tense" value = "tous" checked/><label for="tous">Tous les tiroirs verbaux</label>
                         </div>
                     </article>

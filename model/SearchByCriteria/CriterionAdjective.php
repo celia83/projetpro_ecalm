@@ -1,6 +1,6 @@
 <?php
 
-include_once "D:/Documents/Applications/Wamp/www/projetpro_ecalm/model/DataBase.php";
+include_once "model/DataBase.php";
 
 class CriterionAdjective extends Criterion{
 
@@ -54,8 +54,8 @@ AND BaseAdjNorm LIKE "'.$this->base.'"';
 
         $database = new DataBase();
         $tab= $database->getData($request);
-
-        return $tab;
+        $finalTab =$this->addScanLink($tab);
+        return $finalTab;
     }
 
     /**
@@ -103,7 +103,7 @@ AND BaseAdjNorm LIKE "'.$this->base.'"';
         }
 
         #Normaliser les requêtes sur la base : si on ne précise pas de base on sélectionne toutes les bases, sinon on sélectionne les entrée qui commencent par ce que l'utilisateur a indiqué
-        if($this->base == "undefined"){
+        if($this->base == ""){
             $this->base = "%";
         } else {
             $this->base=$this->base ."%";

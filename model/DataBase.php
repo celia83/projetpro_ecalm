@@ -7,11 +7,10 @@ class DataBase {
      * @return PDO $db
      */
     private static function connection(){
-        try { /* tentative de connexion à la BD*/
-            $db = new PDO('mysql:host=localhost;dbname=scoledit', 'root', '', array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
+        if($db = new PDO('mysql:host=localhost;dbname=scoledit', 'scoledit', 'projetpro', array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'))){
             return $db;
-        } catch (Exception $e) {
-            die('Erreur : '.$e->getMessage());
+        } else {
+            throw new Exception('Impossible de se connecter à la base de données.');
         }
     }
 
@@ -24,28 +23,26 @@ class DataBase {
         #Connexion à la base de données
         $db = self::connection();
         #Requêter la base
-        try {
-            $response = $db->query($request);
-
+        if ($response = $db->query($request)){
             #Récupérer les informations de la requête (le mode PDO::FETCH_ASSOC permet d'éviter que le résultats ne dédouble les colonnes)
             $tab = array();
             while ($enr = $response->fetch(PDO::FETCH_ASSOC)) {
                 array_push($tab, $enr);
             }
-        } catch (Exception $e){
-            die ('Erreur : ' . $e->getMessage());
+            return $tab;
+        } else {
+            throw new Exception('Impossible de récupérer les données.');
         }
-        return $tab;
     }
 
     public function addOrDelData($request){
         #Connexion à la base de données
         $db = self::connection();
         #Requêter la base
-        try {
-            $db->query($request);
-        } catch (Exception $e){
-            die ('Erreur : ' . $e->getMessage());
+        if ($nbLineAffected = $db->exec($request)){
+            return $nbLineAffected;
+        } else {
+            throw new Exception('Impossible de récupérer les données.');
         }
     }
 }

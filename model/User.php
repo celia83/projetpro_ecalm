@@ -1,5 +1,5 @@
 <?php
-include_once "D:/Documents/Applications/Wamp/www/projetpro_ecalm/model/DataBase.php";
+include_once "model/DataBase.php";
 class User{
     private $login;
     private $psw;
@@ -10,13 +10,13 @@ class User{
     }
 
     public function verifyUser(){
-        $request ="SELECT `mdp` FROM `users` WHERE `login`= '".$this->login."'";
+        $request ="SELECT `Password` FROM `users` WHERE `Login`= '".$this->login."'";
         $database = new DataBase();
         $tabpsw= $database->getData($request);
         if ($tabpsw==false) {
             return "Identifiant incorrect.";
         } else {
-            if ($tabpsw[0]['mdp'] == $this->psw) {
+            if ($tabpsw[0]['Password'] == $this->psw) {
                 $_SESSION['login'] = $this->login;
                 return "true";
             } else {

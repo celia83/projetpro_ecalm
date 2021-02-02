@@ -119,6 +119,7 @@ h2 {
     color: white;
 }
 
+
 button#data, #statistics, #manager {
     border: none;
     border-radius: 15px 15px 0px 0px;
@@ -422,6 +423,16 @@ form#deleteDataForm, form#addDataForm{
     padding : 10px;
 }
 
+form#addDataForm {
+    padding-right: 40px;
+    border-right-style: solid;
+    border-right-width: thin;
+}
+
+form#deleteDataForm {
+    padding-left: 40px;
+}
+
 /*Style de l'élément input file*/
 
 label#addFileLabel {
@@ -448,9 +459,24 @@ aside{
     font :15px RobotoBold;
 }
 
-
-
 /*Partie suppression des données*/
 h2#addDataTitle, h2#deleteDataTitle {
     align-self: flex-start;
+}
+
+/*STYLE DE LA PAGE D'ERREUR*/
+section#error{
+    background: RGB(127,0,0);
+    margin: 80px 150px 0px 150px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px 15px 15px 15px;
+    box-shadow: 1px 0px 6px 0px #4b4b4b;
+}
+
+article#errorContenu{
+    font: 20px RobotoRegular;
+    color: white;
 }

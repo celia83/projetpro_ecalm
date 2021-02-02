@@ -1,6 +1,6 @@
 <?php
 
-include_once "D:/Documents/Applications/Wamp/www/projetpro_ecalm/model/DataBase.php";
+include_once "model/DataBase.php";
 
 class Criterion{
 
@@ -47,9 +47,11 @@ AND StatutErreur LIKE "'.$this->errStatus.'"
 AND StatutSegm LIKE "'.$this->segmStatus.'" 
 AND Lemme LIKE "'.$this->lemma.'"';
 
+
         $database = new DataBase();
         $tab= $database->getData($request);
-        return $tab;
+        $finalTab =$this->addScanLink($tab);
+        return $finalTab;
     }
 
     /**
@@ -70,29 +72,29 @@ AND Lemme LIKE "'.$this->lemma.'"';
         }
 
         #Normalisation des catégories grammaticales
-        if ($this->pos == "Adverbes"){
+        if ($this->pos == "Adverbe"){
             $this->pos = "ADV";
-        } elseif ($this->pos == "Adjectifs"){
+        } elseif ($this->pos == "Adjectif"){
             $this->pos = "ADJ";
-        } elseif ($this->pos == "Verbes"){
+        } elseif ($this->pos == "Verbe"){
             $this->pos = "VER%";
-        } elseif ($this->pos == "Noms"){
+        } elseif ($this->pos == "Nom"){
             $this->pos = "NOM";
-        } elseif ($this->pos == "Noms propres"){
+        } elseif ($this->pos == "Noms propre"){
             $this->pos = "NAM";
-        } elseif ($this->pos == "Déterminants") {
+        } elseif ($this->pos == "Déterminant") {
             $this->pos = "DET%";
-        } elseif ($this->pos == "Pronoms"){
+        } elseif ($this->pos == "Pronom"){
             $this->pos = "PRO%";
-        } elseif ($this->pos == "Prépositions"){
+        } elseif ($this->pos == "Préposition"){
             $this->pos = "PRP%";
-        } elseif ($this->pos == "Conjonctions"){ #ATTENTION : Conjonctions de coordination et de subordination sont traitées de la même manière avec Treetagger
+        } elseif ($this->pos == "Conjonction"){ #ATTENTION : Conjonctions de coordination et de subordination sont traitées de la même manière avec Treetagger
             $this->pos = "KON";
-        } elseif ($this->pos == "Abréviations"){
+        } elseif ($this->pos == "Abréviation"){
             $this->pos = "ABR";
-        } elseif ($this->pos == "Chiffres"){
+        } elseif ($this->pos == "Chiffre"){
             $this->pos = "NUM";
-        } elseif ($this->pos == "Interjections"){
+        } elseif ($this->pos == "Interjection"){
             $this->pos = "INT";
         } else {
             $this->pos = "%";
@@ -122,5 +124,30 @@ AND Lemme LIKE "'.$this->lemma.'"';
         if ($this->level == "Tous"){
             $this->level = "%";
         }
+    }
+
+    public function addScanLink($result){
+        $newResults = array(); #Contiendra les nouvelles lignes de résultat
+        #Sélectionner une ligne d'informations
+        for ($i =0; $i < count($result);$i++){
+            $line = $result[$i];
+            //var_dump($line);
+            #Reconstituer le chemin vers l'image
+            $scanURL = "public/assets/scans/".$line["Niv"]."/". $line["IdTok"].".jpg";
+            //var_dump($scanURL);
+            #Vérifier que l'image existe
+            if (file_exists($scanURL)){
+                #Si elle existe on et le lien vers l'image
+                $scan="<a href = '".$scanURL."' target='_blank'>Lien vers le scan</a>";
+            } else {
+                #Sinon on précise qu'il est indisponible
+                $scan="Scan indisponible";
+            }
+            #On ajoute le scan à la fin de la ligne
+            $line["Scan"]=$scan;
+            #Ajouter la nouvelle line au nouveau tableau
+            array_push($newResults, $line);
+        }
+        return $newResults;
     }
 }

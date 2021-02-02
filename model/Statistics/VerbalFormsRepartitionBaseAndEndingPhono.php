@@ -1,6 +1,6 @@
 <?php
 
-include_once "D:/Documents/Applications/Wamp/www/projetpro_ecalm/model/DataBase.php";
+include_once "model/DataBase.php";
 
 class VerbalFormsRepartitionBaseAndEndingPhono{
 
@@ -26,19 +26,19 @@ class VerbalFormsRepartitionBaseAndEndingPhono{
         
         #Sélectionner soit les verbes en -er, soit les verbes qui ne sont pas en -er, soit tous et insérer le temps voulu
         if ($verbGroup == "er") {
-            $GroupSQL = 'AND SegNorm LIKE "%er"' ;
+            $GroupSQL = ' AND Lemme LIKE "%er"' ;
             #Si l'utilisateur veut les verbes qui ne sont pas en er
         } elseif ($verbGroup == "nonEr"){
-            $GroupSQL = 'AND SegNorm LIKE "%er" = 0' ;
+            $GroupSQL = ' AND Lemme LIKE "%er" = 0' ;
             #Si l'utilisateur veut tous les verbes
         } else {
-            $GroupSQL = ' = 0';
+            $GroupSQL = ' AND Lemme LIKE "%"';
         }
 		
 
 		
         #Sélectionner seulement les verbes avec erreurs sur la base seule dans la base de données
-		$request = 'SELECT * FROM `cm2_scoledit` WHERE Categorie LIKE "' . $tenseSQL . '" AND ErrVerBase LIKE "1" AND Categorie LIKE "VER:pper" ' . $GroupSQL . '';
+		$request = 'SELECT * FROM `cm2_scoledit` WHERE Categorie LIKE "' . $tenseSQL . '" AND ErrVerBase LIKE "1" AND Categorie LIKE "VER:pper" = 0 ' . $GroupSQL ;
         #Récupération des données dans la base de données
         $database = new DataBase();
         $tabbase= $database->getData($request);        
@@ -70,8 +70,9 @@ class VerbalFormsRepartitionBaseAndEndingPhono{
         }
 				
 		#Sélectionner seulement les verbes avec erreurs sur la base seule de forme phonologie normée dans la base de données
-		$request1 = 'SELECT * FROM `cm2_scoledit` WHERE Categorie LIKE "' . $tenseSQL . '" AND ErrVerBase LIKE "1" AND PhonNorm = PhonTrans AND Categorie LIKE "VER:pper" ' . $GroupSQL . '';
+		$request1 = 'SELECT * FROM `cm2_scoledit` WHERE Categorie LIKE "' . $tenseSQL . '" AND ErrVerBase LIKE "1" AND PhonNorm = PhonTrans AND Categorie LIKE "VER:pper" =0' . $GroupSQL ;
         #Récupération des données dans la base de données
+
         $dAtabase = new DataBase();
         $tabbasenorme= $dAtabase->getData($request1);          
         
@@ -165,7 +166,7 @@ class VerbalFormsRepartitionBaseAndEndingPhono{
         $CM2desin = 0;
         
         #Sélectionner seulement les verbes avec erreur sur la désinence seule dans la base de données 
-        $request = 'SELECT * FROM `cm2_scoledit` WHERE Categorie LIKE "' . $tenseSQL . '" AND ErrVerDes LIKE "1" AND Categorie LIKE "VER:pper" ' . $GroupSQL . '';
+        $request = 'SELECT * FROM `cm2_scoledit` WHERE Categorie LIKE "' . $tenseSQL . '" AND ErrVerDes LIKE "1" AND Categorie LIKE "VER:pper" =0' . $GroupSQL;
         #Récupération des données dans la base de données
         $Database = new DataBase();
         $tabdesin= $Database->getData($request);
@@ -190,7 +191,7 @@ class VerbalFormsRepartitionBaseAndEndingPhono{
         }
         
 		#Sélectionner seulement les verbes avec erreurs sur la désinence seule de forme phonologie normée dans la base de données
-		$request2 = 'SELECT * FROM `cm2_scoledit` WHERE Categorie LIKE "' . $tenseSQL . '" AND ErrVerDes LIKE "1" AND PhonNorm = PhonTrans AND Categorie LIKE "VER:pper" ' . $GroupSQL . '';
+		$request2 = 'SELECT * FROM `cm2_scoledit` WHERE Categorie LIKE "' . $tenseSQL . '" AND ErrVerDes LIKE "1" AND PhonNorm = PhonTrans AND Categorie LIKE "VER:pper" =0' . $GroupSQL;
         #Récupération des données dans la base de données
         $daTabase = new DataBase();
         $tabbaseNormeDes= $daTabase->getData($request2);          
@@ -284,7 +285,7 @@ class VerbalFormsRepartitionBaseAndEndingPhono{
         $CM2basedesin = 0;
         
 		#Sélectionner seulement les verbes avec erreur sur la base et la désinence dans la base de données 
-        $request3 = 'SELECT * FROM `cm2_scoledit` WHERE Categorie LIKE "' . $tenseSQL . '" AND ErrVerBaseEtDes LIKE "1" AND Categorie LIKE "VER:pper" ' . $GroupSQL . '';
+        $request3 = 'SELECT * FROM `cm2_scoledit` WHERE Categorie LIKE "' . $tenseSQL . '" AND ErrVerBaseEtDes LIKE "1" AND Categorie LIKE "VER:pper" =0 ' . $GroupSQL;
         #Récupération des données dans la base de données
         $DataAbase = new DataBase();
         $tabbasedesin= $DataAbase->getData($request3);
@@ -309,7 +310,7 @@ class VerbalFormsRepartitionBaseAndEndingPhono{
         }
         
 		#Sélectionner seulement les verbes avec erreurs sur la base et la désinence seule de forme phonologie normée dans la base de données
-		$request4 = 'SELECT * FROM `cm2_scoledit` WHERE Categorie LIKE "' . $tenseSQL . '" AND ErrVerBaseEtDes LIKE "1" AND PhonNorm = PhonTrans AND Categorie LIKE "VER:pper" ' . $GroupSQL . '';
+		$request4 = 'SELECT * FROM `cm2_scoledit` WHERE Categorie LIKE "' . $tenseSQL . '" AND ErrVerBaseEtDes LIKE "1" AND PhonNorm = PhonTrans AND Categorie LIKE "VER:pper"=0 ' . $GroupSQL;
         #Récupération des données dans la base de données
         $daTabase = new DataBase();
         $tabbaseNormeBasedesin= $daTabase->getData($request4);          

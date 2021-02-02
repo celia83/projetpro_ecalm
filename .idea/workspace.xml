@@ -3,9 +3,31 @@
   <component name="ChangeListManager">
     <list default="true" id="9f06283a-08ab-4111-b796-b44b206d44d8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/DownLoadController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/ManagerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/ManagerController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/AddDel_Data/DeleteData.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/AddDel_Data/DeleteData.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/AddDel_Data/test.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/AddDel_Data/test.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/ProcessScans.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/AddDel_Data/InsertData.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/AddDel_Data/InsertData.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/DataBase.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/DataBase.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/Exporter/DownloadResults.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/Exporter/result.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/Exporter/tests.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/SearchByCriteria/Criterion.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/SearchByCriteria/Criterion.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/SearchByCriteria/CriterionAdjective.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/SearchByCriteria/CriterionAdjective.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/SearchByCriteria/CriterionVerb.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/SearchByCriteria/CriterionVerb.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/SearchByCriteria/test.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/SearchByCriteria/test.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/Statistics/AllVerbs.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/Statistics/AllVerbs.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/Statistics/FailureAndSuccessTenses.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/Statistics/FailureAndSuccessTenses.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/Statistics/NbVerbalForms.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/Statistics/NbVerbalForms.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/Statistics/NbWordProd.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/Statistics/NbWordProd.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/Statistics/POSRepartitionByLevel.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/Statistics/POSRepartitionByLevel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/Statistics/StandardizedBaseEndingProportion.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/Statistics/StandardizedBaseEndingProportion.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/Statistics/StandardizedBaseOrEnding.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/Statistics/StandardizedBaseOrEnding.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/Statistics/TenseRepartition.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/Statistics/TenseRepartition.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/Statistics/VerbalFormsRepartitionBaseAndEndingPhono.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/Statistics/VerbalFormsRepartitionBaseAndEndingPhono.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/User.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/script.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/view/home.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/home.php" afterDir="false" />
@@ -92,7 +114,11 @@
       <workItem from="1611337479253" duration="681000" />
       <workItem from="1611564987945" duration="24035000" />
       <workItem from="1611649813630" duration="13931000" />
-      <workItem from="1611737981354" duration="4394000" />
+      <workItem from="1611737981354" duration="20215000" />
+      <workItem from="1611824585480" duration="7985000" />
+      <workItem from="1611909060323" duration="11350000" />
+      <workItem from="1612172884977" duration="7791000" />
+      <workItem from="1612256766898" duration="10438000" />
     </task>
     <servers />
   </component>

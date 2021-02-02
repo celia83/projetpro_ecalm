@@ -1,7 +1,7 @@
 <?php
 
 #connecter à la base de données
-include_once "D:/Documents/Applications/Wamp/www/projetpro_ecalm/model/DataBase.php";
+include_once "model/DataBase.php";
 
 class InsertData
 {
@@ -42,9 +42,8 @@ class InsertData
 
 			#voir si le fichier est vide
 			if($len_result==0)   
-			{   
-				echo 'Rien dans ce fichier !';   
-				exit;   
+			{
+				throw new Exception('Le fichier est vide.');
 			} 
 			  
 			#un boucle pour obtenir les valeurs
@@ -105,7 +104,9 @@ class InsertData
 			$request = "INSERT INTO `cm2_scoledit` (IdTok,IdProd,Niv,SegNorm,SegTrans,PhonNorm,PhonTrans,SyllabNorm,SyllabTrans,Categorie,Lemme,StatuErreurSimp,StatutErreur,StatutSegm,Genre,Nombre,BaseAdjNorm,GenreAdjNorm,NombreAdjNorm,BaseAdjTrans,GenreAdjTrans,NombreAdjTrans,ErreurAdjBase,ErreurAdjGenre,ErreurAdjNombre,VerPers,BaseVerForme,DesiVerForme,BaseVerProd,DesiVerProd,ErrVerBase,ErrVerDes,ErrVerBaseEtDes) VALUES $data_values";
 			#call la fonction de getData 
 			$database = new DataBase();
-			$database->addOrDelData($request);
+			$nbLineAffected=$database->addOrDelData($request);
+
+			return $nbLineAffected;
 	 } 	
  }  
 		

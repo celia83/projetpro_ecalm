@@ -1,6 +1,6 @@
 <?php
 
-include_once "D:/Documents/Applications/Wamp/www/projetpro_ecalm/model/DataBase.php";
+include_once "model/DataBase.php";
 
 class CriterionVerb extends Criterion{
 
@@ -44,6 +44,7 @@ class CriterionVerb extends Criterion{
 WHERE IdTok REGEXP "'.$this->corpus.'" 
 AND Niv LIKE "'.$this->level.'" 
 AND Categorie LIKE "'.$this->tense.'"
+AND Categorie LIKE "VER:pper" = 0  
 AND StatutErreur LIKE "'.$this->errStatus.'" 
 AND StatutSegm LIKE "'.$this->segmStatus.'" 
 AND Lemme LIKE "'.$this->lemma.'" 
@@ -53,8 +54,8 @@ AND DesiVerForme LIKE "'.$this-> ending.'"'.$this->typeErr;
 
         $database = new DataBase();
         $tab= $database->getData($request);
-
-        return $tab;
+        $finalTab =$this->addScanLink($tab);
+        return $finalTab;
     }
 
     /**
@@ -92,17 +93,17 @@ AND DesiVerForme LIKE "'.$this-> ending.'"'.$this->typeErr;
 
         #Normaliser les personnes
         if ($this->person == "1S"){
-            $this->person = "1P%";
+            $this->person = "P1%";
         } elseif ($this->person == "2S"){
-            $this->person = "2P%";
+            $this->person = "%P2";
         } elseif ($this->person == "3S"){
-            $this->person = "3P";
+            $this->person = "P3";
         } elseif ($this->person == "1P"){
-            $this->person = "4P";
+            $this->person = "P4";
         } elseif ($this->person == "2P") {
-            $this->person = "5P";
+            $this->person = "P5";
         } elseif ($this->person == "3P"){
-            $this->person = "6P";
+            $this->person = "P6";
         } else {
             $this->person = "%";
         }
@@ -119,12 +120,12 @@ AND DesiVerForme LIKE "'.$this-> ending.'"'.$this->typeErr;
         }
 
         #Normaliser la base
-        if($this->base == "undefined"){
+        if($this->base == ""){
             $this->base = "%";
         }
 
         #Normaliser la désinence
-        if($this->ending == "undefined"){
+        if($this->ending == ""){
             $this->ending = "%";
         }
     }

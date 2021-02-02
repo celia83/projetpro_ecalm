@@ -36,6 +36,7 @@ class HomeController {
         $results = $criterion->getResults();
         echo json_encode($results);
     }
+
     /**
      * Critères verbes : Permet de retourner les résultats de la requête faite par l'utilisateur au format JSON pour les verbes
      * @param $corpus
@@ -138,7 +139,7 @@ class HomeController {
                 echo json_encode($tab);
                 break;
             default:
-                echo "Le tableau n'a pas pu être généré";
+                throw new Exception("Erreur : le tableau n'a pas pu être généré.");
         }
 
     }

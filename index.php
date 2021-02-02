@@ -10,10 +10,10 @@ try {
     if (isset($_GET['action'])) {
         #Controleurs pour afficher les résultats de la partie interrogation de la base
         if ($_GET['action'] == 'showResults') {
-            if($_POST["pos"] == "Verbes"){
+            if($_POST["pos"] == "Verbe"){
                 $controller = new HomeController();
                 $controller->showResultsCriteriaVerbs($_POST["corpus"], $_POST["level"], $_POST["pos"], $_POST["errStatus"], $_POST["segmStatus"], $_POST["lemma"], $_POST["tense"], $_POST["person"], $_POST["typeErr"],$_POST["base"], $_POST["ending"]);
-            } elseif ($_POST["pos"] == "Adjectifs"){
+            } elseif ($_POST["pos"] == "Adjectif"){
                 $controller = new HomeController();
                 $controller->showResultsCriteriaAdjectives($_POST["corpus"], $_POST["level"], $_POST["pos"], $_POST["errStatus"], $_POST["segmStatus"], $_POST["lemma"], $_POST["genre"], $_POST["number"], $_POST["errGenre"],$_POST["errNumber"], $_POST["baseAdj"]);
             } else {
@@ -30,13 +30,19 @@ try {
             $controller -> delete($_POST["chooseCorpus"], $_POST["chooseLevel"]);
         #Controleurs pour ajouter des données quand on est gestionnaire
         } elseif ($_GET['action'] == 'addData'){
-            #Vérifier que l'on a bien un fichier csv
-            $fileInfos = pathinfo($_FILES['chooseFile']['name']);
-            $extension = $fileInfos['extension'];
-            $authorizedExtensions = "csv";
-            if ($extension == $authorizedExtensions){
-                $controller = new ManagerController();
-                $controller -> add($_FILES["chooseFile"]['tmp_name']);
+            #Vérifier que l'on a bien un fichier et qu'il est au format csv
+            if($_FILES['chooseFile']['error'] == 4){
+                throw new Exception("Erreur : vous n'avez sélectionné aucun fichier.");
+            } else {
+                $fileInfos = pathinfo($_FILES['chooseFile']['name']);
+                $extension = $fileInfos['extension'];
+                $authorizedExtensions = "csv";
+                if ($extension == $authorizedExtensions){
+                    $controller = new ManagerController();
+                    $controller -> add($_FILES["chooseFile"]['tmp_name']);
+                } else {
+                    throw new Exception('Erreur : extension non valide (csv uniquement).');
+                }
             }
         #Controleur pour la connexion
         } elseif ($_GET["action"]== "connectionPage") {
@@ -50,13 +56,15 @@ try {
             $controller = new UserController();
             $controller->logout();
         } else {
-            echo "Error 404 : page non trouvée";
+            throw new Exception('Erreur 404 : page non trouvée.');
         }
     } else {
         $controller = new HomeController();
         $controller->home();
     }
 
-}catch(Exception $e) {
-        echo 'Erreur : ' . $e->getMessage();
+} catch(Exception $e) {
+        $errorMessage = $e->getMessage();
+        require('view/errorView.php');
+        echo "<section id='error'><article id='errorContenu'>".$errorMessage."</article></section>";
     }

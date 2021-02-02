@@ -1,18 +1,20 @@
 <?php
-require("D:/Documents/Applications/Wamp/www/projetpro_ecalm/model/AddDel_Data/DeleteData.php");
-require("D:/Documents/Applications/Wamp/www/projetpro_ecalm/model/AddDel_Data/InsertData.php");
+require_once('model/AddDel_Data/DeleteData.php');
+require_once('model/AddDel_Data/InsertData.php');
 
 class ManagerController
 {
     public function delete($corpus, $level){
         $delete = new DeleteData($corpus, $level);
-        $delete->deleteData();
-        header('Location:index.php');
+        $nbLineAffected =$delete->deleteData();
+        echo "<script>alert(\"Nombre de lignes affectées par la suppression : ".$nbLineAffected."\")</script>";
+        require('view/home.php');
     }
 
     public function add($file){
         $delete = new InsertData();
-        $delete->addCSV($file);
-        header('Location:index.php');
+        $nbLineAffected =$delete->addCSV($file);
+        echo "<script>alert(\"Nombre de lignes affectées par l'ajout: ".$nbLineAffected."\")</script>";
+        require('view/home.php');
     }
 }

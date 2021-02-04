@@ -424,6 +424,12 @@ $(document).ready(function () {
 
 
     });
+    
+     $("#getExemplier").change(function (){
+        var word = $("#word > option:selected").val();
+        var nbLine = $("#nbLine > option:selected").val();
+    });
+
 
     //Permet de faire disparaitre la fenêtre de l'exemplier en appuyant sur la croix
     $("body").on("click",".fa-times", function (){

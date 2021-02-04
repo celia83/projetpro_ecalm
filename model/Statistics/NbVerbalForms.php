@@ -24,7 +24,7 @@ class NbVerbalForms {
      */
     public function createTabNbVerbalForms(){
         #Sélectionner seulement les verbes dans la base de données (hors p.passés)
-		$request = 'SELECT * FROM `cm2_scoledit` WHERE Categorie LIKE "VER%" AND Categorie LIKE "VER:pper" = 0';
+		$request = 'SELECT * FROM `cm2_scoledit` WHERE Categorie LIKE "VER%" AND Categorie <> "VER:pper" ';
         #Récupération des données dans la base de données
         $database = new DataBase();
         $tabverbe= $database->getData($request);        
@@ -62,8 +62,8 @@ class NbVerbalForms {
         $CM1Anna = 0;
         $CM2Anna = 0;
         
-        #Sélectionner seulement les verbes qui ont un statut de segmentation "normé" dans la base de données 
-        $request = 'SELECT * FROM `cm2_scoledit` WHERE Categorie LIKE "VER%" AND Categorie LIKE "VER:pper" = 0 AND StatutSegm LIKE "01-Normé"';
+        #Sélectionner seulement les verbes qui ont un statut de segmentation "normé" dans la base de données
+        $request = 'SELECT * FROM `cm2_scoledit` WHERE Categorie LIKE "VER%" AND Categorie <> "VER:pper"  AND BaseVerForme <> "_" AND BaseVerForme <> "#" ';
 
         #Récupération des données dans la base de données
         $Database = new DataBase();

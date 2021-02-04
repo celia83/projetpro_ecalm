@@ -13,16 +13,32 @@ require_once('model/Statistics/StandardizedBaseEndingProportion.php');
 require_once('model/Statistics/StandardizedBaseOrEnding.php');
 require_once('model/Statistics/TenseRepartition.php');
 
+/**
+ * Classe HomeController
+ *
+ * Cette classe contient tous les controleurs utilisés dans la page d'accueil (hors gestionnaire)
+ *
+ * PHP version 5.6
+ *
+ * @author Célia Martin <celia.ma@free.fr>
+ */
 class HomeController {
     /**
+     * Fonction home()
+     *
      * Cette fonction permet d'afficher la page d'accueil
+     *
+     * @return void
      */
     public function home(){
         require('view/home.php');
     }
 
     /**
-     * Critère généraux : Permet de retourner les résultats de la requête faite par l'utilisateur au format JSON
+     * Fonction showResultsCriteria($corpus, $level, $pos, $errStatus, $segmStatus, $lemma)
+     *
+     * Controleur pour les critères généraux : Permet de retourner les résultats de la requête (interrogation simple, exclut les verbes et les adjectifs) faite par l'utilisateur au format JSON pour un traitement avec ajax..
+     *
      * @param $corpus
      * @param $level
      * @param $pos
@@ -30,6 +46,7 @@ class HomeController {
      * @param $segmStatus
      * @param $lemma
      * @return void
+     * @throws Exception
      */
     function showResultsCriteria($corpus, $level, $pos, $errStatus, $segmStatus, $lemma){
         $criterion = new Criterion($corpus, $level, $pos, $errStatus, $segmStatus, $lemma);
@@ -38,7 +55,10 @@ class HomeController {
     }
 
     /**
-     * Critères verbes : Permet de retourner les résultats de la requête faite par l'utilisateur au format JSON pour les verbes
+     * Fonction showResultsCriteriaVerbs($corpus, $level, $pos, $errStatus, $segmStatus, $lemma, $tense, $person, $typeErr, $base, $ending).
+     *
+     * Controleur pour les critères des verbes : Permet de retourner les résultats de la requête faite par l'utilisateur  pour les verbes au format JSON pour un traitement avec ajax.
+     *
      * @param $corpus
      * @param $level
      * @param $pos
@@ -51,6 +71,7 @@ class HomeController {
      * @param $desinence
      * @param $base
      * @return void
+     * @throws Exception
      */
     function showResultsCriteriaVerbs($corpus, $level, $pos, $errStatus, $segmStatus, $lemma, $tense, $person, $typeErr, $base, $ending){
         $criterion = new CriterionVerb($corpus, $level, $pos, $errStatus, $segmStatus, $lemma, $tense, $person, $typeErr, $base, $ending);
@@ -59,7 +80,10 @@ class HomeController {
     }
 
     /**
-     * Critères adjectifs : Permet de retourner les résultats de la requête faite par l'utilisateur au format JSON pour les adjectifs
+     * Fonction showResultsCriteriaAdjectives($corpus, $level, $pos, $errStatus, $segmStatus, $lemma, $genre, $numbre, $errGenre, $errNumber, $base).
+     *
+     * Controleur pour les critères des adjectifs : Permet de retourner les résultats de la requête faite par l'utilisateur pour les adjectifs au format JSON pour un traitement avec ajax..
+     *
      * @param $corpus
      * @param $level
      * @param $pos
@@ -72,6 +96,7 @@ class HomeController {
      * @param $errNumber
      * @param $base
      * @return void
+     * @throws Exception
      */
     function showResultsCriteriaAdjectives($corpus, $level, $pos, $errStatus, $segmStatus, $lemma, $genre, $numbre, $errGenre, $errNumber, $base){
         $criterion = new CriterionAdjective($corpus, $level, $pos, $errStatus, $segmStatus, $lemma, $genre, $numbre, $errGenre, $errNumber, $base);
@@ -81,11 +106,15 @@ class HomeController {
 
 
     /**
-     * Permet de calculer différents tableaux de statistiques
-     * @param string $tabName
-     * @param string $verbGroup
-     * @param string $tense
+     * Fonction showStatsTab($tabName, $verbGroup, $tense)
+     *
+     * Controleur pour les différents tableaux de statistiques. Il retourne le tableau au format JSON pour un traitement avec ajax.
+     *
+     * @param string $tabName Nom du tableau à générer
+     * @param string $verbGroup Groupe verbal pour lequel afficher le tableau
+     * @param string $tense Tiroir verbal pour lequelafficher le tableau
      * @return void
+     * @throws Exception
      */
     function showStatsTab($tabName, $verbGroup, $tense){
         # Tableau supprimé: Nombre de formes verbales, de bases et de désinences analysées
@@ -141,6 +170,5 @@ class HomeController {
             default:
                 throw new Exception("Erreur : le tableau n'a pas pu être généré.");
         }
-
     }
 }

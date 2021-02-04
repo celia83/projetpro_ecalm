@@ -2,14 +2,28 @@
 
 include_once "model/DataBase.php";
 
+/**
+ * Classe VerbalFormsRepartitionBaseAndEndingPhono
+ *
+ * Cette classe ne possède qu'une seule fonction et permet de générer le tableau : Répartition des formes verbales non normées selon si leur base et/ou leur désinence respectent ou non la phonologie.
+ *
+ * PHP version 5.6
+ *
+ * @author Jingyu Liu <jingyu.liu@etu.univ-grenoble-alpes.fr>
+ */
 class VerbalFormsRepartitionBaseAndEndingPhono{
 
+    /**
+     * Fonction createTabVerbalFormsRepartitionBaseAndEndingPhono($verbGroup, $tense)
+     *
+     * Cette fonction sélectionne dans la base de données les informations relatives à la phonologie et crée un tableau montrant le pourcentage de réussite et d'échecs des base et désinence au niveau phonologique.
+     *
+     * @param string $verbGroup Choix du groupe du verbe (-er | non -er | tous_les_verbes)
+     * @param string $tense Choix du temps (Infinitif | Présent | Imparfait | Passé Simple | tous_les_temps)
+     * @return array
+     * @throws Exception
+     */
     public function createTabVerbalFormsRepartitionBaseAndEndingPhono($verbGroup, $tense){
-		/**
-		 * Cette fonction sélectionne la répartition des formes verbales non normées 
-		 * selon si leur base et/ou leur désinence respectent ou non la phonologie
-		 * @return array $tabProd
-		 */
 		#Créer la requête
         #Normaliser le temps des verbes pour la requête sql
         if ($tense == "Présent"){

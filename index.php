@@ -5,7 +5,13 @@ require('controller/HomeController.php');
 require('controller/UserController.php');
 require('controller/ManagerController.php');
 
-
+/**
+ * Routeur : permet d'appeler les controleurs nécessaires à chaque action réalisée par l'utilisteur.
+ *
+ * PHP version 5.6
+ *
+ * @author Célia Martin <celia.ma@free.fr>
+ */
 try {
     if (isset($_GET['action'])) {
         #Controleurs pour afficher les résultats de la partie interrogation de la base

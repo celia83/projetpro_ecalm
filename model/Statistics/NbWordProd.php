@@ -2,12 +2,25 @@
 
 include_once "model/DataBase.php";
 
-class NbWordProd
-{
+/**
+ * Class NbWordProd
+ *
+ * Cette classe n'a qu'une seule fonction qui permet de générer le tableau : Nombre de mots des productions.
+ *
+ * PHP version 5.6
+ *
+ * @author Océane Giroud <oceane.giroud@etu.univ-grenoble-alpes.fr>
+ */
+class NbWordProd {
+
     /**
-     * Cette fonction sélectionne seulement les mots dans la bdd et les compte (hors ponctuations et balises) : elle crée un tableau final
-     * avec le nombre de mots par niveau, la longueur moyenne des roductions par niveau et la taille min et max de ces productions par niveau
-     * @return array $tabProd
+     * Fonction createTabNbWordsProd()
+     *
+     * Cette fonction sélectionne seulement les mots dans la base de données et les compte (hors ponctuations et balises) : elle crée un tableau final
+     * avec le nombre de mots par niveau, la longueur moyenne des productions par niveau et la taille min et max de ces productions par niveau
+     *
+     * @return array
+     * @throws Exception
      */
     public function createTabNbWordsProd(){
         #Sélectionner seulement les mots dans la base de données (pas de ponctuation et de balises telles que <sent>)

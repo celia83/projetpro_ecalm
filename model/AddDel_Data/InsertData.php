@@ -1,16 +1,27 @@
 <?php
 
-#connecter à la base de données
 include_once "model/DataBase.php";
 
+/**
+ * Class InsertData
+ *
+ * Cette classe permet d'ajouter à la base de données les lignes présentes dans un fichier csv fourni par l'utilisateur.
+ *
+ * PHP version 5.6
+ *
+ * @author Jingyu Liu <jingyu.liu@etu.univ-grenoble-alpes.fr>
+ */
 class InsertData
 {
 	/**
-     * Cette fonction inséré les données du fichier de csv à la base de données
-     */
-     
-	#la fonction de traiter le fichier
-	public function input_csv($handle)
+	 * Fonction inputCSV($handle)
+	 *
+	 * Cette fonction permet de charger les données du fichier csv.
+	 *
+	 * @param $handle
+	 * @return array Tableau des lignes du ficheir csv
+	 */
+	public function inputCSV($handle)
 		{   
 			$out = array ();   
 			$n = 0;   
@@ -24,9 +35,17 @@ class InsertData
 				$n++;   
 			}   
 			return $out;   
-		}  
+		}
 
-	#la fonction d'inserer
+	/**
+	 * Fonction addCSV($file_path)
+	 *
+	 * La fonction addCSV() permet d'écrire dans la base de données les lignes du fichier csv donné par l'utilisateur. Elle génère une erreur si le fichier est vide.
+	 *
+	 * @param string $file_path Le chemin vers le fichier csv (chemin temporaire sur le serveur)
+	 * @return int $nbLineAffected Le nombre de lignes affectées par l'ajout
+	 * @throws Exception
+	 */
 	public function addCSV($file_path){
 
 			
@@ -35,9 +54,8 @@ class InsertData
 			$handle = fopen($file_path, 'r');   			   
 			}
 			
-			#traiter le fichier de csv
-
-			$result = self::input_csv($handle);
+			#traiter le fichier csv
+			$result = self::inputCSV($handle);
 			$len_result = count($result);  
 
 			#voir si le fichier est vide
@@ -91,23 +109,19 @@ class InsertData
 				$data_values .= "('$IdTok','$IdProd','$Niv','$SegNorm','$SegTrans','$PhonNorm','$PhonTrans','$SyllabNorm','$SyllabTrans','$Categorie','$Lemme','$StatuErreurSimp','$StatutErreur','$StatutSegm','$Genre','$Nombre','$BaseAdjNorm','$GenreAdjNorm','$NombreAdjNorm','$BaseAdjTrans','$GenreAdjTrans','$NombreAdjTrans','$ErreurAdjBase','$ErreurAdjGenre','$ErreurAdjNombre','$VerPers','$BaseVerForme','$DesiVerForme','$BaseVerProd','$DesiVerProd	','$ErrVerBase','$ErrVerDes','$ErrVerBaseEtDes'),";
 			}
 
-
 			#fermer la fonction de handle et supprimer le dernier indice   
 			$data_values = substr($data_values,0,-1);
-
-
 			
 			#fermer la fonction de handle   
 			fclose($handle); 
 			
 			#insérer les données aux tables
 			$request = "INSERT INTO `cm2_scoledit` (IdTok,IdProd,Niv,SegNorm,SegTrans,PhonNorm,PhonTrans,SyllabNorm,SyllabTrans,Categorie,Lemme,StatuErreurSimp,StatutErreur,StatutSegm,Genre,Nombre,BaseAdjNorm,GenreAdjNorm,NombreAdjNorm,BaseAdjTrans,GenreAdjTrans,NombreAdjTrans,ErreurAdjBase,ErreurAdjGenre,ErreurAdjNombre,VerPers,BaseVerForme,DesiVerForme,BaseVerProd,DesiVerProd,ErrVerBase,ErrVerDes,ErrVerBaseEtDes) VALUES $data_values";
-			#call la fonction de getData 
+
+			#call la fonction de getData
 			$database = new DataBase();
 			$nbLineAffected=$database->addOrDelData($request);
 
 			return $nbLineAffected;
 	 } 	
- }  
-		
-?>
+ }

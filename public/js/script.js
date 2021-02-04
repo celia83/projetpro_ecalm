@@ -119,7 +119,7 @@ $(document).ready(function () {
                         //découpage en syllabes
                         var transSeg = message[i].SyllabTrans;
                         var cuttransSeg = transSeg.split("-");
-                        
+
                         //La désinence est le dernier élément (sauf s'il n'y a qu'une syllabe)
                         if (cuttransSeg.length > 1){
                             base = cuttransSeg[0];
@@ -445,7 +445,7 @@ $(document).ready(function () {
                 //Décodage du json
                 var message = JSON.parse(result);
                 //Si les identifiants sont corrects on redirige la personne vers la page d'accueil
-                if(message === "true"){
+                if(message === true){
                     document.location.href='../index.php';
                 //Sinon on affiche le message renvoyé par le serveur
                 } else {

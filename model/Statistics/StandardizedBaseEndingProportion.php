@@ -2,16 +2,28 @@
 
 include_once "model/DataBase.php";
 
+/**
+ * Classe StandardizedBaseEndingProportion
+ *
+ * Cette classe n'a qu'une seule fonction et permet de créer le tableau des proportions de bases et désinences normées et non normées.
+ *
+ * PHP version 5.6
+ *
+ * @author Célia Martin <celia.ma@free.fr>
+ */
 class StandardizedBaseEndingProportion {
-    public function createTabStandardizedBaseEndingProportion($verbGroup, $tense)
-    {
-        /**
-         * Crée le tableau des proportions de bases et désinences normées.
-         * L'utilisateur peut choisir entre les verbes en er ou non et entre les quatre temps (infinitif, présent, imparfait, passé simple)
-         * @param string $verbGroup    Choix du groupe du verbe (-er | non -er | tous_les_verbes)
-         * @param string $tense    Choix du temps (Infinitif | Présent | Imparfait | Passé Simple)
-         * @return array $finalTab
-         */
+
+    /**
+     * Fonction createTabStandardizedBaseEndingProportion($verbGroup, $tense)
+     *
+     * Cette fonction prend en entrée les choix de l'utilisateur concernant le groupe du verbe et son temps (choix entre les verbes en er ou non et entre les quatre temps [infinitif, présent, imparfait, passé simple]) et retourne un tableau contenant les informations nombre de base / désinences erronées et nombre de base / désinence normées, en fonction des informations contenues dans la base de données.
+     *
+     * @param string $verbGroup Choix du groupe du verbe (-er | non -er | tous_les_verbes)
+     * @param string $tense Choix du temps (Infinitif | Présent | Imparfait | Passé Simple | tous_les_temps)
+     * @return array
+     * @throws Exception
+     */
+    public function createTabStandardizedBaseEndingProportion($verbGroup, $tense) {
         #Créer la requête
         #Normaliser le temps des verbes pour la requête sql
         if ($tense == "Présent") {

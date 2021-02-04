@@ -2,14 +2,24 @@
 
 include_once "model/DataBase.php";
 
-class AllVerbs 
-{
+/**
+ * Classe AllVerbs
+ *
+ * Cette classe ne contient qu'une fonction. Elle permet de calculer le tableau de statistique : Nombre de formes verbales, de bases et de désinences analysées.
+ *
+ * PHP version 5.6
+ *
+ * @author Océane Giroud <oceane.giroud@etu.univ-grenoble-alpes.fr>
+ */
+class AllVerbs {
     /**
-     * Cette fonction sélectionne tous les verbes dans la base de données et donne le nombre de bases et de désinences.
-     * Les résultats sont affichés dans un tableau.
-     * @return array $percentageAllVerbsByLevel
+     * Fonction createTabAllVerbs()
+     *
+     * Cette fonction sélectionne dans la base de données les verbes, les base et les désinences qui ont été analysées et en retourne un tableau.
+     *
+     * @return array
+     * @throws Exception
      */
- 
     public function createTabAllVerbs() {
         $request = 'SELECT Niv, Categorie, BaseVerForme, DesiVerForme, DesiVerProd FROM `cm2_scoledit` WHERE Categorie LIKE "VER%" ';
       
@@ -45,6 +55,7 @@ class AllVerbs
 				"Nombre de désinences" => 0,
                 ),
             );
+
         #Sélection
         foreach ($tabVerbs as $Verbs){
             if (($Verbs["Categorie"] == "VER:impf") or ($Verbs ["Categorie"] == "VER:simp")or ($Verbs ["Categorie"] == "VER:pres") or ($Verbs ["Categorie"] == "VER:infi") or ($Verbs ["Categorie"] == "VER:cond") or ($Verbs ["Categorie"] == "VER:impe") or ($Verbs ["Categorie"] == "VER:futu") or ($Verbs ["Categorie"] == "VER:subi") or ($Verbs ["Categorie"] == "VER:subp") or ($Verbs["Categorie"] == "VER:ppre") or ($Verbs["Categorie"] == "VER:pper")){
@@ -56,9 +67,6 @@ class AllVerbs
             if($Verbs["DesiVerProd"] != "_") {
 				$VerbalFormsByLevel[$Verbs["Niv"]]["Nombre de désinences"] ++;
 			}
-				
-
-
 
         #Création du tableau final
         $percentageAllVerbsByLevel = array("CP" => array(),"CE1" => array(),"CE2" => array(),"CM1" => array(),"CM2" => array());
@@ -69,14 +77,7 @@ class AllVerbs
                  $percentageAllVerbsByLevel[$level][$NivVerb] =(string) $nbVerb;
                 }
         }
-        
-		
-	
 	}
         return $percentageAllVerbsByLevel;
     }
 }
-
-
-
-

@@ -2,14 +2,25 @@
 
 include_once "model/DataBase.php";
 
-class POSRepartitionByLevel
-{
+/**
+ * Classe POSRepartitionByLevel
+ *
+ * Cette classe n'a qu'une seule fonction et permet de générer le tableau : Répartition des POS en fonction du niveau.
+ *
+ * PHP version 5.6
+ *
+ * @author Célia Martin <celia.ma@free.fr>
+ */
+class POSRepartitionByLevel {
+
     /**
-     * Cette fonction sélectionne les POS dans la base de données et calcule la répartition des POS de chaque catégorie grammaticale en fonction des niveaux.
-     * Les résultats sont exprimés en pourcentage et affichés dans un tableau.
+     * Fonction createTabPOSRepartitionByLevel().
+     *
+     * Cette fonction sélectionne les POS dans la base de données et calcule la répartition des POS de chaque catégorie grammaticale en fonction des niveaux. Les résultats sont exprimés en pourcentage et affichés dans un tableau.
+     *
      * @return array $percentagePOSByLevel
+     * @throws Exception
      */
- 
     public function createTabPOSRepartitionByLevel() {
         #Mettre dans un tableau tous les POS avec le niveau correspondant depuis la base de données
         $request = 'SELECT Niv, Categorie FROM `cm2_scoledit`';

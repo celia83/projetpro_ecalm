@@ -2,6 +2,16 @@
 
 include_once "model/DataBase.php";
 
+/**
+ * Classe Criterion
+ *
+ * Cette classe permet de récupérer des données dans la base de données en fonction des critères sélectionnés par l'utilisateur. Cette classe ne fonctionne pas pour les catégories de verbes et adjectifs (se référer aux classes correspondantes : CriterionAdjective et CriteronVerb).
+ *
+ * PHP version 5.6
+ *
+ * @author Célia Martin <celia.ma@free.fr>
+ *
+ */
 class Criterion{
 
     protected $corpus;
@@ -11,6 +21,15 @@ class Criterion{
     protected $segmStatus;
     protected $lemma;
 
+    /**
+     * Constructeur de Criterion.
+     * @param string $corpus Le corpus sélectionné parmi Scoledit, Ecriscol ou Resolco
+     * @param string $level Le niveau sélectionné entre le CP et le M2
+     * @param string $pos La catégorie grammaticale (Part Of Speech) sélectionnée
+     * @param string $errStatus Le statut d'erreur sélectionné (Normé, Phono, ApproxGraphique, ApproxPhono, ApproxArchiPhono, Non normé, Non pertinent, Tous)
+     * @param string $segmStatus Le statut de segmentation (Normé, HyperSeg, HypoSeg, HypoHyperSeg, Non pertinent, Omis, Inséré, Tous)
+     * @param string $lemma Le lemme sélectionné
+     */
     public function __construct($corpus, $level, $pos, $errStatus, $segmStatus, $lemma){
 
         $this->corpus=$corpus;
@@ -22,8 +41,12 @@ class Criterion{
     }
 
     /**
-     * Cette fonction permet de retourner un tableau en fonction des critères sélectionnés par l'utilisateur
-     * @return array $tab contenant les lignes retournées par la requête
+     * Fonction getResults
+     *
+     * Cette fonction permet de retourner un tableau en fonction des critères sélectionnés par l'utilisateur. Elle donne un tableau contenant les lignes retournées par la requête (un mot par ligne avec ses informations).
+     *
+     * @return array
+     * @throws Exception
      */
     public function getResults(){
         /* Exemple de requete qui fonctionne avec les critères principaux (pour le corpus on recherche S dans idTok pour le corpus Scoledit:
@@ -39,6 +62,7 @@ class Criterion{
         #Normaliser les critères pour que la requête soit adaptées au données de la bdd
         $this->normalizeCriterions();
 
+        #Création de la requête
         $request = 'SELECT * FROM `cm2_scoledit` 
 WHERE IdTok REGEXP "'.$this->corpus.'" 
 AND Niv LIKE "'.$this->level.'" 
@@ -47,20 +71,25 @@ AND StatutErreur LIKE "'.$this->errStatus.'"
 AND StatutSegm LIKE "'.$this->segmStatus.'" 
 AND Lemme LIKE "'.$this->lemma.'"';
 
-
+        #Connection à la base de donnée et application de la requête
         $database = new DataBase();
         $tab= $database->getData($request);
+
+        #Ajout de la cellule contenant le lien vers le scan
         $finalTab =$this->addScanLink($tab);
+
         return $finalTab;
     }
 
     /**
-     * Les données provenant de la page HTML sont dans un format agréable à lire pour l'utilisateur, cette fonction permet de transcrire ces données
-     * pour qu'elles correspondent à ce qu'on a dans la base de données
+     * Fonction normalizeCriterions()
+     *
+     * Les données provenant de la page HTML sont dans un format agréable à lire pour l'utilisateur, cette fonction permet de transcrire ces données pour qu'elles correspondent à la manière dont elles sont référencées dans la base de données.
+     *
      * @return void
      */
     protected function normalizeCriterions(){
-        #Normalisation du corpus : E : Ecriscol, S : Scoledit, R : Resolco, sinon on sélectionne tous les corpus avec %
+        #Normalisation du nom des corpus : E = Ecriscol, S = Scoledit, R = Resolco, lettre que l'on trouve dans IdTok dans la base de données en écrivant une expression régulière, sinon on sélectionne tous les corpus
         if ($this->corpus == "Scoledit"){
             $this->corpus = "[A-Z]+-[a-zA-Z]+[0-9]+-[0-9]+-[a-zA-Z]+-[a-zA-Z][0-9]-S[0-9]+-[A-Z][0-9]-[0-9]+-[0-9]+";
         } elseif ($this->corpus == "Ecriscol"){
@@ -71,7 +100,7 @@ AND Lemme LIKE "'.$this->lemma.'"';
             $this->corpus = "[A-Z]+-[a-zA-Z]+[0-9]+-[0-9]+-[a-zA-Z]+-[a-zA-Z][0-9]-[a-zA-Z][0-9]+-[A-Z][0-9]-[0-9]+-[0-9]+";
         }
 
-        #Normalisation des catégories grammaticales
+        #Normalisation du nom des catégories grammaticales pour qu'elles correspondent à celles de Treetagger
         if ($this->pos == "Adverbe"){
             $this->pos = "ADV";
         } elseif ($this->pos == "Adjectif"){
@@ -100,7 +129,7 @@ AND Lemme LIKE "'.$this->lemma.'"';
             $this->pos = "%";
         }
 
-        #Normalisation des Statuts d'erreur (la terminologie reste la même si ce n'est les numéros qui précèdent le mot par ex "01-Normé" donc on peut simplement ajouter % devant)
+        #Normalisation du nom des Statuts d'erreur (la terminologie reste la même si ce n'est les numéros qui précèdent le mot par ex "01-Normé" donc on peut simplement ajouter % devant)
         if ($this->errStatus == "Tous"){
             $this->errStatus = "%";
         } else {
@@ -108,7 +137,7 @@ AND Lemme LIKE "'.$this->lemma.'"';
         }
 
 
-        #Normalisation des Status de segments (la situation est la même que pour le statut des erreurs)
+        #Normalisation du nom des Status de segments (la situation est la même que pour le statut des erreurs)
         if ($this->segmStatus == "Tous"){
             $this->segmStatus = "%";
         } else {
@@ -126,6 +155,14 @@ AND Lemme LIKE "'.$this->lemma.'"';
         }
     }
 
+    /**
+     * Fonction addScanLink
+     *
+     * A chaque mot correspond ou non un scna de la copie de l'élève. Cette fonction permet donc de vérifier que le scan correspondant existe :si c'est le cas on créer un lien (balise <a href> en html) vers ce scan, sinon on précise à l'utilisateur que le scan est indisponible. Elle retourne un tableau contenant un mot par ligne avec ses informations telles qu'elles sont dans la base de données avec le lien vers le scan à la fin de chaque ligne.
+     *
+     * @param array $result tableau contenant les lignes correspondant à la recherche de l'utilisateur (résultat de la fonction getResults)
+     * @return array
+     */
     public function addScanLink($result){
         $newResults = array(); #Contiendra les nouvelles lignes de résultat
         #Sélectionner une ligne d'informations

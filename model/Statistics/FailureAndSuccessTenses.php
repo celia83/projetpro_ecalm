@@ -2,17 +2,28 @@
 
 include_once "model/DataBase.php";
 
+/**
+ * Classe CriterionVerb : classe fille de la classe Criterion.
+ *
+ * Cette classe ne contient qu'une seule fonction. Elle permet de créer le tableau :  Répartition des échecs et réussites pour les tiroirs verbaux les plus employés.
+ *
+ * PHP version 5.6
+ *
+ * @author Célia Martin <celia.ma@free.fr>
+ */
 class FailureAndSuccessTenses {
 
+    /**
+     * Fonction createTabFailureSuccess ($verbGroup)
+     *
+     * Fonction qui retourne un tableau indiquant les pourcentages de formes correctes, de formes incorrectes mais qui permettent de restituer la forme sonore et de formes incorrectes ne permettant pas de restituer la forme sonore, ces informations sont contenues dans la base de données.
+     * Elle permet à l'utilisateur de choisir d'afficher ces informations pour les verbes en -er, non en -er ou pour tous
+     *
+     * @param String $verbGroup "er" | "nonEr" | Tous_les_verbes
+     * @return array
+     * @throws Exception
+     */
     public function createTabFailureSuccess ($verbGroup) {
-        /**
-        * Fonction qui retourne un tableau indiquant les pourcentages de formes correctes, de formes incorrectes mais qui permettent de
-        * restituer la forme sonore et de formes incorrectes ne permettant pas de restituer la forme sonore
-        * Elle permet à l'utilisateur de choisir d'afficher ces informations pour les verbes en -er, non en -er ou pour tous
-        * @param String $verbGroup "er" | "nonEr" | Tous_les_verbes
-        * @return array $finalTab le tableau ainsi créé
-        */
-
         /*  Indications :
             - Orthographe normée : forme correcte => SegNorm == SegTrans
             - Phonologie normée : forme incorrecte mais qui permet de restituer la forme sonore => SegNorm != SegTrans et PhonNorm = PhonTrans

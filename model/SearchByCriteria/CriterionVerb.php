@@ -2,6 +2,16 @@
 
 include_once "model/DataBase.php";
 
+/**
+ * Classe CriterionVerb : classe fille de la classe Criterion.
+ *
+ * Cette classe permet de récupérer des données dans la base de données en fonction des critères sélectionnés par l'utilisateur. Cette classe ne fonctionne que pour les verbes (pour les adjectifs et les autres catégories se référer aux classes correspondantes : Criterion et CriteronAdjective).
+ *
+ * PHP version 5.6
+ *
+ * @author Célia Martin <celia.ma@free.fr>
+ *
+ */
 class CriterionVerb extends Criterion{
 
     private $tense;
@@ -10,20 +20,39 @@ class CriterionVerb extends Criterion{
     private $ending;
     private $base;
 
+    /**
+     * Constructeur de CriterionVerb.
+     *
+     * Reprend les propriétés de la classe mère Criterion (de corpus à lemme). Les autres propriétés sont spécifiques à la classe des verbes.
+     *
+     * @param string $corpus
+     * @param string $level
+     * @param string $pos
+     * @param string $errStatus
+     * @param string $segmStatus
+     * @param string $lemma
+     * @param string $tense Tiroir verbal sélectionné (Conditionnel, Futur, Impératif, Imparfait, Infinitif, Participe présent, Présent, Passé simple, Subjonctif imparfait, Subjonctif présent)
+     * @param string $person Personne sélectionnée (1S, 2S, 3S, 1P, 2P, 3P)
+     * @param string $typeErr Présence d'une erreur soit sur la base, soit sur la désinence soit sur les deux (Erreur Base, Erreur Désinence, Erreur Base et Désinence)
+     * @param string $base Base sélectionnée
+     * @param string $ending Désinence sélectionnée
+     */
     public function __construct($corpus, $level, $pos, $errStatus, $segmStatus, $lemma,$tense, $person, $typeErr, $base, $ending){
-
         parent::__construct($corpus, $level, $pos, $errStatus, $segmStatus, $lemma);
         $this->tense=$tense;
         $this->person=$person;
         $this->typeErr=$typeErr;
         $this-> ending= $ending;
         $this->base=$base;
-
     }
 
     /**
-     * Cette fonction permet de retourner un tableau en fonction des critères sélectionnés par l'utilisateur
-     * @return array $tab contenant les lignes retournées par la requête
+     * Fonction getResultsVerb()
+     *
+     * Cette fonction permet de retourner un tableau contenant les lignes retournées par la requête en fonction des critères sélectionnés par l'utilisateur. La requête est spécifique aux verbes (elle contient en plus les champs de tiroir verbal, personne, type d'erreur, désinence et base).
+     *
+     * @return array
+     * @throws Exception
      */
     public function getResultsVerb(){
         /* Exemple de requete qui fonctionne avec les critères principaux (pour le corpus on recherche S dans idTok pour le corpus Scoledit:
@@ -52,15 +81,18 @@ AND VerPers LIKE "'.$this->person.'"
 AND BaseVerForme LIKE "'.$this->base.'" 
 AND DesiVerForme LIKE "'.$this-> ending.'"'.$this->typeErr;
 
+        #Récupération des données
         $database = new DataBase();
         $tab= $database->getData($request);
+
+        #Ajout du lien vers le scan s'il existe
         $finalTab =$this->addScanLink($tab);
         return $finalTab;
     }
 
     /**
-     * Les données provenant de la page HTML sont dans un format agréable à lire pour l'utilisateur, cette fonction permet de transcrire ces données
-     * pour qu'elles correspondent à ce qu'on a dans la base de données
+     * Cette fonction est la même que celle présente dans la classe mère, elle normalise en plus les informations spécifiques aux verbes (genre, nombre, erreur de genre, de nombre et base).
+     *
      * @return void
      */
     protected function normalizeCriterions(){

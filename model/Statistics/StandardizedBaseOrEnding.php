@@ -2,16 +2,28 @@
 
 include_once "model/DataBase.php";
 
+/**
+ * Classe StandardizedBaseOrEnding
+ *
+ * Cette classe n'a qu'une seule fonction et permet de créer le tableau des répartitions des formes verbales selon si leur base et/ou leur désinence sont normées.
+ *
+ * PHP version 5.6
+ *
+ * @author Célia Martin <celia.ma@free.fr>
+ */
 class StandardizedBaseOrEnding {
-
+    /**
+     * Fonction createTabStandardizedBaseOrEnding($verbGroup, $tense)
+     *
+     * Cette fonction crée un tableau qui donne le pourcentage pour chaque niveau de forme verbale normées, ayant une erreur sur la base, sur la désinence et sur les deux, en fonction des informations contenues dans la base de données.
+     * L'utilisateur peut choisir d'afficher le tableau en fonction d'un temps (Infinitif, Imparfait, Présent, Passé Simple) et d'un type de verbe (en -er, non en -er ou tous).
+     *
+     * @param string $verbGroup Choix du groupe du verbe (-er | non -er | tous_les_verbes)
+     * @param string $tense Choix du temps (Infinitif | Présent | Imparfait | Passé Simple | tous_les_temps)
+     * @return array
+     * @throws Exception
+     */
     public function createTabStandardizedBaseOrEnding($verbGroup, $tense){
-        /**
-         * Cette fonction crée un tableau qui donne le pourcentage pour chaque niveau de forme verbale normées, ayant une erreur sur la base, sur la désinence et sur les deux.
-         * L'utilisateur peut choisir d'afficher le tableau en fonction d'un temps (Infinitif, Imparfait, Présent, Passé Simple) et d'un type de verbe (en -er, non en -er ou tous)
-         * @param string $verbGroup    Choix du groupe du verbe (-er | non -er | tous_les_verbes)
-         * @param string $tense    Choix du temps (Infinitif | Présent | Imparfait | Passé Simple)
-         * @return array $finalTab
-         */
         #Créer la requête
         #Normaliser le temps des verbes pour la requête sql
         if ($tense == "Présent"){

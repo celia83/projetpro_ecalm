@@ -245,7 +245,7 @@
                             <select  id="tabStats" name="tabStats">
                                 <option value = "NbWordProd">Nombre de mots des productions</option>
                                 <option value = "POSRepartitionByLevel">Répartition des POS en fonction du niveau</option>
-                                <option value = "TenseRepartition">Répartition des tiroir verbaux</option>
+                                <option value = "TenseRepartition">Répartition des tiroirs verbaux</option>
                                 <option value = "NbVerbalForms">Nombre de formes verbales analysées</option>
                                 <option value = "FailureAndSuccessTenses">Répartition des échecs et réussites pour les tiroirs verbaux les plus employés</option>
                                 <option value = "StandardizedBaseOrEnding">Répartition des formes verbales selon si leur base et/ou leur désinence sont normées</option>

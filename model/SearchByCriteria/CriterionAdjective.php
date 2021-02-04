@@ -2,6 +2,17 @@
 
 include_once "model/DataBase.php";
 
+ /**
+ * Classe CriterionAdjective : classe fille de la classe Criterion.
+ *
+ * Cette classe permet de récupérer des données dans la base de données en fonction des critères sélectionnés par l'utilisateur. Cette classe ne fonctionne que pour les adjectifs (pour les verbes et les autres catégories se référer aux classes correspondantes : Criterion et CriteronVerb).
+ *
+ * PHP version 5.6
+ *
+ * @author Célia Martin <celia.ma@free.fr>
+ *
+ */
+
 class CriterionAdjective extends Criterion{
 
     private $genre;
@@ -10,8 +21,24 @@ class CriterionAdjective extends Criterion{
     private $errNumber;
     private $base;
 
+    /**
+     * Constructeur de CriterionAdjective.
+     *
+     * Reprend les propriétés de la classe mère Criterion (de corpus à lemme). Les autres propriétés sont spécifiques à la classe des adjectifs.
+     *
+     * @param string $corpus
+     * @param string $level
+     * @param string $pos
+     * @param string $errStatus
+     * @param string $segmStatus
+     * @param string $lemma
+     * @param string $genre Genre de l'adjectif sélectionné
+     * @param string $numbre Nombre de l'adjectif sélectionné
+     * @param string $errGenre Présence ou non d'erreur sur le genre (0, 1 ou Tous)
+     * @param string $errNumber Présence ou non d'erreur sur le nombre (0, 1 ou Tous)
+     * @param string $base Base sélectionnée
+     */
     public function __construct($corpus, $level, $pos, $errStatus, $segmStatus, $lemma, $genre, $numbre, $errGenre, $errNumber, $base){
-
         Parent::__construct($corpus, $level, $pos, $errStatus, $segmStatus, $lemma);
         $this->genre=$genre;
         $this->numbre=$numbre;
@@ -21,8 +48,12 @@ class CriterionAdjective extends Criterion{
     }
 
     /**
-     * Cette fonction permet de retourner un tableau en fonction des critères sélectionnés par l'utilisateur
-     * @return array $tab contenant les lignes retournées par la requête
+     * Fonction getResultsAdjective()
+     *
+     * Cette fonction permet de retourner un tableau contenant les lignes retournées par la requête en fonction des critères sélectionnés par l'utilisateur. La requête est spécifique aux adjectifs (elle contient en plus les champs de genre, nombre, erreur de genre, erreur de nombre et base).
+     *
+     * @return array
+     * @throws Exception
      */
     public function getResultsAdjective(){
         /* Exemple de requete qui fonctionne avec les critères principaux (pour le corpus on recherche S dans idTok pour le corpus Scoledit:
@@ -52,20 +83,25 @@ AND ErreurAdjGenre LIKE "'.$this->errGenre.'"
 AND ErreurAdjNombre LIKE "'.$this->errNumber.'" 
 AND BaseAdjNorm LIKE "'.$this->base.'"';
 
+        #Connection à la base et récupération des données
         $database = new DataBase();
         $tab= $database->getData($request);
+
+        #Ajout du lien vers la scan s'il existe
         $finalTab =$this->addScanLink($tab);
+
         return $finalTab;
     }
 
     /**
-    * Les données provenant de la page HTML sont dans un format agréable à lire pour l'utilisateur, cette fonction permet de transcrire ces données
-    * pour qu'elles correspondent à ce qu'on a dans la base de données
-    * @return void
+     * Fonction normalizeCriterions()
+     *
+     * Cette fonction est la même que celle présente dans la classe mère, elle normalise en plus les informations spécifiques aux adjectifs (genre, nombre, erreur de genre, de nombre et base).
+     *
+     * @return void
     */
     protected function normalizeCriterions(){
         parent::normalizeCriterions();
-
         #Normaliser le genre
         if ($this->genre == "Masculin"){
             $this->genre = "m";

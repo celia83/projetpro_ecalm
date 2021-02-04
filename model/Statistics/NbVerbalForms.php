@@ -2,14 +2,26 @@
 
 include_once "model/DataBase.php";
 
-class NbVerbalForms
-{
+/**
+ * Classe NbVerbalForms
+ *
+ * Cette classe ne contient qu'une seule fonction. Elle permet de créer le tableau :  Nombre de formes verbales analysées.
+ *
+ * PHP version 5.6
+ *
+ * @author Océane Giroud <oceane.giroud@etu.univ-grenoble-alpes.fr>
+ *
+ */
+class NbVerbalForms {
+
     /**
-     * Cette fonction sélectionne le nombre total de formes verbales, hors P.Passés. 
-     * Et le nombre formes verbales analysées et le pourcentage de formes analysées.
-     * @return array $tabProd
+     * Fonction createTabNbVerbalForms()
+     *
+     * Cette fonction sélectionne dans la base de données les verbes correspondant aux informations suivantes pour chaque niveau : Nb total de formes verbales (hors p. passés), Nb formes verbales analysées, elle calcule ensuite le pourcentage de formes analysées. Le tableau contenant ces informations est finalement retourné.
+     *
+     * @return array
+     * @throws Exception
      */
-     
     public function createTabNbVerbalForms(){
         #Sélectionner seulement les verbes dans la base de données (hors p.passés)
 		$request = 'SELECT * FROM `cm2_scoledit` WHERE Categorie LIKE "VER%" AND Categorie LIKE "VER:pper" = 0';
@@ -52,6 +64,7 @@ class NbVerbalForms
         
         #Sélectionner seulement les verbes qui ont un statut de segmentation "normé" dans la base de données 
         $request = 'SELECT * FROM `cm2_scoledit` WHERE Categorie LIKE "VER%" AND Categorie LIKE "VER:pper" = 0 AND StatutSegm LIKE "01-Normé"';
+
         #Récupération des données dans la base de données
         $Database = new DataBase();
         $tabverbeAnna= $Database->getData($request);

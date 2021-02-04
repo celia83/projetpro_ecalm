@@ -2,11 +2,23 @@
 
 include_once "model/DataBase.php";
 
-class TenseRepartition
-{
+/**
+ * Classe TenseRepartition
+ *
+ * Cette classe n'a qu'une seule fonction et permet de générer le tableau : Répartition des tiroirs verbaux.
+ *
+ * PHP version 5.6
+ *
+ * @author Célia Martin <celia.ma@free.fr>
+ */
+class TenseRepartition {
     /**
-     * Cette fonction crée un tableau à partir de la base de données qui calcule la répartition des tiroirs verbaux en fonction des niveaux
-     * @return array $percentageVerbsByLevel
+     * Fonction createTabTenseRepartition()
+     *
+     * Cette fonction retourne un tableau montrant la répartition des tirois verbaux présents dans la base de données en fonction des niveaux.
+     *
+     * @return array
+     * @throws Exception
      */
     public function createTabTenseRepartition() {
         #Mettre dans un tableau tous les verbes depuis la base de données

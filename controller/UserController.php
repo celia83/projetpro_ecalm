@@ -1,8 +1,7 @@
 <?php
-require("model/User.php");
 
 /**
- * Classe UserController*
+ * Classe UserController
  *
  * Cette classe contient les contrôleurs nécessaire à tout ce qui concerne l'utilisateur (connection, déconnection etc.)
  *
@@ -10,6 +9,9 @@ require("model/User.php");
  *
  * @author Célia Martin <celia.ma@free.fr>
  */
+
+require("model/User.php");
+
 class UserController {
     /**
      * Fonction connectionPage()

@@ -158,7 +158,7 @@ AND Lemme LIKE "'.$this->lemma.'"';
     /**
      * Fonction addScanLink
      *
-     * A chaque mot correspond ou non un scna de la copie de l'élève. Cette fonction permet donc de vérifier que le scan correspondant existe :si c'est le cas on créer un lien (balise <a href> en html) vers ce scan, sinon on précise à l'utilisateur que le scan est indisponible. Elle retourne un tableau contenant un mot par ligne avec ses informations telles qu'elles sont dans la base de données avec le lien vers le scan à la fin de chaque ligne.
+     * A chaque mot correspond ou non un scan de la copie de l'élève. Cette fonction permet donc de vérifier que le scan correspondant existe :si c'est le cas on créer un lien (balise <a href> en html) vers ce scan, sinon on précise à l'utilisateur que le scan est indisponible. Elle retourne un tableau contenant un mot par ligne avec ses informations telles qu'elles sont dans la base de données avec le lien vers le scan à la fin de chaque ligne.
      *
      * @param array $result tableau contenant les lignes correspondant à la recherche de l'utilisateur (résultat de la fonction getResults)
      * @return array

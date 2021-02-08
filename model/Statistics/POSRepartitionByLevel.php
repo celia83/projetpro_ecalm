@@ -16,9 +16,9 @@ class POSRepartitionByLevel {
     /**
      * Fonction createTabPOSRepartitionByLevel().
      *
-     * Cette fonction sélectionne les POS dans la base de données et calcule la répartition des POS de chaque catégorie grammaticale en fonction des niveaux. Les résultats sont exprimés en pourcentage et affichés dans un tableau.
+     * Cette fonction sélectionne les mots qui ont pu être analysés par Teetagger dans la base de données et calcule la répartition des catégories grammaticales en fonction des niveaux. Les résultats sont exprimés en pourcentage et enregistrés dans un tableau.
      *
-     * @return array $percentagePOSByLevel
+     * @return array
      * @throws Exception
      */
     public function createTabPOSRepartitionByLevel() {

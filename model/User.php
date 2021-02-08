@@ -52,7 +52,7 @@ class User{
     /**
      * Fonction destroySession()
      *
-     * Cette fonction détruit la session en cours pour permettre la déconnection de l'utilisateur.
+     * Cette fonction détruit la session en cours pour permettre la déconnexion de l'utilisateur.
      *
      * @return void
      */

@@ -1,17 +1,18 @@
 <?php
+/**
+ * Routeur : permet d'appeler les contrôleurs nécessaires à chaque action réalisée par l'utilisteur.
+ *
+ * PHP version 5.6
+ *
+ * @author Célia Martin <celia.ma@free.fr>
+ *
+ */
 
 session_start();
 require('controller/HomeController.php');
 require('controller/UserController.php');
 require('controller/ManagerController.php');
 
-/**
- * Routeur : permet d'appeler les controleurs nécessaires à chaque action réalisée par l'utilisteur.
- *
- * PHP version 5.6
- *
- * @author Célia Martin <celia.ma@free.fr>
- */
 try {
     if (isset($_GET['action'])) {
         #Controleurs pour afficher les résultats de la partie interrogation de la base
@@ -50,10 +51,11 @@ try {
                     throw new Exception('Erreur : extension non valide (csv uniquement).');
                 }
             }
-        #Controleur pour la connexion
+        #Controleur pour afficher la page de connexion
         } elseif ($_GET["action"]== "connectionPage") {
             $controller = new UserController();
             $controller->connectionPage();
+        #Contrôleur pour connecter l'utilisateur
         } elseif ($_GET["action"]== "connection") {
             $controller = new UserController();
             $controller->login($_POST["login"], $_POST["psw"]);
@@ -64,6 +66,7 @@ try {
         } else {
             throw new Exception('Erreur 404 : page non trouvée.');
         }
+    #Contrôleur qui redirige l'utilisateur vers la page d'accueil
     } else {
         $controller = new HomeController();
         $controller->home();

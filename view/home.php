@@ -279,18 +279,20 @@
             </form>
         </article>
 
+        <!--Partie réservée au gestionnaire. Connexion requise pour afficher son contenu-->
         <div id="managerDiv" hidden>
             <article id="managerArticle" >
 
             </article>
         </div>
 
-
+        <!--Téléchargement des informations-->
         <div id="downloadTableDiv">
             <input id="downloadExemplier" value ="Télécharger un exemplier" type="submit"/>
             <input id="downloadTable" value ="Télécharger le résultat" type="submit"/>
         </div>
 
+        <!--Téléchargement d'un exemplier-->
         <article id="downloadExemplierSection" hidden>
             <div id="cross">
                 <h3>Exporter un exemplier</h3>

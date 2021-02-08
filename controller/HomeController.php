@@ -1,5 +1,15 @@
 <?php
 
+/**
+ * Classe HomeController
+ *
+ * Cette classe contient tous les controleurs utilisés dans la page d'accueil (hors gestionnaire)
+ *
+ * PHP version 5.6
+ *
+ * @author Célia Martin <celia.ma@free.fr>
+ */
+
 #Chargement des classes
 require_once('model/SearchByCriteria/Criterion.php');
 require_once('model/SearchByCriteria/CriterionVerb.php');
@@ -13,15 +23,6 @@ require_once('model/Statistics/StandardizedBaseEndingProportion.php');
 require_once('model/Statistics/StandardizedBaseOrEnding.php');
 require_once('model/Statistics/TenseRepartition.php');
 
-/**
- * Classe HomeController
- *
- * Cette classe contient tous les controleurs utilisés dans la page d'accueil (hors gestionnaire)
- *
- * PHP version 5.6
- *
- * @author Célia Martin <celia.ma@free.fr>
- */
 class HomeController {
     /**
      * Fonction home()

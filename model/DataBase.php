@@ -3,7 +3,7 @@
 /**
  * Classe DataBase
  *
- * Cette classe réunit les fonctions permettant la connection et l'interrogation de la base de données
+ * Cette classe réunit les fonctions permettant la connexion et l'interrogation de la base de données
  *
  * PHP version 5.6
  *
@@ -30,7 +30,7 @@ class DataBase {
     /**
      * Fonction getData($request)
      *
-     * Cette fonction se connecte à une base de données, éxecute la requête passée en paramètre et retourne un tableau des éléments ainsi sélectionnés.
+     * Cette fonction se connecte à une base de données, exécute la requête passée en paramètre et retourne un tableau des éléments ainsi sélectionnés.
      *
      * @param string $request Une requête SQL
      * @return array

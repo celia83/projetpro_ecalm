@@ -7,22 +7,16 @@
       <change beforePath="$PROJECT_DIR$/controller/ManagerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/ManagerController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/UserController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/AddDel_Data/DeleteData.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/AddDel_Data/DeleteData.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/AddDel_Data/InsertData.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/AddDel_Data/InsertData.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/AddDel_Data/2_CM2_Scoledit.CSV" beforeDir="false" afterPath="$PROJECT_DIR$/model/AddDelData/2_CM2_Scoledit.CSV" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/AddDel_Data/DeleteData.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/AddDelData/DeleteData.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/AddDel_Data/InsertData.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/AddDelData/InsertData.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/AddDel_Data/test.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/AddDelData/test.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/DataBase.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/DataBase.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/Export.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/Export.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/SearchByCriteria/Criterion.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/SearchByCriteria/Criterion.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/SearchByCriteria/CriterionAdjective.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/SearchByCriteria/CriterionAdjective.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/SearchByCriteria/CriterionVerb.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/SearchByCriteria/CriterionVerb.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/Statistics/AllVerbs.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/Statistics/AllVerbs.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/Statistics/FailureAndSuccessTenses.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/Statistics/FailureAndSuccessTenses.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/Statistics/NbVerbalForms.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/Statistics/NbVerbalForms.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/Statistics/NbWordProd.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/Statistics/NbWordProd.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/Statistics/POSRepartitionByLevel.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/Statistics/POSRepartitionByLevel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/Statistics/StandardizedBaseEndingProportion.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/Statistics/StandardizedBaseEndingProportion.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/Statistics/StandardizedBaseOrEnding.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/Statistics/StandardizedBaseOrEnding.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/Statistics/TenseRepartition.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/Statistics/TenseRepartition.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/Statistics/VerbalFormsRepartitionBaseAndEndingPhono.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/Statistics/VerbalFormsRepartitionBaseAndEndingPhono.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/script.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/view/home.php" beforeDir="false" afterPath="$PROJECT_DIR$/view/home.php" afterDir="false" />
     </list>
@@ -114,7 +108,9 @@
       <workItem from="1612172884977" duration="7791000" />
       <workItem from="1612256766898" duration="11171000" />
       <workItem from="1612342786669" duration="16835000" />
-      <workItem from="1612427149144" duration="627000" />
+      <workItem from="1612427149144" duration="10595000" />
+      <workItem from="1612514487883" duration="15465000" />
+      <workItem from="1612774048734" duration="695000" />
     </task>
     <servers />
   </component>

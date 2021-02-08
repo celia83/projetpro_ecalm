@@ -41,7 +41,7 @@ class DeleteData
 	public function deleteData(){
 
 		#Normaliser les critères pour que la requête soit adaptées au données de la bdd
-        $this->normalizeCriterions();
+        $this->normalizeCorpusName();
         
         #Rédiger la requête pour supprimer les données de la base de données
 		$request = 'DELETE FROM `cm2_scoledit` 
@@ -54,13 +54,13 @@ AND Niv LIKE "'.$this->level.'"';
 	 }
 
     /**
-     * Fonction normalizeCriterions() : normalisation des critères sélectionnés par l'utilisateur
+     * Fonction normalizeCorpusName() : normalisation du nom du corpus sélectionné par l'utilisateur
      *
      * Cette fonction permet de passer du mot désignant le corpus à une expression régulière permettant d'identifier la corpus dans IdTok (ligne unique décrivant les mots présents dans la base de données). En effet, IdTok contient la première lettre du corpus (S, E ou R), c'est cette lettre que les expressions régulières permettent de trouver pour sélectionner le corpus adéquat dans la base de données.
      *
      * @return void
      */
-	protected function normalizeCriterions(){
+	protected function normalizeCorpusName(){
         #Normalisation du corpus : E : Ecriscol, S : Scoledit, R : Resolco, sinon on sélectionne tous les corpus avec %
         if ($this->corpus == "Scoledit"){
             $this->corpus = "[A-Z]+-[a-zA-Z]+[0-9]+-[0-9]+-[a-zA-Z]+-[a-zA-Z][0-9]-S[0-9]+-[A-Z][0-9]-[0-9]+-[0-9]+";

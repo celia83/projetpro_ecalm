@@ -19,14 +19,13 @@ class InsertData
 	 * Cette fonction permet de charger les données du fichier csv.
 	 *
 	 * @param $handle
-	 * @return array Tableau des lignes du ficheir csv
+	 * @return array Tableau des lignes du fichier csv
 	 */
 	public function inputCSV($handle)
 		{   
 			$out = array ();   
 			$n = 0;   
-			while ($data = fgetcsv($handle, 100000))   
-			{   
+			while ($data = fgetcsv($handle, 100000)){
 				$num = count($data);   
 				for ($i = 0; $i < $num; $i++)   
 				{   
@@ -38,20 +37,17 @@ class InsertData
 		}
 
 	/**
-	 * Fonction addCSV($file_path)
+	 * Fonction addCSV($filePath)
 	 *
 	 * La fonction addCSV() permet d'écrire dans la base de données les lignes du fichier csv donné par l'utilisateur. Elle génère une erreur si le fichier est vide.
 	 *
-	 * @param string $file_path Le chemin vers le fichier csv (chemin temporaire sur le serveur)
+	 * @param string $filePath Le chemin vers le fichier csv (chemin temporaire sur le serveur)
 	 * @return int $nbLineAffected Le nombre de lignes affectées par l'ajout
 	 * @throws Exception
 	 */
-	public function addCSV($file_path){
-
-			
-			if ( file_exists ( $file_path )){
-
-			$handle = fopen($file_path, 'r');   			   
+	public function addCSV($filePath){
+			if ( file_exists ( $filePath )){
+			    $handle = fopen($filePath, 'r');
 			}
 			
 			#traiter le fichier csv

@@ -1,6 +1,4 @@
 <?php
-require_once('model/AddDel_Data/DeleteData.php');
-require_once('model/AddDel_Data/InsertData.php');
 
 /**
  * Classe ManagerController
@@ -11,6 +9,11 @@ require_once('model/AddDel_Data/InsertData.php');
  *
  * @author Célia Martin <celia.ma@free.fr>
  */
+
+require_once('model/AddDelData/DeleteData.php');
+require_once('model/AddDelData/InsertData.php');
+
+
 class ManagerController {
     /**
      * Fonction delete($corpus, $level)

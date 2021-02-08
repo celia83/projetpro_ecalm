@@ -17,7 +17,7 @@ class Export{
 			WHEN '".$this->nbLine."'=30 THEN LIMIT 30
 			WHEN '".$this->nbLine."'=40 THEN LIMIT 40
 			WHEN '".$this->nbLine."'=50 THEN LIMIT 50
-		END"
+		END";
 		$database = new DataBase();
 		$tabSentences = $database->getData($request);
 		

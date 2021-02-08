@@ -1,3 +1,4 @@
+
 $(document).ready(function () {
     //Navigation entre les volets Données, Statistiques (et Suppression/Ajout des données pour le gestionnaire)
     $("body").on("click","#data",function (){
@@ -5,9 +6,11 @@ $(document).ready(function () {
         $("#statisticsSelection").hide();
         $("#dataSelection").show();
         $("button#data").css("box-shadow", "inset 0 0 11px 0px #600000");
-        $("button#statistics").css("box-shadow", "1px 0px 6px 0px #4b4b4b");
+        document.getElementById("statistics").removeAttribute("style");
+        document.getElementById("manager").removeAttribute("style");
+        //$("button#statistics").css("box-shadow", "1px 0px 6px 0px #4b4b4b");
         $("#managerDiv").hide();
-        $("button#manager").css("box-shadow", "1px 0px 6px 0px #4b4b4b");
+        //$("button#manager").css("box-shadow", "1px 0px 6px 0px #4b4b4b");
         $("#resultsArticle").show();
         $("#downloadTable").show();
         $("#resultsTable").html("");
@@ -17,10 +20,12 @@ $(document).ready(function () {
         $("#statisticsSelection").show();
         $("#dataSelection").hide();
         $("#downloadExemplier").hide();
-        $("button#data").css("box-shadow", "1px 0px 6px 0px #4b4b4b");
+        //$("button#data").css("box-shadow", "1px 0px 6px 0px #4b4b4b");
+        document.getElementById("data").removeAttribute("style");
         $("button#statistics").css("box-shadow", "inset 0 0 11px 0px #600000");
         $("#managerDiv").hide();
-        $("button#manager").css("box-shadow", "1px 0px 6px 0px #4b4b4b");
+        //$("button#manager").css("box-shadow", "1px 0px 6px 0px #4b4b4b");
+        document.getElementById("manager").removeAttribute("style");
         $("#resultsArticle").show();
         $("#downloadTable").show();
         $("#resultsTable").html("");
@@ -32,8 +37,10 @@ $(document).ready(function () {
         $("#statisticsSelection").hide();
         $("#dataSelection").hide();
         $("#downloadExemplier").hide();
-        $("button#data").css("box-shadow", "1px 0px 6px 0px #4b4b4b");
-        $("button#statistics").css("box-shadow", "1px 0px 6px 0px #4b4b4b");
+        //$("button#data").css("box-shadow", "1px 0px 6px 0px #4b4b4b");
+        document.getElementById("data").removeAttribute("style");
+        //$("button#statistics").css("box-shadow", "1px 0px 6px 0px #4b4b4b");
+        document.getElementById("statistics").removeAttribute("style");
         $("#resultsArticle").hide();
         $("#downloadTable").hide();
         $("#resultsTable").html("");

@@ -3,7 +3,7 @@
 /**
  * Classe HomeController
  *
- * Cette classe contient tous les controleurs utilisés dans la page d'accueil (hors gestionnaire)
+ * Cette classe contient tous les contrôleurs utilisés dans la page d'accueil (hors gestionnaire)
  *
  * PHP version 5.6
  *
@@ -27,7 +27,7 @@ class HomeController {
     /**
      * Fonction home()
      *
-     * Cette fonction permet d'afficher la page d'accueil
+     * Cette fonction permet d'afficher la page d'accueil.
      *
      * @return void
      */
@@ -38,7 +38,7 @@ class HomeController {
     /**
      * Fonction showResultsCriteria($corpus, $level, $pos, $errStatus, $segmStatus, $lemma)
      *
-     * Controleur pour les critères généraux : Permet de retourner les résultats de la requête (interrogation simple, exclut les verbes et les adjectifs) faite par l'utilisateur au format JSON pour un traitement avec ajax..
+     * Contrôleur pour les critères généraux : Permet de retourner les résultats de la requête (interrogation simple, exclut les verbes et les adjectifs) faite par l'utilisateur au format JSON pour un traitement avec ajax..
      *
      * @param $corpus
      * @param $level
@@ -58,7 +58,7 @@ class HomeController {
     /**
      * Fonction showResultsCriteriaVerbs($corpus, $level, $pos, $errStatus, $segmStatus, $lemma, $tense, $person, $typeErr, $base, $ending).
      *
-     * Controleur pour les critères des verbes : Permet de retourner les résultats de la requête faite par l'utilisateur  pour les verbes au format JSON pour un traitement avec ajax.
+     * Contrôleur pour les critères des verbes : Permet de retourner les résultats de la requête faite par l'utilisateur  pour les verbes au format JSON pour un traitement avec ajax.
      *
      * @param $corpus
      * @param $level
@@ -83,7 +83,7 @@ class HomeController {
     /**
      * Fonction showResultsCriteriaAdjectives($corpus, $level, $pos, $errStatus, $segmStatus, $lemma, $genre, $numbre, $errGenre, $errNumber, $base).
      *
-     * Controleur pour les critères des adjectifs : Permet de retourner les résultats de la requête faite par l'utilisateur pour les adjectifs au format JSON pour un traitement avec ajax..
+     * Contrôleur pour les critères des adjectifs : Permet de retourner les résultats de la requête faite par l'utilisateur pour les adjectifs au format JSON pour un traitement avec ajax..
      *
      * @param $corpus
      * @param $level
@@ -113,7 +113,7 @@ class HomeController {
      *
      * @param string $tabName Nom du tableau à générer
      * @param string $verbGroup Groupe verbal pour lequel afficher le tableau
-     * @param string $tense Tiroir verbal pour lequelafficher le tableau
+     * @param string $tense Tiroir verbal pour lequel afficher le tableau
      * @return void
      * @throws Exception
      */

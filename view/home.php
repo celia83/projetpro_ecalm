@@ -286,13 +286,13 @@
             </article>
         </div>
 
-        <!--Téléchargement des informations-->
+        <!--Téléchargement des informations : résultat de la requête ou exemplier-->
         <div id="downloadTableDiv">
             <input id="downloadExemplier" value ="Télécharger un exemplier" type="submit"/>
             <input id="downloadTable" value ="Télécharger le résultat" type="submit"/>
         </div>
 
-        <!--Téléchargement d'un exemplier-->
+        <!--Critères pour le téléchargement d'un exemplier-->
         <article id="downloadExemplierSection" hidden>
             <div id="cross">
                 <h3>Exporter un exemplier</h3>

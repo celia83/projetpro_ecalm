@@ -16,7 +16,7 @@ class UserController {
     /**
      * Fonction connectionPage()
      *
-     * Ce contrôleur dirige l'utilisateur vers la page de connection
+     * Ce contrôleur dirige l'utilisateur vers la page de connexion
      *
      * @return void
      */

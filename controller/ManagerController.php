@@ -3,7 +3,7 @@
 /**
  * Classe ManagerController
  *
- * Cette classe contient les controleur pour la partie gestionnaire (ajout et suppression des données).
+ * Cette classe contient les contrôleurs pour la partie gestionnaire (ajout et suppression des données).
  *
  * PHP version 5.6
  *

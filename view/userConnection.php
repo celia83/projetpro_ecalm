@@ -24,9 +24,11 @@
         <a class = "homeButton" href="../index.php"><i class="fas fa-long-arrow-alt-left"></i>Retour à la page d'accueil</a>
         <article id="connexionArticle">
             <h1 id="connectionTitle">Connexion</h1>
+            <!--Permattra d'afficher les essages d'erreur concernant le mot de passe et l'identifiant de l'utilisateur-->
             <div id="alerts">
 
             </div>
+            <!--Formulaire de connection-->
             <form id = "connectionForm" action="../index.php?action=connection" method="POST">
                 <div id ="loginDiv">
                     <label for="login" >Identifiant : </label>

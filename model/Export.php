@@ -20,14 +20,13 @@ class Export {
 		$finalSentencesList ="";
 
         switch($i) {
-            case ($tabSentences[$i]['SegNorm'] == '<sent>') :
-                $flag = true;
-
+           // break;
             case ($tabSentences[$i]['SegNorm'] == '</sent>') :
                 $count= $i;
-
+           // break;
             case ($flag == false) :
                 $i=$i+1;
+           // break;
 
             case ($flag == true) :
             while (($i != $count) && ($i < count($tabSentences))) {
@@ -36,8 +35,12 @@ class Export {
                 if (($tabSentences[$i]['Lemme'] != '<sent>') && ($tabSentences[$i]['Lemme'] != '</sent>') && ($tabSentences[$i]['Lemme'] != '<FIN>')){
                     $phrase = $phrase. " " .$tabSentences[$i]['SegTrans'];
                     //var_dump($tabSentences[$i]);
-                } else if ($tabSentences[$i]['Categorie'] != 'SENT'){
+                } elseif (($tabSentences[$i]['Categorie'] != 'SENT') && ($tabSentences[$i]['Lemme'] != '</sent>') && ($tabSentences[$i]['Lemme'] != '<FIN>')){
+                    if ($tabSentences[$i]['Lemme'] == '<sent>') {
+						 $phrase = $phrase. "\n";
+					} else {
                     $phrase = $phrase. " " .$tabSentences[$i]['SegTrans']. "\n";
+				}
                 }
                 if ($tabSentences[$j]['IdProd'] != $IdProd) {
                     $phrase = $phrase."\n";

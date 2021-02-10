@@ -1,5 +1,7 @@
 <?php
-include_once "model/DataBase.php";
+//include_once "model/DataBase.php";
+
+include_once "DataBase.php";
 
 /**
  * Classe User

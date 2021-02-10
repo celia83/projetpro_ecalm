@@ -27,9 +27,9 @@ class Export {
     }
     
      /**
-     * Fonction sentences() : téléchargement de l'exemplier.
+     * Fonction sentences() : sélection des phrases pour l'exemplier.
      *
-     * Cette fonction permet de télécharger un nombre de phrases d'exemples choisies par l'utilisateur contenant le mot sélectionné.
+     * Cette fonction permet de sélectionner un nombre de phrases d'exemples choisies par l'utilisateur contenant le mot sélectionné.
      *
      * @return string $finalSentencesList La liste des phrases contenant le mot choisi par l'utilisateur. Le nombre de lignes est sélectionné par l'utilisateur.
 

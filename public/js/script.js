@@ -431,7 +431,7 @@ $(document).ready(function () {
 
 
     });
-
+	// Récupération du mot et du nombre de lignes choisis
     $("#getExemplier").change(function (){
         var word = $("#word > option:selected").val();
         var nbLine = $("#nbLine > option:selected").val();

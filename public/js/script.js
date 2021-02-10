@@ -432,9 +432,21 @@ $(document).ready(function () {
 
     });
 	// Récupération du mot et du nombre de lignes choisis
-    $("#getExemplier").change(function (){
+    $("body").on("click", "#getExemplier",function (event){
+        event.preventDefault();
         var word = $("#word > option:selected").val();
         var nbLine = $("#nbLine > option:selected").val();
+        $.ajax({
+            url: 'index.php?action=exportExemplier',
+            method: 'POST',
+            data: "word="+word+"&nbLine="+nbLine,
+            success: function (result) {
+                //décoder le json
+                var message = JSON.parse(result);
+                //Télécharger le tableau au format tsv
+                strDownload(message, 'exemplier.tsv');
+            }
+        });
     });
 
 

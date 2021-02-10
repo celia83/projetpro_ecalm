@@ -63,7 +63,10 @@ try {
         } elseif ($_GET["action"]== "disconnection") {
             $controller = new UserController();
             $controller->logout();
-        } else {
+        } elseif ($_GET["action"]== "exportExemplier"){
+            $controller = new ExportController();
+            $controller->Export($_POST["word"], $_POST["nbLine"]);
+        }else {
             throw new Exception('Erreur 404 : page non trouvée.');
         }
     #Contrôleur qui redirige l'utilisateur vers la page d'accueil

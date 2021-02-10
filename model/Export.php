@@ -22,13 +22,13 @@ class Export {
         switch($i) {
             case ($tabSentences[$i]['SegNorm'] == '<sent>') :
                 $flag = true;
-            break;
+
             case ($tabSentences[$i]['SegNorm'] == '</sent>') :
                 $count= $i;
-            break;
+
             case ($flag == false) :
                 $i=$i+1;
-            break;
+
             case ($flag == true) :
             while (($i != $count) && ($i < count($tabSentences))) {
                 $j = $i-1;

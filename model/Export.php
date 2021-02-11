@@ -46,9 +46,12 @@ class Export {
 
 		$i=0;
 		$flag = false;
-		$phrase="";
-		$finalSentencesList ="";
-		$SentencesList ="";
+		$phraseLemme="";
+		$finalSentencesListLemme ="";
+		$SentencesListLemme ="";
+		$phraseSegTrans="";
+		$finalSentencesListSegTrans ="";
+		$SentencesListSegTrans ="";
 		
 		// Traitement pour sélectionner les phrases contenant le mot sélectionné 
         switch($i) {
@@ -64,35 +67,52 @@ class Export {
                 $IdProd = $tabSentences[$i]['IdProd'];
                 // Récupération des phrases
                 if (($tabSentences[$i]['Lemme'] != '<sent>') && ($tabSentences[$i]['Lemme'] != '</sent>') && ($tabSentences[$i]['Lemme'] != '<FIN>')){
-                    $phrase = $phrase. " " .$tabSentences[$i]['SegTrans'];
+                    $phraseLemme = $phraseLemme. " " .$tabSentences[$i]['Lemme']; 
+                    $phraseSegTrans = $phraseSegTrans. " " .$tabSentences[$i]['SegTrans'];
                 } elseif (($tabSentences[$i]['Categorie'] != 'SENT') && ($tabSentences[$i]['Lemme'] != '</sent>') && ($tabSentences[$i]['Lemme'] != '<FIN>')){
                     if ($tabSentences[$i]['Lemme'] == '<sent>') {
-						 $phrase = $phrase. "\n";
+						 $phraseLemme = $phraseLemme. "\n";
+						 $phraseSegTrans = $phraseSegTrans. "\n";
+						 
 						 
 					} else {
-						$phrase = $phrase. " " .$tabSentences[$i]['SegTrans']. "\n";
+						$phraseLemme = $phraseLemme. " " .$tabSentences[$i]['Lemme']. "\n";
+						$phraseSegTrans = $phraseSegTrans. " " .$tabSentences[$i]['SegTrans']. "\n";
 				}
                 }
+                
                 // Saut de ligne quand on change de production
                 if ($tabSentences[$j]['IdProd'] != $IdProd) {
-                    $phrase = $phrase."\n";
+                    $phraseLemme = $phraseLemme."\n";
+                    $phraseSegTrans = $phraseSegTrans."\n";
+                   
                 }
                 $i=$i+1;
             }
-			$SentencesList = $SentencesList . $phrase;
-			$sent = explode("\n", $SentencesList);
-			for ($h=0; $h<=count($sent)-1;$h++) {
+			$SentencesListLemme = $SentencesListLemme . $phraseLemme;
+			$SentencesListSegTrans = $SentencesListSegTrans . $phraseSegTrans;
+			
+			
+			$sentLemme = explode("\n", $SentencesListLemme);
+			$sentSegTrans = explode("\n", $SentencesListSegTrans);
+			
+			for ($h=0; $h<=count($sentLemme)-1;$h++) {
 				// Vérification que le mot sélectionné est dans la phrase et que le nombre de lignes n'est pas dépassé
-				if ((strpos($sent[$h], $this->word) == True) && ($h <= $this->nbLine)) {
-					$finalSentencesList = $finalSentencesList . $sent[$h] . "\n";
+				if ((strpos($sentLemme[$h], $this->word) == True) && ($h <= $this->nbLine)) {
+					$finalSentencesListLemme = $finalSentencesListLemme . $sentLemme[$h] . "\n";
+					$finalSentencesListSegTrans = $finalSentencesListSegTrans . $sentSegTrans[$h] . "\n";
+					
 				}
 				// Enlever les balises restantes des phrases
-				if (($h <= $this->nbLine) && ((strpos($sent[$h], '<sent>'==True)) || ((strpos($sent[$h], '</sent>') == True)))) {
-					$finalSentencesList = str_replace("<sent>","",$finalSentencesList);
-					$finalSentencesList = str_replace("</sent>","",$finalSentencesList);
+				if (($h <= $this->nbLine) && ((strpos($sentLemme[$h], '<sent>'==True)) || ((strpos($sentLemme[$h], '</sent>') == True)))) {
+					$finalSentencesListLemme = str_replace("<sent>","",$finalSentencesListLemme);
+					$finalSentencesListLemme = str_replace("</sent>","",$finalSentencesListLemme);
+					$finalSentencesListSegTrans = str_replace("<sent>","",$finalSentencesListSegTrans);
+					$finalSentencesListSegTrans = str_replace("</sent>","",$finalSentencesListSegTrans);
+					//var_dump($finalSentencesList);
 				}
 			}
         }
-        return  $finalSentencesList;
+        return  $finalSentencesListSegTrans;
     }
 }

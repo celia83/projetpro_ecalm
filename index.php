@@ -9,6 +9,7 @@
  */
 
 session_start();
+
 require('controller/HomeController.php');
 require('controller/UserController.php');
 require('controller/ManagerController.php');

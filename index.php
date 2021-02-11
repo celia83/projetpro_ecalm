@@ -9,9 +9,10 @@
  */
 
 session_start();
-require('controller/HomeController.php');
-require('controller/UserController.php');
-require('controller/ManagerController.php');
+require('C:/wamp/www/controller/HomeController.php');
+require('C:/wamp/www/controller/UserController.php');
+require('C:/wamp/www/controller/ManagerController.php');
+require('C:/wamp/www/controller/ExportController.php');
 
 try {
     if (isset($_GET['action'])) {

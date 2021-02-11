@@ -12,6 +12,7 @@ session_start();
 require('controller/HomeController.php');
 require('controller/UserController.php');
 require('controller/ManagerController.php');
+require('controller/ExportController.php');
 
 try {
     if (isset($_GET['action'])) {

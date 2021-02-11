@@ -1,6 +1,7 @@
 <?php
 
-include_once "model/DataBase.php";
+include_once "C:/wamp/www/model/DataBase.php";
+include_once "C:/wamp/www/model/SearchByCriteria/Criterion.php";
 
  /**
  * Classe CriterionAdjective : classe fille de la classe Criterion.

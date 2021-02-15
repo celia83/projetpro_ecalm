@@ -1,6 +1,7 @@
 
 $(document).ready(function () {
-    //Navigation entre les volets Données, Statistiques (et Suppression/Ajout des données pour le gestionnaire)
+    //Navigation entre les volets Interrogation des données, Statistiques descriptives (et Suppression/Ajout des données pour le gestionnaire)
+        //Bouton Data
     $("body").on("click","#data",function (){
         $("#downloadExemplier").show();
         $("#statisticsSelection").hide();
@@ -15,7 +16,7 @@ $(document).ready(function () {
         $("#downloadTable").show();
         $("#resultsTable").html("");
     });
-
+        //Bouton Statistiques descriptives
     $("body").on("click","#statistics",function (){
         $("#statisticsSelection").show();
         $("#dataSelection").hide();
@@ -30,7 +31,7 @@ $(document).ready(function () {
         $("#downloadTable").show();
         $("#resultsTable").html("");
     });
-
+        //Bouton Ajouter et supprimer des données
     $("body").on("click","#manager",function (){
         $("#managerDiv").show();
         $("button#manager").css("box-shadow", "inset 0 0 11px 0px #600000");
@@ -46,7 +47,8 @@ $(document).ready(function () {
         $("#resultsTable").html("");
     });
 
-    //Permet d'afficher les critères avancés pour les verbes
+    //Zone de sélection des critères pour l'affichage des données de la base de données
+        //Permet d'afficher les critères avancés pour les verbes et les adjectifs
     $("#pos").change(function (){
         var selected = $("#pos > option:selected").val();
         if (selected === "Verbe"){
@@ -61,7 +63,7 @@ $(document).ready(function () {
         }
     });
 
-    //Permet d'afficher dans la zone de résultats les résultats de la requête faite par l'utilisateur
+    //Permet d'envoyer les critères au routeur et d'afficher dans la zone de résultats les résultats de la requête faite par l'utilisateur
     $("#getResults").on("click", function (event) {
         //Empêche l'envoi du formulaire
         event.preventDefault();
@@ -265,8 +267,8 @@ $(document).ready(function () {
     }
 
 
-    //Envoyer le formulaire pour les stats
-    //Permet d'afficher la partie permettant la sélection des verbes en -er ou non
+    //Zone qui permet de sélectionner un tableau de statistiques
+        //Permet d'afficher la partie permettant la sélection des verbes en -er ou non et de choisir le tiroir verbal
     $("#tabStats").change(function (){
         var selected = $("#tabStats > option:selected").val();
         switch (selected){
@@ -286,7 +288,7 @@ $(document).ready(function () {
         }
     });
 
-    //Statistiques : Permet d'afficher dans la zone de résultats les résultats de la requête faite par l'utilisateur
+        //Permet d'envoyer au controleur le tableau sélectionné (avec le groupe et le tiroir verbal le cas échéant) et d'afficher dans la zone de résultats les résultats de la requête faite par l'utilisateur
     $("#getStats").on("click", function (event) {
         //Empêche l'envoi du formulaire
         event.preventDefault();
@@ -375,7 +377,7 @@ $(document).ready(function () {
         })
     });
 
-    //Téléchargement des résultats : Récupère le tableau contenu dans la balise html <table>, le convertit en string (chaque ligne du tableau séparée par \n et chaque cellule par \t)
+    //Bouton de téléchargement des résultats : Récupère le tableau contenu dans la balise html <table>, le convertit en string (chaque ligne du tableau séparée par \n et chaque cellule par \t)
     $("#downloadTable").on("click", function (){
         //récupérer le contenu de la balise <table>
         var tableHTML = document.getElementById("resultsTable").rows;
@@ -411,7 +413,8 @@ $(document).ready(function () {
         strDownload(stringTable, 'resultats.tsv');
     });
 
-    //Téléchargement d'un exemplier : Récupère le tableau contenu dans la balise html <table> et l'envoi au routeur sous forme d'array avec une ligne du tableau html par case de l'array
+    //Bouton de téléchargement d'un exemplier : Récupère le tableau contenu dans la balise html <table> et l'envoi au routeur sous forme d'array avec une ligne du tableau html par case de l'array
+        //Affichage des mots disponibles pour créer l'exemplier
     $("body").on("click","#downloadExemplier", function (){
         //récupérer le contenu de la balise <table>
         var tableHTML = document.getElementById("resultsTable").rows;
@@ -428,10 +431,9 @@ $(document).ready(function () {
         for (var j = 1; j < tableWords.length; j++){
             $("select#word").append("<option id='"+tableWords[j]+"'>"+tableWords[j]+"</option>");
         }
-
-
     });
-	// Récupération du mot et du nombre de lignes choisis
+
+	    // Récupération du mot et du nombre de lignes choisis par l'utilisateur our les envoyer au routeur. Le résultat est téléchargé sur l'ordinateur de l'utilisateur
     $("body").on("click", "#getExemplier",function (event){
         event.preventDefault();
         var word = $("#word > option:selected").val();
@@ -449,13 +451,12 @@ $(document).ready(function () {
         });
     });
 
-
-    //Permet de faire disparaitre la fenêtre de l'exemplier en appuyant sur la croix
+        //Croix de la fenêtre de l'exemplier : Permet de faire disparaitre la fenêtre de l'exemplier en appuyant sur la croix
     $("body").on("click",".fa-times", function (){
         $("#downloadExemplierSection").hide();
     });
 
-    //Connection des utilisateurs
+    //Page de Connection des utilisateurs : récupère le login et mdp entrés par l'utilisateur, l'envoie au routeur et affiche l'erreur si les id ne sont pas bons, sinon renvoie l'utilisateur à la page d'accueil
     $("body").on("click","#connectionButton", function (event){
         //Ne pas envoyer le formulaire
         event.preventDefault();
@@ -480,8 +481,8 @@ $(document).ready(function () {
         });
     });
 
-    //Partie gestionnaire
-    //On affiche les formulaires d'ajout et suppression seulement quand le gestionnaire appuie sur le bouton (donc quand la personne est connectée)
+    //Zone pour la gestion de la base de données
+        //On affiche les formulaires d'ajout et suppression seulement quand le gestionnaire appuie sur le bouton (donc quand la personne est connectée)
     $("body").on("click","#manager", function (){
         $("#managerArticle").html("<form id = 'addDataForm' action ='index.php?action=addData' method='POST' enctype='multipart/form-data'><h2 id = 'addDataTitle'>Ajouter un jeu de données</h2><div id='addFileDiv'><input id='chooseFile' name ='chooseFile' value ='addFile' type='file' /><label id = 'addFileLabel' for='chooseFile'><i class=\"fas fa-upload\"></i></label><aside>Ajouter un jeu de données depuis votre ordinateur (format csv)</aside></div><div><label for='addData'></label><input id='addData' value ='Ajouter' type='submit' /></div></form><form id = 'deleteDataForm' action ='index.php?action=deleteData' method='POST'><h2 id ='deleteDataTitle'>Supprimer un jeu de données</h2><div id = 'levelDiv'><label for='chooseLevel'>Niveau : </label><select  id='chooseLevel' name='chooseLevel'></select></div><div id = 'corpusDiv'><label for='chooseCorpus'>Corpus de provenance : </label><select  id='chooseCorpus' name='chooseCorpus'><option value = 'Scoledit'>Scoledit</option><option value = 'Ecriscol'>Ecriscol</option><option value = 'Resolco'>Resolco</option></select></div><div><input id='deleteData' value ='Supprimer' type='submit' /></div></form>");
         var levels = ["CP","CE1","CE2","CM1","CM2", "6EME", "5EME", "4EME", "3EME", "2NDE", "1ERE", "TERMINALE", "L1", "L2", "L3", "M1", "M2"];
@@ -490,7 +491,7 @@ $(document).ready(function () {
         }
     });
 
-    //Permet le téléchargement d'un texte (string)
+    //Permet le téléchargement d'un texte (string) : utilisée pour les boutons de téléchargement des données et de téléchargement de l'exemplier
     function strDownload(text, fileName) {
         text = '' + text;
         fileName = fileName || 'strDownload.txt';

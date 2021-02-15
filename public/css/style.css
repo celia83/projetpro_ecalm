@@ -38,7 +38,7 @@ a.connectionDisconnection:hover, a.connectionDisconnection:focus{
 }
 
 a.homeButton:hover{
-    text-shadow: 0px 0px 1px #121111;
+    text-decoration: underline RGB(170,170,170);
 }
 
 input#getResults:focus, input#getStats:focus, input#downloadExemplier:focus, input#downloadTable:focus, input#getExemplier:focus, input#addData:hover, input#connectionButton:focus{

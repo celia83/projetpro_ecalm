@@ -1,5 +1,5 @@
 <?php
-include_once "C:/wamp/www/model/DataBase.php";
+include_once "model/DataBase.php";
 
 /**
  * Classe Export

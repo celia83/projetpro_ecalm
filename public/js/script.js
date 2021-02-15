@@ -231,9 +231,6 @@ $(document).ready(function () {
                 //Changer leur couleur en fonction des erreurs
                 $(".correct").css("color", "#4CA86A");
                 $(".false").css("color", "#a84c4c");
-            },
-            error: function (xhr, ajaxOptions, thrownError) {
-                alert(chr.responseText); //Ce code affichera le message d'erreur.
             }
         });
     });

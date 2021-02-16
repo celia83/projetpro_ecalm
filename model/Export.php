@@ -1,5 +1,5 @@
 <?php
-include_once "model/DataBase.php";
+include_once "C:/wamp/www/model/DataBase.php";
 
 /**
  * Classe Export
@@ -43,76 +43,66 @@ class Export {
 		// Récupération des données
 		$database = new DataBase();
 		$tabSentences =$database->getData($request);
-
-		$i=0;
-		$flag = false;
-		$phraseLemme="";
-		$finalSentencesListLemme ="";
-		$SentencesListLemme ="";
-		$phraseSegTrans="";
-		$finalSentencesListSegTrans ="";
-		$SentencesListSegTrans ="";
 		
+		
+		$finalSentencesListLemme="";
+		$finalSentencesListSegTrans="";
+		$phraseSegTrans="";
+		$sentencesLemme="";
+		$sentencesSegTrans="";
+		$sentencesListLemme="";
+		$sentencesListSegTrans="";
+		$j=0;
+		
+		var_dump(count($tabSentences));
+
 		// Traitement pour sélectionner les phrases contenant le mot sélectionné 
-        switch($i) {
-			
-			
-            case ($tabSentences[$i]['SegNorm'] == '</sent>') :
-                $count= $i;
-            case ($flag == false) :
-                $i=$i+1;
-            case ($flag == true) :
-            while (($i != $count) && ($i < count($tabSentences))) {
-                $j = $i-1;
-                $IdProd = $tabSentences[$i]['IdProd'];
-                // Récupération des phrases
-                if (($tabSentences[$i]['Lemme'] != '<sent>') && ($tabSentences[$i]['Lemme'] != '</sent>') && ($tabSentences[$i]['Lemme'] != '<FIN>')){
-                    $phraseLemme = $phraseLemme. " " .$tabSentences[$i]['Lemme']; 
-                    $phraseSegTrans = $phraseSegTrans. " " .$tabSentences[$i]['SegTrans'];
-                } elseif (($tabSentences[$i]['Categorie'] != 'SENT') && ($tabSentences[$i]['Lemme'] != '</sent>') && ($tabSentences[$i]['Lemme'] != '<FIN>')){
-                    if ($tabSentences[$i]['Lemme'] == '<sent>') {
-						 $phraseLemme = $phraseLemme. "\n";
-						 $phraseSegTrans = $phraseSegTrans. "\n";
-						 
-						 
-					} else {
-						$phraseLemme = $phraseLemme. " " .$tabSentences[$i]['Lemme']. "\n";
-						$phraseSegTrans = $phraseSegTrans. " " .$tabSentences[$i]['SegTrans']. "\n";
+		for ($j=0; $j<=count($tabSentences)-1;$j++) {
+			if ($tabSentences[$j]['SegTrans'] == '<sent>') {
+				while (($tabSentences[$j]['SegTrans'] != '</sent>') && ($j<=count($tabSentences)-2)) {
+					$sentencesSegTrans = $sentencesSegTrans . " " . $tabSentences[$j]['SegTrans'];
+					$sentencesLemme = $sentencesLemme. " " .$tabSentences[$j]['Lemme']; 
+					$j=$j+1;
+				} 
+			}
+		 }
+		  
+		  
+		
+		// Saut de ligne permettant de délimiter chaque phrase
+		$sentencesSegTrans = str_replace("<sent>","\n",$sentencesSegTrans);
+		$sentencesSegLemme= str_replace(["<sent>","_"],"\n",$sentencesLemme);
+		 //~ var_dump($sentencesSegTrans);
+		//~ var_dump($sentencesSegLemme);
+		
+		$sentLemme =$sentencesSegLemme;
+		$sent =$sentencesSegTrans;
+		
+		//~ $sentLemme = explode("\r", $sentencesLemme);
+		//~ $sent = explode("\r", $sentencesSegTrans);
+		//~ var_dump($sentLemme);
+		
+		$sentLemme=str_replace("_","<sent>",$sentencesLemme);
+		$sent = explode("\n", $sentencesSegTrans);
+		$sentLemme=explode("<sent>",$sentLemme);
+		//~ var_dump($sentLemme);
+		//~ var_dump($sent);
+		
+		for ($h=0; $h<=count($sentLemme)-1;$h++) {
+			// Vérification que le mot sélectionné est dans la phrase et que le nombre de lignes n'est pas dépassé
+			if ((strpos(strtolower($sentLemme[$h]), $this->word) == True) && ($h <= $this->nbLine)) {
+				//~ var_dump($sentLemme[$h]);
+				$finalSentencesListLemme = $finalSentencesListLemme . $sentLemme[$h] . "\n";
+				$finalSentencesListSegTrans = $finalSentencesListSegTrans . $sent[$h] . "\n";
 				}
-                }
-                
-                // Saut de ligne quand on change de production
-                if ($tabSentences[$j]['IdProd'] != $IdProd) {
-                    $phraseLemme = $phraseLemme."\n";
-                    $phraseSegTrans = $phraseSegTrans."\n";
-                   
-                }
-                $i=$i+1;
-            }
-			$SentencesListLemme = $SentencesListLemme . $phraseLemme;
-			$SentencesListSegTrans = $SentencesListSegTrans . $phraseSegTrans;
-			
-			
-			$sentLemme = explode("\n", $SentencesListLemme);
-			$sentSegTrans = explode("\n", $SentencesListSegTrans);
-			
-			for ($h=0; $h<=count($sentLemme)-1;$h++) {
-				// Vérification que le mot sélectionné est dans la phrase et que le nombre de lignes n'est pas dépassé
-				if ((strpos($sentLemme[$h], $this->word) == True) && ($h <= $this->nbLine)) {
-					$finalSentencesListLemme = $finalSentencesListLemme . $sentLemme[$h] . "\n";
-					$finalSentencesListSegTrans = $finalSentencesListSegTrans . $sentSegTrans[$h] . "\n";
-					
-				}
-				// Enlever les balises restantes des phrases
-				if (($h <= $this->nbLine) && ((strpos($sentLemme[$h], '<sent>'==True)) || ((strpos($sentLemme[$h], '</sent>') == True)))) {
-					$finalSentencesListLemme = str_replace("<sent>","",$finalSentencesListLemme);
-					$finalSentencesListLemme = str_replace("</sent>","",$finalSentencesListLemme);
-					$finalSentencesListSegTrans = str_replace("<sent>","",$finalSentencesListSegTrans);
-					$finalSentencesListSegTrans = str_replace("</sent>","",$finalSentencesListSegTrans);
-					//var_dump($finalSentencesList);
+			// Enlever les balises restantes des phrases
+			if (($h <= $this->nbLine) && (strpos($sent[$h], '<sent>'==True)) || (strpos($sent[$h], '</sent>') == True) || (strpos($sent[$h], '</titre>') == True) || (strpos($sent[$h], '<titre>') == True) || (strpos($sent[$h], '_') == True) || (strpos($sent[$h], '<p/>') == True) || (strpos($sent[$h], '<dialogue>') == True) || (strpos($sent[$h], '</dialogue>') == True) || (strpos($sent[$h], '<s/>') == True) || (strpos($sent[$h], '<segmentation/>') == True) || (strpos($sent[$h], '<unknown>') == True) || (strpos($sent[$h], '</ajout>') == True) || (strpos($sent[$h], '</unsure>') == True) || (strpos($sent[$h], '<ajout>') == True) || (strpos($sent[$h], '<omission type=&"pronom&"/>') == True) || (strpos($sent[$h], '<nonfini/>') == True) || (strpos($sent[$h], '<omission type=&"pronom&"/>') == True) || (strpos($sent[$h], '<omission type=&"adjectif&"/>') == True) || (strpos($sent[$h], '<omission type=&"nom&"/>') == True) || (strpos($sent[$h], '<omission type=&"preposition&"/>') == True) || (strpos($sent[$h], '<omission type=&"verbe&"/>') == True) || (strpos($sent[$h], '<p/') == True) || (strpos($sent[$h], '<p/<dialogue>') == True) || (strpos($sent[$h], '<re><unknown>') == True) || (strpos($sent[$h], '<revision/>') == True) || (strpos($sent[$h], '<unsure>') == True)) {
+				$finalSentencesListSegTrans = str_replace(["<FIN>","</FIN>","</sent>","<sent>","<FIN>","<titre>","</titre>","_","<p/>","<dialogue>","</dialogue>","<s/>","<segmentation/>","<unknown>","</ajout>","<ajout>","<nonfini/>","<omission type=&'pronom&'/>","<incomprehensible/>","<omission type=&'nom&'/>","<omission type=&'adjectif&'/>","<omission type=&'preposition&'/>","<omission type=&'verbe&'/>","<p/","<p/<dialogue>","<re><unknown>","<unsure>","</unsure>","<revision/>"],"",$finalSentencesListSegTrans);
 				}
 			}
-        }
-        return  $finalSentencesListSegTrans;
-    }
-}
+		return $finalSentencesListSegTrans;
+		
+		}
+		
+	}
+

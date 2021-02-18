@@ -20,7 +20,7 @@ class DataBase {
      * @throws Exception
      */
     private static function connection(){
-        if($db = new PDO('mysql:host=localhost;dbname=scoledit', 'root', '', array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'))){
+        if($db = new PDO('mysql:host=localhost;dbname=scoledit', 'scoledit', 'projetpro', array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'))){
             return $db;
         } else {
             throw new Exception('Impossible de se connecter à la base de données.');

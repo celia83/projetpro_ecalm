@@ -1,6 +1,5 @@
 <?php
-include_once "C:/wamp/www/model/DataBase.php";
-//include_once"DataBase.php";
+include_once "model/DataBase.php";
 
 /**
  * Classe Export
@@ -39,7 +38,7 @@ class Export {
     public function sentences() {
         
         // Requête pour sélectionner les productions dans lesquelles apparaissent le lemme sélectionné limité au nombre de lignes sélectionné par l'utilisateur.
-		$request="SELECT * FROM `cm2_scoledit` WHERE IdProd IN (SELECT * FROM (SELECT DISTINCT IdProd FROM `cm2_scoledit` WHERE `Lemme`= '".$this->word."' LIMIT ".$this->nbLine.") AS temp)";
+		$request="SELECT * FROM `ecalm` WHERE IdProd IN (SELECT * FROM (SELECT DISTINCT IdProd FROM `ecalm` WHERE `Lemme`= '".$this->word."' LIMIT ".$this->nbLine.") AS temp)";
 		
 		// Récupération des données
 		$database = new DataBase();

@@ -56,7 +56,7 @@ class CriterionVerb extends Criterion{
      */
     public function getResultsVerb(){
         /* Exemple de requete qui fonctionne avec les critères principaux (pour le corpus on recherche S dans idTok pour le corpus Scoledit:
-         SELECT * FROM `CM2_Scoledit`
+         SELECT * FROM `ecalm`
          WHERE IdTok LIKE "%S%"
          AND Niv LIKE "CM2"
          AND Categorie LIKE "NOM"

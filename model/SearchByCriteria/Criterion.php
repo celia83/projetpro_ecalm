@@ -63,7 +63,7 @@ class Criterion{
         $this->normalizeCriterions();
 
         #Création de la requête
-        $request = 'SELECT * FROM `cm2_scoledit` 
+        $request = 'SELECT * FROM `ecalm` 
 WHERE IdTok REGEXP "'.$this->corpus.'" 
 AND Niv LIKE "'.$this->level.'" 
 AND Categorie LIKE "'.$this->pos.'" 

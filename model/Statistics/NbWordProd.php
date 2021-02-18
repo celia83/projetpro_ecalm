@@ -24,7 +24,7 @@ class NbWordProd {
      */
     public function createTabNbWordsProd(){
         #Sélectionner seulement les mots dans la base de données (pas de ponctuation et de balises telles que <sent>)
-        $request = "SELECT IdProd, Niv FROM `cm2_scoledit` WHERE SegNorm REGEXP '^<' = 0 AND SegNorm REGEXP '[a-zA-Z]'";
+        $request = "SELECT IdProd, Niv FROM `ecalm` WHERE SegNorm REGEXP '^<' = 0 AND SegNorm REGEXP '[a-zA-Z]'";
 
         #Récupération des données dans la base de données
         $database = new DataBase();

@@ -40,13 +40,13 @@ class StandardizedBaseOrEnding {
 
         #Sélectionner soit les verbes en -er, soit les verbes qui ne sont pas en -er, soit tous et insérer le temps voulu
         if ($verbGroup == "er") {
-            $request = 'SELECT Niv, ErrVerBase, ErrVerDes, ErrVerBaseEtDes FROM `cm2_scoledit` WHERE Categorie LIKE "'.$tenseSQL.'" AND Categorie LIKE "VER:pper" =0 AND Lemme LIKE "%er"' ;;
+            $request = 'SELECT Niv, ErrVerBase, ErrVerDes, ErrVerBaseEtDes FROM `ecalm` WHERE Categorie LIKE "'.$tenseSQL.'" AND Categorie LIKE "VER:pper" =0 AND Lemme LIKE "%er"' ;;
             #Si l'utilisateur veut les verbes qui ne sont pas en er
         } elseif ($verbGroup == "nonEr"){
-            $request = 'SELECT Niv, ErrVerBase, ErrVerDes, ErrVerBaseEtDes FROM `cm2_scoledit` WHERE Categorie LIKE "'.$tenseSQL.'" AND Categorie LIKE "VER:pper"=0 AND Lemme LIKE "%er" = 0' ;;
+            $request = 'SELECT Niv, ErrVerBase, ErrVerDes, ErrVerBaseEtDes FROM `ecalm` WHERE Categorie LIKE "'.$tenseSQL.'" AND Categorie LIKE "VER:pper"=0 AND Lemme LIKE "%er" = 0' ;;
             #Si l'utilisateur veut tous les verbes
         } else {
-            $request = 'SELECT Niv, ErrVerBase, ErrVerDes, ErrVerBaseEtDes FROM `cm2_scoledit` WHERE Categorie LIKE "'.$tenseSQL.'" AND Categorie LIKE "VER:pper" = 0';
+            $request = 'SELECT Niv, ErrVerBase, ErrVerDes, ErrVerBaseEtDes FROM `ecalm` WHERE Categorie LIKE "'.$tenseSQL.'" AND Categorie LIKE "VER:pper" = 0';
         }
         #Récupération des données dans la base de données
         $database = new DataBase();

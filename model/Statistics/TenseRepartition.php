@@ -22,7 +22,7 @@ class TenseRepartition {
      */
     public function createTabTenseRepartition() {
         #Mettre dans un tableau tous les verbes depuis la base de données
-        $request = 'SELECT Niv, Categorie, SegNorm FROM `cm2_scoledit` WHERE Categorie LIKE "VER%" AND Categorie LIKE "VER:pper" = 0';
+        $request = 'SELECT Niv, Categorie, SegNorm FROM `ecalm` WHERE Categorie LIKE "VER%" AND Categorie LIKE "VER:pper" = 0';
 
         #Récupération des données dans la base de données
         $database = new DataBase();

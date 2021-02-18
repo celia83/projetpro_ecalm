@@ -23,7 +23,7 @@ class POSRepartitionByLevel {
      */
     public function createTabPOSRepartitionByLevel() {
         #Mettre dans un tableau tous les POS avec le niveau correspondant depuis la base de données
-        $request = 'SELECT Niv, Categorie FROM `cm2_scoledit`';
+        $request = 'SELECT Niv, Categorie FROM `ecalm`';
 
         #Récupération des données dans la base de données
         $database = new DataBase();

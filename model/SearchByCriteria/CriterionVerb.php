@@ -69,7 +69,7 @@ class CriterionVerb extends Criterion{
         $this->normalizeCriterions();
 
         #Rédiger la requête (pour les verbes la catégorie et le tiroir verbal sont les mêmes donc on sélectionne soit tous les verbes soit les verbes au conditionnel etc. dans la partie "Catégorie
-        $request = 'SELECT * FROM `cm2_scoledit` 
+        $request = 'SELECT * FROM `ecalm` 
 WHERE IdTok REGEXP "'.$this->corpus.'" 
 AND Niv LIKE "'.$this->level.'" 
 AND Categorie LIKE "'.$this->tense.'"

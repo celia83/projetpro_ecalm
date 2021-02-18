@@ -52,7 +52,7 @@ class VerbalFormsRepartitionBaseAndEndingPhono{
 
 		
         #Sélectionner seulement les verbes avec erreurs sur la base seule dans la base de données
-		$request = 'SELECT * FROM `cm2_scoledit` WHERE Categorie LIKE "' . $tenseSQL . '" AND ErrVerBase LIKE "1" AND Categorie LIKE "VER:pper" = 0 ' . $GroupSQL ;
+		$request = 'SELECT * FROM `ecalm` WHERE Categorie LIKE "' . $tenseSQL . '" AND ErrVerBase LIKE "1" AND Categorie LIKE "VER:pper" = 0 ' . $GroupSQL ;
         #Récupération des données dans la base de données
         $database = new DataBase();
         $tabbase= $database->getData($request);        
@@ -84,7 +84,7 @@ class VerbalFormsRepartitionBaseAndEndingPhono{
         }
 				
 		#Sélectionner seulement les verbes avec erreurs sur la base seule de forme phonologie normée dans la base de données
-		$request1 = 'SELECT * FROM `cm2_scoledit` WHERE Categorie LIKE "' . $tenseSQL . '" AND ErrVerBase LIKE "1" AND PhonNorm = PhonTrans AND Categorie LIKE "VER:pper" =0' . $GroupSQL ;
+		$request1 = 'SELECT * FROM `ecalm` WHERE Categorie LIKE "' . $tenseSQL . '" AND ErrVerBase LIKE "1" AND PhonNorm = PhonTrans AND Categorie LIKE "VER:pper" =0' . $GroupSQL ;
         #Récupération des données dans la base de données
 
         $dAtabase = new DataBase();
@@ -180,7 +180,7 @@ class VerbalFormsRepartitionBaseAndEndingPhono{
         $CM2desin = 0;
         
         #Sélectionner seulement les verbes avec erreur sur la désinence seule dans la base de données 
-        $request = 'SELECT * FROM `cm2_scoledit` WHERE Categorie LIKE "' . $tenseSQL . '" AND ErrVerDes LIKE "1" AND Categorie LIKE "VER:pper" =0' . $GroupSQL;
+        $request = 'SELECT * FROM `ecalm` WHERE Categorie LIKE "' . $tenseSQL . '" AND ErrVerDes LIKE "1" AND Categorie LIKE "VER:pper" =0' . $GroupSQL;
         #Récupération des données dans la base de données
         $Database = new DataBase();
         $tabdesin= $Database->getData($request);
@@ -205,7 +205,7 @@ class VerbalFormsRepartitionBaseAndEndingPhono{
         }
         
 		#Sélectionner seulement les verbes avec erreurs sur la désinence seule de forme phonologie normée dans la base de données
-		$request2 = 'SELECT * FROM `cm2_scoledit` WHERE Categorie LIKE "' . $tenseSQL . '" AND ErrVerDes LIKE "1" AND PhonNorm = PhonTrans AND Categorie LIKE "VER:pper" =0' . $GroupSQL;
+		$request2 = 'SELECT * FROM `ecalm` WHERE Categorie LIKE "' . $tenseSQL . '" AND ErrVerDes LIKE "1" AND PhonNorm = PhonTrans AND Categorie LIKE "VER:pper" =0' . $GroupSQL;
         #Récupération des données dans la base de données
         $daTabase = new DataBase();
         $tabbaseNormeDes= $daTabase->getData($request2);          
@@ -299,7 +299,7 @@ class VerbalFormsRepartitionBaseAndEndingPhono{
         $CM2basedesin = 0;
         
 		#Sélectionner seulement les verbes avec erreur sur la base et la désinence dans la base de données 
-        $request3 = 'SELECT * FROM `cm2_scoledit` WHERE Categorie LIKE "' . $tenseSQL . '" AND ErrVerBaseEtDes LIKE "1" AND Categorie LIKE "VER:pper" =0 ' . $GroupSQL;
+        $request3 = 'SELECT * FROM `ecalm` WHERE Categorie LIKE "' . $tenseSQL . '" AND ErrVerBaseEtDes LIKE "1" AND Categorie LIKE "VER:pper" =0 ' . $GroupSQL;
         #Récupération des données dans la base de données
         $DataAbase = new DataBase();
         $tabbasedesin= $DataAbase->getData($request3);
@@ -324,7 +324,7 @@ class VerbalFormsRepartitionBaseAndEndingPhono{
         }
         
 		#Sélectionner seulement les verbes avec erreurs sur la base et la désinence seule de forme phonologie normée dans la base de données
-		$request4 = 'SELECT * FROM `cm2_scoledit` WHERE Categorie LIKE "' . $tenseSQL . '" AND ErrVerBaseEtDes LIKE "1" AND PhonNorm = PhonTrans AND Categorie LIKE "VER:pper"=0 ' . $GroupSQL;
+		$request4 = 'SELECT * FROM `ecalm` WHERE Categorie LIKE "' . $tenseSQL . '" AND ErrVerBaseEtDes LIKE "1" AND PhonNorm = PhonTrans AND Categorie LIKE "VER:pper"=0 ' . $GroupSQL;
         #Récupération des données dans la base de données
         $daTabase = new DataBase();
         $tabbaseNormeBasedesin= $daTabase->getData($request4);          

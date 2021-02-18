@@ -44,7 +44,7 @@ class DeleteData
         $this->normalizeCorpusName();
         
         #Rédiger la requête pour supprimer les données de la base de données
-		$request = 'DELETE FROM `cm2_scoledit` 
+		$request = 'DELETE FROM `ecalm` 
 WHERE IdTok REGEXP "'.$this->corpus.'" 
 AND Niv LIKE "'.$this->level.'"';
 		

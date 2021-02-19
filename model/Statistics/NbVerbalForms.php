@@ -9,7 +9,7 @@ include_once "model/DataBase.php";
  *
  * PHP version 5.6
  *
- * @author Océane Giroud <oceane.giroud@etu.univ-grenoble-alpes.fr>
+ * @author Jingyu Liu <jingyu.liu@etu.univ-grenoble-alpes.fr>
  *
  */
 class NbVerbalForms {

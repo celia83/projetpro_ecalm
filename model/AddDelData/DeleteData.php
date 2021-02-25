@@ -68,6 +68,8 @@ AND Niv LIKE "'.$this->level.'"';
             $this->corpus = "[A-Z]+-[a-zA-Z]+[0-9]+-[0-9]+-([a-zA-Z]+|[0-9]+)-[a-zA-Z][0-9]-E[0-9]+-[A-Z][0-9]-[0-9]+-[0-9]+";
         } elseif ($this->corpus == "Resolco"){
             $this->corpus = "[A-Z]+-[a-zA-Z]+[0-9]+-[0-9]+-([a-zA-Z]+|[0-9]+)-[a-zA-Z][0-9]-R[0-9]+-[A-Z][0-9]-[0-9]+-[0-9]+";
+        } elseif ($this->corpus == "Littéracie"){
+            $this->corpus = "[A-Z]+-[a-zA-Z]+[0-9]+-[0-9]+-([a-zA-Z]+|[0-9]+)-[a-zA-Z][0-9]-L[0-9]+-[A-Z][0-9]-[0-9]+-[0-9]+";
         } else {
             $this->corpus = "[A-Z]+-[a-zA-Z]+[0-9]+-[0-9]+-([a-zA-Z]+|[0-9]+)-[a-zA-Z][0-9]-[a-zA-Z][0-9]+-[A-Z][0-9]-[0-9]+-[0-9]+";
         }

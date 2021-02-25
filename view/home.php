@@ -51,6 +51,7 @@
                                         <option value = "Tous">Tous</option>
                                         <option value = "Scoledit">Scoledit</option>
                                         <option value = "Ecriscol">Ecriscol</option>
+                                        <option value = "Littéracie">Littéracie</option>
                                         <option value = "Resolco">Resolco</option>
                                     </select>
                                 </div>
@@ -67,14 +68,14 @@
                                         <option value = "CE1">5EME</option>
                                         <option value = "CE2">4EME</option>
                                         <option value = "CM1">3EME</option>
-                                        <option value = "CM2">2NDE</option>
-                                        <option value = "CM2">1ERE</option>
-                                        <option value = "CM2">TERMINALE</option>
-                                        <option value = "CM2">L1</option>
-                                        <option value = "CM2">L2</option>
-                                        <option value = "CM2">L3</option>
-                                        <option value = "CM2">M1</option>
-                                        <option value = "CM2">M2</option>
+                                        <option value = "2NDE">2NDE</option>
+                                        <option value = "1ERE">1ERE</option>
+                                        <option value = "TERMINALE">TERMINALE</option>
+                                        <option value = "L1">L1</option>
+                                        <option value = "L2">L2</option>
+                                        <option value = "L3">L3</option>
+                                        <option value = "M1">M1</option>
+                                        <option value = "M2">M2</option>
                                     </select>
                                 </div>
                                 <div class = "generalCriteriaDivs">

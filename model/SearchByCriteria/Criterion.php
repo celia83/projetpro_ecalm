@@ -91,13 +91,13 @@ AND Lemme LIKE "'.$this->lemma.'"';
     protected function normalizeCriterions(){
         #Normalisation du nom des corpus : E = Ecriscol, S = Scoledit, R = Resolco, lettre que l'on trouve dans IdTok dans la base de données en écrivant une expression régulière, sinon on sélectionne tous les corpus
         if ($this->corpus == "Scoledit"){
-            $this->corpus = "[A-Z]+-[a-zA-Z]+[0-9]+-[0-9]+-[a-zA-Z]+-[a-zA-Z][0-9]-S[0-9]+-[A-Z][0-9]-[0-9]+-[0-9]+";
+            $this->corpus = "[A-Z]+-[a-zA-Z]+[0-9]+-[0-9]+-([a-zA-Z]+|[0-9]+)-[a-zA-Z][0-9]-S[0-9]+-[A-Z][0-9]-[0-9]+-[0-9]+";
         } elseif ($this->corpus == "Ecriscol"){
-            $this->corpus = "[A-Z]+-[a-zA-Z]+[0-9]+-[0-9]+-[a-zA-Z]+-[a-zA-Z][0-9]-E[0-9]+-[A-Z][0-9]-[0-9]+-[0-9]+";
+            $this->corpus = "[A-Z]+-[a-zA-Z]+[0-9]+-[0-9]+-([a-zA-Z]+|[0-9]+)-[a-zA-Z][0-9]-E[0-9]+-[A-Z][0-9]-[0-9]+-[0-9]+";
         } elseif ($this->corpus == "Resolco"){
-            $this->corpus = "[A-Z]+-[a-zA-Z]+[0-9]+-[0-9]+-[a-zA-Z]+-[a-zA-Z][0-9]-R[0-9]+-[A-Z][0-9]-[0-9]+-[0-9]+";
+            $this->corpus = "[A-Z]+-[a-zA-Z]+[0-9]+-[0-9]+-([a-zA-Z]+|[0-9]+)-[a-zA-Z][0-9]-R[0-9]+-[A-Z][0-9]-[0-9]+-[0-9]+";
         } else {
-            $this->corpus = "[A-Z]+-[a-zA-Z]+[0-9]+-[0-9]+-[a-zA-Z]+-[a-zA-Z][0-9]-[a-zA-Z][0-9]+-[A-Z][0-9]-[0-9]+-[0-9]+";
+            $this->corpus = "[A-Z]+-[a-zA-Z]+[0-9]+-[0-9]+-([a-zA-Z]+|[0-9]+)-[a-zA-Z][0-9]-[a-zA-Z][0-9]+-[A-Z][0-9]-[0-9]+-[0-9]+";
         }
 
         #Normalisation du nom des catégories grammaticales pour qu'elles correspondent à celles de Treetagger

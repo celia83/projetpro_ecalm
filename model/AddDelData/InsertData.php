@@ -7,7 +7,7 @@ include_once "model/DataBase.php";
  *
  * Cette classe permet d'ajouter à la base de données les lignes présentes dans un fichier csv fourni par l'utilisateur.
  *
- * PHP version 5.6
+ * PHP version 5.6 
  *
  * @author Jingyu Liu <jingyu.liu@etu.univ-grenoble-alpes.fr>
  */
@@ -105,7 +105,7 @@ class InsertData
 				$data_values .= "('$IdTok','$IdProd','$Niv','$SegNorm','$SegTrans','$PhonNorm','$PhonTrans','$SyllabNorm','$SyllabTrans','$Categorie','$Lemme','$StatuErreurSimp','$StatutErreur','$StatutSegm','$Genre','$Nombre','$BaseAdjNorm','$GenreAdjNorm','$NombreAdjNorm','$BaseAdjTrans','$GenreAdjTrans','$NombreAdjTrans','$ErreurAdjBase','$ErreurAdjGenre','$ErreurAdjNombre','$VerPers','$BaseVerForme','$DesiVerForme','$BaseVerProd','$DesiVerProd	','$ErrVerBase','$ErrVerDes','$ErrVerBaseEtDes'),";
 			}
 
-			#fermer la fonction de handle et supprimer le dernier indice   
+			#fermer la fonction de handle et supprimer le dernier indice    
 			$data_values = substr($data_values,0,-1);
 			
 			#fermer la fonction de handle   

@@ -7,7 +7,7 @@ include_once "model/DataBase.php";
  *
  * Cette classe permet la suppression des données présentes sur la base de donnée à partir de paramètres choisi par l'utilisateur.
  *
- * PHP version 5.6
+ * PHP version 5.6 
  *
  * @author Jingyu Liu <jingyu.liu@etu.univ-grenoble-alpes.fr>
  */
@@ -63,13 +63,13 @@ AND Niv LIKE "'.$this->level.'"';
 	protected function normalizeCorpusName(){
         #Normalisation du corpus : E : Ecriscol, S : Scoledit, R : Resolco, sinon on sélectionne tous les corpus avec %
         if ($this->corpus == "Scoledit"){
-            $this->corpus = "[A-Z]+-[a-zA-Z]+[0-9]+-[0-9]+-[a-zA-Z]+-[a-zA-Z][0-9]-S[0-9]+-[A-Z][0-9]-[0-9]+-[0-9]+";
+            $this->corpus = "[A-Z]+-[a-zA-Z]+[0-9]+-[0-9]+-([a-zA-Z]+|[0-9]+)-[a-zA-Z][0-9]-S[0-9]+-[A-Z][0-9]-[0-9]+-[0-9]+";
         } elseif ($this->corpus == "Ecriscol"){
-            $this->corpus = "[A-Z]+-[a-zA-Z]+[0-9]+-[0-9]+-[a-zA-Z]+-[a-zA-Z][0-9]-E[0-9]+-[A-Z][0-9]-[0-9]+-[0-9]+";
+            $this->corpus = "[A-Z]+-[a-zA-Z]+[0-9]+-[0-9]+-([a-zA-Z]+|[0-9]+)-[a-zA-Z][0-9]-E[0-9]+-[A-Z][0-9]-[0-9]+-[0-9]+";
         } elseif ($this->corpus == "Resolco"){
-            $this->corpus = "[A-Z]+-[a-zA-Z]+[0-9]+-[0-9]+-[a-zA-Z]+-[a-zA-Z][0-9]-R[0-9]+-[A-Z][0-9]-[0-9]+-[0-9]+";
+            $this->corpus = "[A-Z]+-[a-zA-Z]+[0-9]+-[0-9]+-([a-zA-Z]+|[0-9]+)-[a-zA-Z][0-9]-R[0-9]+-[A-Z][0-9]-[0-9]+-[0-9]+";
         } else {
-            $this->corpus = "[A-Z]+-[a-zA-Z]+[0-9]+-[0-9]+-[a-zA-Z]+-[a-zA-Z][0-9]-[a-zA-Z][0-9]+-[A-Z][0-9]-[0-9]+-[0-9]+";
+            $this->corpus = "[A-Z]+-[a-zA-Z]+[0-9]+-[0-9]+-([a-zA-Z]+|[0-9]+)-[a-zA-Z][0-9]-[a-zA-Z][0-9]+-[A-Z][0-9]-[0-9]+-[0-9]+";
         }
 	}
 }
